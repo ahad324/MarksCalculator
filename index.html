@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Marks Calculator</title>
+  </head>
+  <body>
+    <header>
+      <span><h1>Marks Calculator</h1></span>
+      <div class="modal-buttons-container">
+        <span>
+          <button id="instructions-btn" class="open-modal-btn">
+            Instructions
+          </button>
+          <span id="instructionsModal" class="modal">
+            <div class="instructions-modal-content">
+              <span class="close">&times;</span>
+              <p style="text-align: justify">
+                1) Enter Subject Name <br />
+                2) Enter Assessment marks. For example, Your physics marks for
+                Quizzes are like this: <br />
+                &nbsp;&nbsp;&nbsp;&nbsp; Obtained Marks: 19 <br />
+                &nbsp;&nbsp;&nbsp;&nbsp; Max Marks: 40 <br />
+                &nbsp;&nbsp;&nbsp;&nbsp; Weightage: 10 <br />
+                &nbsp;&nbsp;&nbsp;&nbsp; So, write the data accordingly in the
+                fields and click the submit button. <br />
+                3) Once you have entered the name, you can add assessment marks
+                for that subject without rewriting it and press the submit
+                button. <br />
+                4) Your Marks are also being updated in the Result Card. <br />
+                5) If you want to update the marks for a subject, then you can
+                copy that name from the Result Card and paste it in the Subject
+                name field. Then you can add more assessment marks for that
+                subject. <br />
+                6) You can also print the Result. <br />
+                Thanks for Using! <br />
+                Any Errors? Report ROYAL
+              </p>
+            </div>
+          </span>
+        </span>
+        <span>
+          <button id="resultcard-btn" class="open-modal-btn">ResultCard</button>
+          <span id="resultModal" class="modal">
+            <div class="result-modal-content">
+              <span class="close">&times;</span>
+              <span>
+                <table>
+                  <thead>
+                    <tr>
+                      <th>Subject</th>
+                      <th>Obt_Marks</th>
+                      <th>Total_Marks</th>
+                      <th>Percentage</th>
+                      <th>Action</th>
+                    </tr>
+                  </thead>
+                  <tbody></tbody>
+                </table>
+                <span class="result-modal-bottom">
+                  <span class="finalgrade"></span>
+                  <span>
+                    <button id="download-pdf-btn">Download Result</button>
+                  </span>
+                </span>
+              </span>
+            </div>
+          </span>
+        </span>
+      </div>
+
+      <span class="data-below-assesment"
+        >Your Marks For <span id="subject-name-below-assesment"></span> are
+        <span id="obtained-marks-below-assesment"></span>/100</span
+      >
+    </header>
+    <section>
+      <div>
+        <form action="#" class="subject-input-form">
+          <span class="input">
+            <label for="">Enter Subject Name </label>
+            <input type="text" id="input-subject-name" />
+          </span>
+          <span>
+            <button id="submit-subject-btn">Submit</button>
+          </span>
+        </form>
+      </div>
+    </section>
+    <section>
+      <div id="Assesments">
+        <span>
+          <h2>Assesments</h2>
+        </span>
+        <form action="#" class="assessment-form">
+          <span class="assesment-form-inner">
+            <span class="input">
+              <label for="">Enter Obtained Marks </label>
+              <input type="number" id="InputObtMarks" />
+            </span>
+            <span class="input">
+              <label for="">Enter Max_Marks </label>
+              <input type="number" id="InputMaxMarks" />
+            </span>
+            <span class="input">
+              <label for="">Enter Weightage </label>
+              <input type="number" id="InputWeightage" />
+            </span>
+          </span>
+        </form>
+      </div>
+    </section>
+
+    <script src="script.js"></script>
+    <script>
+      document
+        .getElementById("download-pdf-btn")
+        .addEventListener("click", function () {
+          // Get the result card table content
+          var table = document.querySelector("#resultModal table");
+
+          // Create a new Blob object containing the table HTML content
+          var blob = new Blob([table.outerHTML], {
+            type: "text/html",
+          });
+
+          // Create a temporary URL for the Blob object
+          var url = URL.createObjectURL(blob);
+
+          // Create a temporary anchor element to trigger the download
+          var a = document.createElement("a");
+          a.href = url;
+          a.download = "result_card.doc"; 
+          a.click();
+
+          // Release the temporary URL
+          URL.revokeObjectURL(url);
+        });
+    </script>
+  </body>
+</html>
