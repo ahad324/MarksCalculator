@@ -46,19 +46,18 @@ window.addEventListener("click", function (event) {
 var submitSubjectBtn = document.getElementById("submit-subject-btn");
 var tableBody = document.querySelector("#resultModal table tbody");
 var finalGradeSpan = document.querySelector(".finalgrade");
-//================================================================
 var namebelowassesment = document.getElementById(
   "subject-name-below-assesment"
-);
+  );
 var marksbelowassesment = document.getElementById(
   "obtained-marks-below-assesment"
 );
 // ==============================================================================
-
 // var inputSubjectName = document.getElementById("input-subject-name");
 // inputSubjectName.addEventListener("input", function(e) {
 //     namebelowassesment.textContent = e.target.value;
 // });
+//================================================================
 
 let DataObj = []; // Object to store subject and total marks
 let subjectcount = 0; // Counter for subjects
@@ -102,11 +101,19 @@ submitSubjectBtn.addEventListener("click", function (event) {
     alert("Weightage cannot exceed 100.");
     return;
   }
+  
+  // =================================================================
+  // if(localStorage.getItem(inputSubjectName)){
+  //     console.log(localStorage.getItem(inputSubjectName))
+  //     console.log("oks")
 
+  //   }
+    // =================================================================
   // Check if the subject already exists in DataObj
-  let existingSubjectIndex = DataObj.findIndex(
-    (subject) => subject.name === inputSubjectName
-  );
+       let existingSubjectIndex = DataObj.findIndex(
+       (subject) => subject.name === inputSubjectName
+       );
+
 
   if (existingSubjectIndex !== -1 && existingSubjectIndex !== undefined) {
     // Update existing subject data
@@ -155,6 +162,9 @@ submitSubjectBtn.addEventListener("click", function (event) {
       name: inputSubjectName,
       marks: totalObtMarksForASubject,
     });
+    // =================================================================
+    // localStorage.setItem(inputSubjectName,totalObtMarksForASubject)
+    // =================================================================
     namebelowassesment.textContent = inputSubjectName;
     marksbelowassesment.textContent = totalObtMarksForASubject;
     // Create a new row in the result card table
