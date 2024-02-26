@@ -2,14 +2,19 @@
 <html lang="en">
   <head>
     <!-- Google tag (gtag.js) -->
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-7RX6XQG3YH"></script>
-        <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-7RX6XQG3YH"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
 
-        gtag('config', 'G-7RX6XQG3YH');
-        </script>
+      gtag("config", "G-7RX6XQG3YH");
+    </script>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="style.css" />
@@ -86,42 +91,50 @@
         <span id="obtained-marks-below-assesment"></span>/100</span
       >
     </header>
-    <section>
-      <div>
-        <form action="#" class="subject-input-form">
-          <span class="input">
-            <label for="">Enter Subject Name </label>
-            <input type="text" id="input-subject-name" />
-          </span>
+    <div>
+      <span style="display:flex;justify-content:center;align-items:center;margin-top:2%"
+        >Need Calculator ?
+        <a href="https://ahad324.github.io/Calculator-App/" target="_blank"
+          >Click Me</a
+        ></span
+      >
+      <section>
+        <div>
+          <form action="#" class="subject-input-form">
+            <span class="input">
+              <label for="">Enter Subject Name </label>
+              <input type="text" id="input-subject-name" />
+            </span>
+            <span>
+              <button id="submit-subject-btn">Submit</button>
+            </span>
+          </form>
+        </div>
+      </section>
+      <section>
+        <div id="Assesments">
           <span>
-            <button id="submit-subject-btn">Submit</button>
+            <h2>Assesments</h2>
           </span>
-        </form>
-      </div>
-    </section>
-    <section>
-      <div id="Assesments">
-        <span>
-          <h2>Assesments</h2>
-        </span>
-        <form action="#" class="assessment-form">
-          <span class="assesment-form-inner">
-            <span class="input">
-              <label for="">Enter Obtained Marks </label>
-              <input type="number" id="InputObtMarks" />
+          <form action="#" class="assessment-form">
+            <span class="assesment-form-inner">
+              <span class="input">
+                <label for="">Enter Obtained Marks </label>
+                <input type="number" id="InputObtMarks" />
+              </span>
+              <span class="input">
+                <label for="">Enter Max_Marks </label>
+                <input type="number" id="InputMaxMarks" />
+              </span>
+              <span class="input">
+                <label for="">Enter Weightage </label>
+                <input type="number" id="InputWeightage" />
+              </span>
             </span>
-            <span class="input">
-              <label for="">Enter Max_Marks </label>
-              <input type="number" id="InputMaxMarks" />
-            </span>
-            <span class="input">
-              <label for="">Enter Weightage </label>
-              <input type="number" id="InputWeightage" />
-            </span>
-          </span>
-        </form>
-      </div>
-    </section>
+          </form>
+        </div>
+      </section>
+    </div>
 
     <script src="script.js"></script>
     <script>
@@ -142,7 +155,7 @@
           // Create a temporary anchor element to trigger the download
           var a = document.createElement("a");
           a.href = url;
-          a.download = "result_card.doc"; 
+          a.download = "result_card.doc";
           a.click();
 
           // Release the temporary URL
