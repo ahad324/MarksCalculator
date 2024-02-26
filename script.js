@@ -48,7 +48,7 @@ var tableBody = document.querySelector("#resultModal table tbody");
 var finalGradeSpan = document.querySelector(".finalgrade");
 var namebelowassesment = document.getElementById(
   "subject-name-below-assesment"
-  );
+);
 var marksbelowassesment = document.getElementById(
   "obtained-marks-below-assesment"
 );
@@ -101,19 +101,18 @@ submitSubjectBtn.addEventListener("click", function (event) {
     alert("Weightage cannot exceed 100.");
     return;
   }
-  
+
   // =================================================================
   // if(localStorage.getItem(inputSubjectName)){
   //     console.log(localStorage.getItem(inputSubjectName))
   //     console.log("oks")
 
   //   }
-    // =================================================================
+  // =================================================================
   // Check if the subject already exists in DataObj
-       let existingSubjectIndex = DataObj.findIndex(
-       (subject) => subject.name === inputSubjectName
-       );
-
+  let existingSubjectIndex = DataObj.findIndex(
+    (subject) => subject.name === inputSubjectName
+  );
 
   if (existingSubjectIndex !== -1 && existingSubjectIndex !== undefined) {
     // Update existing subject data
@@ -152,7 +151,7 @@ submitSubjectBtn.addEventListener("click", function (event) {
     }
   } else {
     // Add the subject and its total marks to DataObj
-    subjectcount++; 
+    subjectcount++;
     let totalObtMarksForASubject = calculateTotalObtainedMarks(
       inputObtMarks,
       inputMaxMarks,
@@ -195,8 +194,23 @@ submitSubjectBtn.addEventListener("click", function (event) {
   document.getElementById("InputObtMarks").value = "";
   document.getElementById("InputMaxMarks").value = "";
   document.getElementById("InputWeightage").value = "";
-  updateFinalGrade();
+  updateFinalGradeAndGPA();
 });
+
+// Function to calculate GPA based on percentage
+function calculateGPA(percentage) {
+  if (percentage >= 85) return "4.00";
+  else if (percentage >= 80) return "3.75";
+  else if (percentage >= 75) return "3.50";
+  else if (percentage >= 71) return "3.25";
+  else if (percentage >= 68) return "3.00";
+  else if (percentage >= 64) return "2.75";
+  else if (percentage >= 61) return "2.50";
+  else if (percentage >= 58) return "2.25";
+  else if (percentage >= 54) return "2.00";
+  else if (percentage >= 50) return "1.75";
+  else return "0.00";
+}
 
 function calculateTotalObtainedMarks(obtMarks, maxMarks, weightage) {
   return ((obtMarks / maxMarks) * weightage).toFixed(2);
@@ -205,8 +219,21 @@ function calculatePercentage(obtMarks) {
   return ((obtMarks / 100) * 100).toFixed(2) + "%";
 }
 
-// Function to calculate and update the final grade
-function updateFinalGrade() {
+function calculateGrade(percentage) {
+  if (percentage >= 85) return "A";
+  else if (percentage >= 80) return "A-";
+  else if (percentage >= 75) return "B+";
+  else if (percentage >= 71) return "B";
+  else if (percentage >= 68) return "B-";
+  else if (percentage >= 64) return "C+";
+  else if (percentage >= 61) return "C";
+  else if (percentage >= 58) return "C-";
+  else if (percentage >= 54) return "D+";
+  else if (percentage >= 50) return "D";
+  else return "F";
+}
+// Update final grade and GPA function
+function updateFinalGradeAndGPA() {
   var totalObtMarks = 0;
   var totalMaxMarks = 0;
 
@@ -226,32 +253,22 @@ function updateFinalGrade() {
   // Calculate the final grade only if totalMaxMarks is not zero
   var percentage =
     totalMaxMarks !== 0 ? (totalObtMarks / totalMaxMarks) * 100 : 0;
-
   percentage = Math.round(percentage * 100) / 100;
 
   // Calculate grade
   var grade = calculateGrade(percentage);
+
+  // Calculate GPA
+  var gpa = calculateGPA(percentage);
+
   if (totalObtMarks == 0 && totalMaxMarks == 0) {
     finalGradeSpan.textContent = "Grade: ";
   } else {
-    finalGradeSpan.textContent = "Grade: " + grade;
+    finalGradeSpan.innerHTML = "Grade: " + grade + "<br>GPA: " + gpa;
   }
 }
 
 // Function to calculate grade based on percentage
-function calculateGrade(percentage) {
-  if (percentage >= 85) return "A";
-  else if (percentage >= 80) return "A-";
-  else if (percentage >= 75) return "B+";
-  else if (percentage >= 71) return "B";
-  else if (percentage >= 68) return "B-";
-  else if (percentage >= 64) return "C+";
-  else if (percentage >= 61) return "C";
-  else if (percentage >= 58) return "C-";
-  else if (percentage >= 54) return "D+";
-  else if (percentage >= 50) return "D";
-  else return "F";
-}
 
 // Event delegation for delete buttons
 tableBody.addEventListener("click", function (event) {
@@ -266,6 +283,6 @@ tableBody.addEventListener("click", function (event) {
     if (subjectcount > 0) {
       subjectcount--;
     }
-    updateFinalGrade();
+    updateFinalGradeAndGPA();
   }
 });
