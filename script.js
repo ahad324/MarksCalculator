@@ -287,7 +287,11 @@ tableBody.addEventListener("click", function (event) {
   }
 });
 // Download Result Card
-document.getElementById("download-pdf-btn").addEventListener("click", function() {
+document.getElementById("download-pdf-btn").addEventListener("click", function () {
   var resultcontent = document.querySelector("#resultModal .result-modal-content .download-result-content");
   html2pdf().from(resultcontent).set({ filename: "result_card.pdf" }).save();
+  setTimeout(function () {
+    // clearing console
+    console.clear();
+  }, 2000)
 });
