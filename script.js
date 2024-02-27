@@ -130,24 +130,23 @@ submitSubjectBtn.addEventListener("click", function (event) {
 
     existingSubject.marks = finalObtainedMarks.toFixed(2);
     let marksCell = document.querySelector(
-      `#resultModal table tbody tr[subject-index="${
-        existingSubjectIndex + 1
+      `#resultModal table tbody tr[subject-index="${existingSubjectIndex + 1
       }"] td[data-marks]`
     );
-    let percentageCell = document.querySelector(
-      `#resultModal table tbody tr[subject-index="${
-        existingSubjectIndex + 1
-      }"] td[data-percentage]`
+    let gradeCell = document.querySelector(
+      `#resultModal table tbody tr[subject-index="${existingSubjectIndex + 1
+      }"] td[data-grade]`
     );
 
-    if (marksCell && percentageCell) {
+    if (marksCell && gradeCell) {
       marksCell.setAttribute("data-marks", existingSubject.marks);
       marksCell.textContent = existingSubject.marks;
       marksbelowassesment.textContent = existingSubject.marks;
       // Update percentage
       let percentage = calculatePercentage(finalObtainedMarks);
-      percentageCell.textContent = percentage;
-      percentageCell.setAttribute("data-percentage", percentage); // Store percentage as data attribute
+      let ObtainedGradeinSubject = calculateGrade(percentage);
+      gradeCell.textContent = ObtainedGradeinSubject;
+      gradeCell.setAttribute("data-grade", ObtainedGradeinSubject); // Store grade as data attribute
     }
   } else {
     // Add the subject and its total marks to DataObj
@@ -180,11 +179,12 @@ submitSubjectBtn.addEventListener("click", function (event) {
 
     newRow.insertCell().textContent = 100;
 
-    let percentageCell = newRow.insertCell();
+    let gradeCell = newRow.insertCell();
     let percentage = calculatePercentage(totalObtMarksForASubject);
-    percentageCell.textContent = percentage;
-    percentageCell.setAttribute("data-percentage", percentage);
-    percentageCell.setAttribute("percentage-index", subjectcount);
+    let ObtainedGradeinSub = calculateGrade(percentage);
+    gradeCell.textContent = ObtainedGradeinSub;
+    gradeCell.setAttribute("data-grade", ObtainedGradeinSub);
+    gradeCell.setAttribute("grade-index", subjectcount);
 
     newRow.insertCell().innerHTML =
       '<button class="delete-btn">Delete</button>';
@@ -216,7 +216,7 @@ function calculateTotalObtainedMarks(obtMarks, maxMarks, weightage) {
   return ((obtMarks / maxMarks) * weightage).toFixed(2);
 }
 function calculatePercentage(obtMarks) {
-  return ((obtMarks / 100) * 100).toFixed(2) + "%";
+  return ((obtMarks / 100) * 100).toFixed(2);
 }
 
 function calculateGrade(percentage) {
@@ -264,7 +264,7 @@ function updateFinalGradeAndGPA() {
   if (totalObtMarks == 0 && totalMaxMarks == 0) {
     finalGradeSpan.textContent = "Grade: ";
   } else {
-    finalGradeSpan.innerHTML = "Grade: " + grade + "<br>GPA: " + gpa;
+    finalGradeSpan.innerHTML = "FinalGrade: " + grade + "<br>GPA: " + gpa;
   }
 }
 
