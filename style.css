@@ -67,9 +67,16 @@ header > span {
   gap: 20px;
   margin-top: 20px;
 }
+.download-result-content{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
 .finalgrade {
   font-size: 1.3rem;
   color: crimson;
+  margin-top: 20px;
 }
 /* Close Button */
 .close {

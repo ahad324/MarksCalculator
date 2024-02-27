@@ -286,3 +286,8 @@ tableBody.addEventListener("click", function (event) {
     updateFinalGradeAndGPA();
   }
 });
+// Download Result Card
+document.getElementById("download-pdf-btn").addEventListener("click", function() {
+  var resultcontent = document.querySelector("#resultModal .result-modal-content .download-result-content");
+  html2pdf().from(resultcontent).set({ filename: "result_card.pdf" }).save();
+});

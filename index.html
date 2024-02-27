@@ -61,7 +61,7 @@
           <span id="resultModal" class="modal">
             <div class="result-modal-content">
               <span class="close">&times;</span>
-              <span>
+              <span class="download-result-content">
                 <table>
                   <thead>
                     <tr>
@@ -74,11 +74,11 @@
                   </thead>
                   <tbody></tbody>
                 </table>
-                <span class="result-modal-bottom">
-                  <span class="finalgrade"></span>
-                  <span>
-                    <button id="download-pdf-btn">Download Result</button>
-                  </span>
+                <span class="finalgrade"></span>
+              </span>
+              <span class="result-modal-bottom">
+                <span>
+                  <button id="download-pdf-btn">Download Result</button>
                 </span>
               </span>
             </div>
@@ -135,32 +135,8 @@
         </div>
       </section>
     </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.3/html2pdf.bundle.min.js"></script>
 
     <script src="script.js"></script>
-    <script>
-      document
-        .getElementById("download-pdf-btn")
-        .addEventListener("click", function () {
-          // Get the result card table content
-          var table = document.querySelector("#resultModal table");
-
-          // Create a new Blob object containing the table HTML content
-          var blob = new Blob([table.outerHTML], {
-            type: "text/html",
-          });
-
-          // Create a temporary URL for the Blob object
-          var url = URL.createObjectURL(blob);
-
-          // Create a temporary anchor element to trigger the download
-          var a = document.createElement("a");
-          a.href = url;
-          a.download = "result_card.doc";
-          a.click();
-
-          // Release the temporary URL
-          URL.revokeObjectURL(url);
-        });
-    </script>
   </body>
 </html>
