@@ -1,3 +1,11 @@
+// Side Bar Toogle
+let arrow = document.getElementsByClassName("arrow")[0];
+let featurecontainer = document.getElementsByClassName("features")[0];
+arrow.addEventListener("click", function () {
+  featurecontainer.classList.toggle("active");
+  arrow.classList.toggle("active");
+});
+
 var instructionsModal = document.getElementById("instructionsModal");
 var instructionsBtn = document.getElementById("instructions-btn");
 
@@ -9,11 +17,15 @@ var closeBtns = document.getElementsByClassName("close");
 // Function to open the modal
 function openModal(modal) {
   modal.style.display = "block";
+  arrow.style.display = "none";
+  featurecontainer.style.display = "none";
 }
 
 // Function to close the modal
 function closeModal(modal) {
   modal.style.display = "none";
+  arrow.style.display = "flex";
+  featurecontainer.style.display = "flex";
 }
 
 // Event listener for instructions button
@@ -52,14 +64,8 @@ var namebelowassesment = document.getElementById(
 var marksbelowassesment = document.getElementById(
   "obtained-marks-below-assesment"
 );
-// ==============================================================================
-// var inputSubjectName = document.getElementById("input-subject-name");
-// inputSubjectName.addEventListener("input", function(e) {
-//     namebelowassesment.textContent = e.target.value;
-// });
-//================================================================
 
-let DataObj = []; // Object to store subject and total marks
+let DataObj = []; // Object to store subject , total Obtained marks and grade
 let subjectcount = 0; // Counter for subjects
 var message = document.getElementsByClassName("message")[0];
 
@@ -145,17 +151,19 @@ submitSubjectBtn.addEventListener("click", function (event) {
     );
     let finalObtainedMarks =
       parseFloat(totalObtMarksForASubject) + parseFloat(existingSubject.marks);
-      if(finalObtainedMarks>100){
-        alert("Total obtained marks cannot exceed 100");
-        return
-      }
+    if (finalObtainedMarks > 100) {
+      alert("Total obtained marks cannot exceed 100");
+      return;
+    }
     existingSubject.marks = finalObtainedMarks.toFixed(2);
     let marksCell = document.querySelector(
-      `#resultModal table tbody tr[subject-index="${existingSubjectIndex + 1
+      `#resultModal table tbody tr[subject-index="${
+        existingSubjectIndex + 1
       }"] td[data-marks]`
     );
     let gradeCell = document.querySelector(
-      `#resultModal table tbody tr[subject-index="${existingSubjectIndex + 1
+      `#resultModal table tbody tr[subject-index="${
+        existingSubjectIndex + 1
       }"] td[data-grade]`
     );
 
@@ -163,11 +171,13 @@ submitSubjectBtn.addEventListener("click", function (event) {
       marksCell.setAttribute("data-marks", existingSubject.marks);
       marksCell.textContent = existingSubject.marks;
       marksbelowassesment.textContent = existingSubject.marks;
-      // Update percentage
+      // Update grade based on percentage
       let percentage = calculatePercentage(finalObtainedMarks);
       let ObtainedGradeinSubject = calculateGrade(percentage);
+      existingSubject.grade = ObtainedGradeinSubject;
       gradeCell.textContent = ObtainedGradeinSubject;
-      gradeCell.setAttribute("data-grade", ObtainedGradeinSubject); // Store grade as data attribute
+      gradeCell.setAttribute("data-grade", ObtainedGradeinSubject);
+
       message.classList.add("success");
       message.innerHTML =
         "Marks Updated successfully for " + existingSubject.name;
@@ -175,6 +185,8 @@ submitSubjectBtn.addEventListener("click", function (event) {
         message.classList.remove("success");
         message.innerHTML = "";
       }, 3000);
+
+      updateDataObj();
     }
   } else {
     // Add the subject and its total marks to DataObj
@@ -184,9 +196,12 @@ submitSubjectBtn.addEventListener("click", function (event) {
       inputMaxMarks,
       inputWeightage
     );
+    let percentage = calculatePercentage(totalObtMarksForASubject);
+    let ObtainedGradeinSub = calculateGrade(percentage);
     DataObj.push({
       name: inputSubjectName,
       marks: totalObtMarksForASubject,
+      grade: ObtainedGradeinSub,
     });
     // =================================================================
     // localStorage.setItem(inputSubjectName,totalObtMarksForASubject)
@@ -208,8 +223,6 @@ submitSubjectBtn.addEventListener("click", function (event) {
     newRow.insertCell().textContent = 100;
 
     let gradeCell = newRow.insertCell();
-    let percentage = calculatePercentage(totalObtMarksForASubject);
-    let ObtainedGradeinSub = calculateGrade(percentage);
     gradeCell.textContent = ObtainedGradeinSub;
     gradeCell.setAttribute("data-grade", ObtainedGradeinSub);
     gradeCell.setAttribute("grade-index", subjectcount);
@@ -217,6 +230,8 @@ submitSubjectBtn.addEventListener("click", function (event) {
     newRow.insertCell().innerHTML =
       '<button class="delete-btn">Delete</button>';
     newRow.setAttribute("subject-index", subjectcount);
+
+    updateDataObj();
   }
 
   document.getElementById("InputObtMarks").value = "";
@@ -303,24 +318,43 @@ function updateFinalGradeAndGPA() {
   }
 }
 
-// Function to calculate grade based on percentage
-
 // Event delegation for delete buttons
 tableBody.addEventListener("click", function (event) {
   if (event.target.classList.contains("delete-btn")) {
     var row = event.target.closest("tr");
-    var index = row.getAttribute("subject-index");
+    var index = parseInt(row.getAttribute("subject-index"));
 
+    // Remove the subject from DataObj
     DataObj.splice(index - 1, 1);
 
+    // Remove the row from the table
     row.parentNode.removeChild(row);
 
-    if (subjectcount > 0) {
-      subjectcount--;
-    }
+    // Update subject indexes for remaining rows
+    var rows = tableBody.querySelectorAll("tr");
+    rows.forEach(function (row, newIndex) {
+      var newIndexValue = newIndex + 1;
+      row.setAttribute("subject-index", newIndexValue);
+      row
+        .querySelector(".delete-btn")
+        .setAttribute("subject-index", newIndexValue);
+      row
+        .querySelector("td[data-marks]")
+        .setAttribute("subject-index", newIndexValue);
+      row
+        .querySelector("td[data-grade]")
+        .setAttribute("subject-index", newIndexValue);
+    });
+
+    // Update subject count
+    subjectcount = rows.length;
+
+    // Update localStorage and final grade/GPA
+    updateDataObj();
     updateFinalGradeAndGPA();
   }
 });
+
 // Download Result Card
 document
   .getElementById("download-pdf-btn")
@@ -334,3 +368,47 @@ document
       console.clear();
     }, 2000);
   });
+
+function updateTable() {
+  // Clear existing table rows
+  tableBody.innerHTML = "";
+
+  // Loop through DataObj and add rows to the table
+  DataObj.forEach(function (subject, index) {
+    let newRow = tableBody.insertRow();
+
+    let subjectCell = newRow.insertCell();
+    subjectCell.textContent = subject.name;
+    subjectCell.setAttribute("subject-index", index + 1);
+
+    let marksCell = newRow.insertCell();
+    marksCell.textContent = subject.marks;
+    marksCell.setAttribute("data-marks", subject.marks);
+    marksCell.setAttribute("marks-index", index + 1);
+
+    newRow.insertCell().textContent = 100;
+
+    let gradeCell = newRow.insertCell();
+    let percentage = calculatePercentage(subject.marks);
+    let ObtainedGradeinSub = calculateGrade(percentage);
+    gradeCell.textContent = ObtainedGradeinSub;
+    gradeCell.setAttribute("data-grade", ObtainedGradeinSub);
+    gradeCell.setAttribute("grade-index", index + 1);
+
+    newRow.insertCell().innerHTML =
+      '<button class="delete-btn">Delete</button>';
+    newRow.setAttribute("subject-index", index + 1);
+  });
+}
+
+function updateDataObj() {
+  localStorage.setItem("DataObj", JSON.stringify(DataObj));
+}
+window.addEventListener("load", function () {
+  if (localStorage.getItem("DataObj")) {
+    DataObj = JSON.parse(localStorage.getItem("DataObj"));
+    // Update the table with loaded data
+    updateTable();
+    updateFinalGradeAndGPA();
+  }
+});

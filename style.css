@@ -153,6 +153,71 @@ button:active {
 .delete-btn {
   height: 2em;
 }
+main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.features {
+  width: 250px;
+  height: 100%;
+  position: absolute;
+  left: -255px;
+  background: #3c4fe0;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  transition: 1s all ease;
+  z-index: 99999;
+  color: whitesmoke;
+  box-shadow: 0px 0.01em 0.01em rgb(45 35 66 / 40%),
+    0px 0.3em 0.7em -0.01em rgb(45 35 66 / 30%),
+    inset 0px -0.01em 0px rgb(58 65 111 / 50%);
+}
+.features.active {
+  text-shadow: 0 0 10px black;
+  transition: 1s all ease;
+  left: 0;
+}
+.arrow {
+  width: 40px;
+  background: #3c4fe0;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  position: absolute;
+  top: 50%;
+  left: 250px;
+  cursor: pointer;
+  transition: 0.5s all ease;
+  box-shadow: 0px 0.01em 0.01em rgb(45 35 66 / 40%),
+    0px 0.3em 0.7em -0.01em rgb(45 35 66 / 30%),
+    inset 0px -0.01em 0px rgb(58 65 111 / 50%);
+}
+.arrow:hover {
+  box-shadow: 0 0 10px #3c4fe0;
+}
+.arrow.active {
+  border-radius: 1px;
+  transition: 0.5s all ease;
+  transform: rotate(180deg);
+}
+.arrow > h1 {
+  margin-top: -10px;
+}
+ul {
+  padding: 20px 10%;
+  list-style-type: disclosure-closed;
+  font-size: 0.8rem;
+}
+ul > li {
+  font-size: 1rem;
+  text-align: left;
+}
 section {
   display: flex;
   justify-content: center;

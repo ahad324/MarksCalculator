@@ -91,57 +91,78 @@
         <span id="obtained-marks-below-assesment"></span>/100</span
       >
     </header>
-    <div>
-      <span
-        style="
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          margin-top: 2%;
-        "
-        >Need Calculator ?
-        <a href="https://ahad324.github.io/Calculator-App/" target="_blank"
-          >Click Me</a
-        ></span
-      >
-      <section>
-        <div>
-          <form action="#" class="subject-input-form">
-            <span class="input">
-              <label for="">Enter Subject Name </label>
-              <input type="text" id="input-subject-name" />
-            </span>
-            <span class="message">ok</span>
+
+    <main>
+      <div class="features">
+        <span class="features-content">
+          <h2>Features</h2>
+          <ul>
+            <li>
+              Automatic Data Saving (You can reload or close the page,your data
+              will not lost on this device.)
+            </li>
+            <li>Interactive Result Card</li>
+            <li>Dynamic Subject Management</li>
+            <li>Downloadable Result Card</li>
+            <li>Error Handling and Validation</li>
+          </ul>
+        </span>
+        <span class="arrow">
+          <h1>&gt;</h1>
+        </span>
+      </div>
+      <div>
+        <span
+          style="
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 10%;
+          "
+          >Need Calculator ?
+          <a href="https://ahad324.github.io/Calculator-App/" target="_blank"
+            >Click Me</a
+          ></span
+        >
+        <section>
+          <div>
+            <form action="#" class="subject-input-form">
+              <span class="input">
+                <label for="">Enter Subject Name </label>
+                <input type="text" id="input-subject-name" />
+              </span>
+              <span class="message">ok</span>
+              <span>
+                <button id="submit-subject-btn">Submit</button>
+              </span>
+            </form>
+          </div>
+        </section>
+        <section>
+          <div id="Assesments">
             <span>
-              <button id="submit-subject-btn">Submit</button>
+              <h2>Assesments</h2>
             </span>
-          </form>
-        </div>
-      </section>
-      <section>
-        <div id="Assesments">
-          <span>
-            <h2>Assesments</h2>
-          </span>
-          <form action="#" class="assessment-form">
-            <span class="assesment-form-inner">
-              <span class="input">
-                <label for="">Enter Obtained Marks </label>
-                <input type="number" id="InputObtMarks" />
+            <form action="#" class="assessment-form">
+              <span class="assesment-form-inner">
+                <span class="input">
+                  <label for="">Enter Obtained Marks </label>
+                  <input type="number" id="InputObtMarks" />
+                </span>
+                <span class="input">
+                  <label for="">Enter Max_Marks </label>
+                  <input type="number" id="InputMaxMarks" />
+                </span>
+                <span class="input">
+                  <label for="">Enter Weightage </label>
+                  <input type="number" id="InputWeightage" />
+                </span>
               </span>
-              <span class="input">
-                <label for="">Enter Max_Marks </label>
-                <input type="number" id="InputMaxMarks" />
-              </span>
-              <span class="input">
-                <label for="">Enter Weightage </label>
-                <input type="number" id="InputWeightage" />
-              </span>
-            </span>
-          </form>
-        </div>
-      </section>
-    </div>
+            </form>
+          </div>
+        </section>
+      </div>
+    </main>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.3/html2pdf.bundle.min.js"></script>
 
     <script src="script.js"></script>
