@@ -145,7 +145,10 @@ submitSubjectBtn.addEventListener("click", function (event) {
     );
     let finalObtainedMarks =
       parseFloat(totalObtMarksForASubject) + parseFloat(existingSubject.marks);
-
+      if(finalObtainedMarks>100){
+        alert("Total obtained marks cannot exceed 100");
+        return
+      }
     existingSubject.marks = finalObtainedMarks.toFixed(2);
     let marksCell = document.querySelector(
       `#resultModal table tbody tr[subject-index="${existingSubjectIndex + 1
