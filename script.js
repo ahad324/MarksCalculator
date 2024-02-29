@@ -61,8 +61,25 @@ var marksbelowassesment = document.getElementById(
 
 let DataObj = []; // Object to store subject and total marks
 let subjectcount = 0; // Counter for subjects
+var message = document.getElementsByClassName("message")[0];
 
-// Event listener for the submit button
+let inputSubjectName = document.getElementById("input-subject-name");
+inputSubjectName.addEventListener("input", () => {
+  let existingSubjectIndex = DataObj.findIndex(
+    (subject) => subject.name === inputSubjectName.value.trim()
+  );
+  // console.log(existingSubjectIndex)
+  if (existingSubjectIndex !== -1) {
+    message.classList.add("error");
+    message.innerHTML =
+      "Subject already exists you can update marks for this subject";
+    // console.log("GO on")
+  } else {
+    message.classList.remove("error");
+    message.innerHTML = "";
+  }
+});
+
 // Event listener for the submit button
 submitSubjectBtn.addEventListener("click", function (event) {
   event.preventDefault(); // Prevent form submission
@@ -110,6 +127,7 @@ submitSubjectBtn.addEventListener("click", function (event) {
   //   }
   // =================================================================
   // Check if the subject already exists in DataObj
+
   let existingSubjectIndex = DataObj.findIndex(
     (subject) => subject.name === inputSubjectName
   );
@@ -147,6 +165,13 @@ submitSubjectBtn.addEventListener("click", function (event) {
       let ObtainedGradeinSubject = calculateGrade(percentage);
       gradeCell.textContent = ObtainedGradeinSubject;
       gradeCell.setAttribute("data-grade", ObtainedGradeinSubject); // Store grade as data attribute
+      message.classList.add("success");
+      message.innerHTML =
+        "Marks Updated successfully for " + existingSubject.name;
+      setTimeout(() => {
+        message.classList.remove("success");
+        message.innerHTML = "";
+      }, 3000);
     }
   } else {
     // Add the subject and its total marks to DataObj
@@ -264,7 +289,14 @@ function updateFinalGradeAndGPA() {
   if (totalObtMarks == 0 && totalMaxMarks == 0) {
     finalGradeSpan.textContent = "Grade: ";
   } else {
-    finalGradeSpan.innerHTML = "FinalGrade: " + grade + "<br>GPA: " + gpa;
+    finalGradeSpan.innerHTML =
+      "FinalGrade: " +
+      grade +
+      "<br>GPA: " +
+      gpa +
+      "<br> Obt_Percentage: " +
+      percentage +
+      "%";
   }
 }
 
@@ -287,11 +319,15 @@ tableBody.addEventListener("click", function (event) {
   }
 });
 // Download Result Card
-document.getElementById("download-pdf-btn").addEventListener("click", function () {
-  var resultcontent = document.querySelector("#resultModal .result-modal-content .download-result-content");
-  html2pdf().from(resultcontent).set({ filename: "result_card.pdf" }).save();
-  setTimeout(function () {
-    // clearing console
-    console.clear();
-  }, 2000)
-});
+document
+  .getElementById("download-pdf-btn")
+  .addEventListener("click", function () {
+    var resultcontent = document.querySelector(
+      "#resultModal .result-modal-content .download-result-content"
+    );
+    html2pdf().from(resultcontent).set({ filename: "result_card.pdf" }).save();
+    setTimeout(function () {
+      // clearing console
+      console.clear();
+    }, 2000);
+  });
