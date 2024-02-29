@@ -1,4 +1,9 @@
-@import url('https://fonts.googleapis.com/css2?family=Anta&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Anta&display=swap");
+:root {
+  --box-shadow: 0px 0.01em 0.01em rgb(45 35 66 / 40%),
+    0px 0.3em 0.7em -0.01em rgb(45 35 66 / 30%),
+    inset 0px -0.01em 0px rgb(58 65 111 / 50%);
+}
 * {
   margin: 0;
   padding: 0;
@@ -120,14 +125,12 @@ button {
   cursor: pointer;
   will-change: box-shadow, transform;
   background: radial-gradient(100% 100% at 100% 0%, #89e5ff 0%, #5468ff 100%);
-  box-shadow: 0px 0.01em 0.01em rgb(45 35 66 / 40%),
-    0px 0.3em 0.7em -0.01em rgb(45 35 66 / 30%),
-    inset 0px -0.01em 0px rgb(58 65 111 / 50%);
+  box-shadow: var(--box-shadow);
   padding: 0 2em;
   border-radius: 0.3em;
   color: #fff;
   height: 2.6em;
-  text-shadow: 0 1px 0 rgb(0 0 0 / 40%);
+  text-shadow: var(--box-shadow);
   transition: box-shadow 0.15s ease, transform 0.15s ease;
 }
 
@@ -164,7 +167,6 @@ main {
   position: absolute;
   left: -255px;
   background: #3c4fe0;
-  border-radius: 5px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -172,9 +174,8 @@ main {
   transition: 1s all ease;
   z-index: 99999;
   color: whitesmoke;
-  box-shadow: 0px 0.01em 0.01em rgb(45 35 66 / 40%),
-    0px 0.3em 0.7em -0.01em rgb(45 35 66 / 30%),
-    inset 0px -0.01em 0px rgb(58 65 111 / 50%);
+  box-shadow: var(--box-shadow);
+  border-radius: 0px 40px 40px 0px;
 }
 .features.active {
   text-shadow: 0 0 10px black;
@@ -188,26 +189,26 @@ main {
   display: flex;
   justify-content: center;
   align-items: center;
-  border-radius: 5px;
   position: absolute;
   top: 50%;
   left: 250px;
   cursor: pointer;
   transition: 0.5s all ease;
-  box-shadow: 0px 0.01em 0.01em rgb(45 35 66 / 40%),
-    0px 0.3em 0.7em -0.01em rgb(45 35 66 / 30%),
-    inset 0px -0.01em 0px rgb(58 65 111 / 50%);
+  box-shadow: var(--box-shadow);
+  border-radius: 0px 30px 30px 0px;
 }
 .arrow:hover {
   box-shadow: 0 0 10px #3c4fe0;
 }
 .arrow.active {
   border-radius: 1px;
+  border-radius: 30px 0px 0px 30px;
   transition: 0.5s all ease;
   transform: rotate(180deg);
 }
 .arrow > h1 {
-  margin-top: -10px;
+  font-size: 2.5rem;
+  margin-top: -5px;
 }
 ul {
   padding: 20px 10%;
@@ -217,6 +218,7 @@ ul {
 ul > li {
   font-size: 1rem;
   text-align: left;
+  margin-top: 10%;
 }
 section {
   display: flex;
