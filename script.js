@@ -402,11 +402,11 @@ function updateTable() {
 }
 
 function updateDataObj() {
-  localStorage.setItem("DataObj", JSON.stringify(DataObj));
+  localStorage.setItem("RoyalData", JSON.stringify(DataObj));
 }
 window.addEventListener("load", function () {
-  if (localStorage.getItem("DataObj")) {
-    DataObj = JSON.parse(localStorage.getItem("DataObj"));
+  if (localStorage.getItem("RoyalData")) {
+    DataObj = JSON.parse(localStorage.getItem("RoyalData"));
     // Update the table with loaded data
     updateTable();
     updateFinalGradeAndGPA();
