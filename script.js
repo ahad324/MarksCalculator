@@ -305,7 +305,7 @@ function updateFinalGradeAndGPA() {
   var gpa = calculateGPA(percentage);
 
   if (totalObtMarks == 0 && totalMaxMarks == 0) {
-    finalGradeSpan.textContent = "Grade: ";
+    finalGradeSpan.textContent = "";
   } else {
     finalGradeSpan.innerHTML =
       "FinalGrade: " +
