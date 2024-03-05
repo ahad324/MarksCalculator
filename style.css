@@ -217,14 +217,26 @@ main {
     }
 }
 .arrow.active h1{
-  transition-delay: .5s;
+  transition-delay: 1.2s;
   transform: rotate(180deg);
-  margin-top: 5px;
 }
 .arrow > h1 {
-  font-size: 2.5rem;
-  margin-top: -5px;
+  font-size: 2rem;
   transition: 1s all ease;
+}
+.arrow.active i{
+  animation: iout .99s linear 1;
+}
+@keyframes iout {
+  0%{
+    transform: translate(0);
+  }
+  50%{
+    transform: translateX(60px);
+  }
+  100%{
+    transform: translate(0);
+  }
 }
 ul {
   padding: 20px 10%;
