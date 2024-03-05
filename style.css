@@ -180,6 +180,7 @@ main {
 .features.active {
   text-shadow: 0 0 10px black;
   transition: 1s all ease;
+  transition-delay: .5s;
   left: 0;
 }
 .arrow {
@@ -194,21 +195,36 @@ main {
   left: 250px;
   cursor: pointer;
   transition: 0.5s all ease;
-  box-shadow: var(--box-shadow);
+  box-shadow: -8px 0px 20px -5px #242f85;
   border-radius: 0px 30px 30px 0px;
 }
 .arrow:hover {
   box-shadow: 0 0 10px #3c4fe0;
 }
 .arrow.active {
-  border-radius: 1px;
-  border-radius: 30px 0px 0px 30px;
+  animation: out 1s ease-in-out 1;
   transition: 0.5s all ease;
+}
+@keyframes out {
+    0%{
+      width: 40px;
+    }
+  50%{
+      width: 150px;
+    }
+    100%{
+      width: 40px;
+    }
+}
+.arrow.active h1{
+  transition-delay: .5s;
   transform: rotate(180deg);
+  margin-top: 5px;
 }
 .arrow > h1 {
   font-size: 2.5rem;
   margin-top: -5px;
+  transition: 1s all ease;
 }
 ul {
   padding: 20px 10%;
@@ -276,9 +292,9 @@ input {
 }
 input:focus{
   transform: scale(1.05);
-  box-shadow: var(--box-shadow);
+  box-shadow: 0px 0px 10px -4px #1a41d9;
   border: none;
-  outline: 1.5px solid green;
+  outline: 1px solid #1a41d9;
 }
 label {
   font-size: 1.2rem;
