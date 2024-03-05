@@ -243,15 +243,15 @@ submitSubjectBtn.addEventListener("click", function (event) {
 // Function to calculate GPA based on percentage
 function calculateGPA(percentage) {
   if (percentage >= 85) return "4.00";
-  else if (percentage >= 80) return "3.75";
-  else if (percentage >= 75) return "3.50";
-  else if (percentage >= 71) return "3.25";
-  else if (percentage >= 68) return "3.00";
-  else if (percentage >= 64) return "2.75";
-  else if (percentage >= 61) return "2.50";
-  else if (percentage >= 58) return "2.25";
-  else if (percentage >= 54) return "2.00";
-  else if (percentage >= 50) return "1.75";
+  else if (percentage >= 80) return "3.66";
+  else if (percentage >= 75) return "3.33";
+  else if (percentage >= 71) return "3.00";
+  else if (percentage >= 68) return "2.66";
+  else if (percentage >= 64) return "2.33";
+  else if (percentage >= 61) return "2.00";
+  else if (percentage >= 58) return "1.66";
+  else if (percentage >= 54) return "1.30";
+  else if (percentage >= 50) return "1.00";
   else return "0.00";
 }
 
