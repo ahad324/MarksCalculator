@@ -3,6 +3,7 @@
   --box-shadow: 0px 0.01em 0.01em rgb(45 35 66 / 40%),
     0px 0.3em 0.7em -0.01em rgb(45 35 66 / 30%),
     inset 0px -0.01em 0px rgb(58 65 111 / 50%);
+  --primary-clr: rgb(13 36 131);
 }
 * {
   margin: 0;
@@ -18,13 +19,18 @@ body {
   background: white;
   color: black;
 }
+*::selection {
+  color: white;
+  background-color: black;
+}
 header {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   flex-flow: column;
   height: 25vh;
-  background-color: #3c4fe0;
+  background-color: var(--primary-clr);
+  padding: 15px 0;
 }
 header > span {
   width: 100%;
@@ -58,11 +64,43 @@ header > span {
 /* Modal Content/Box */
 .instructions-modal-content,
 .result-modal-content {
-  background-color: #f2f2f2;
+  background: black;
   margin: 15% auto;
   padding: 20px;
-  border: 1px solid #888;
+  border: none;
   width: fit-content;
+  color: white;
+  border-radius: 10px;
+}
+
+.err {
+  color: crimson;
+  display: block;
+  padding: 6px;
+  text-shadow: 0 0 8px red;
+}
+.err::selection {
+  background: crimson;
+  color: white;
+}
+.instructions-list {
+  padding: 10px 1%;
+}
+.instructions-list > li {
+  color: white;
+  list-style: decimal;
+  margin-top: 10px;
+}
+.name {
+  color: var(--primary-clr);
+  text-shadow: 0 0 8px var(--primary-clr);
+  transition: 0.5s all ease;
+  padding: 6px;
+}
+.inst-btm {
+  text-align: center;
+  width: 100%;
+  display: block;
 }
 .result-modal-bottom {
   display: flex;
@@ -79,13 +117,15 @@ header > span {
   flex-direction: column;
 }
 .finalgrade {
+  width: max-content;
   font-size: 1.3rem;
-  color: crimson;
+  color: #3dd73d;
   margin-top: 20px;
+  background: black;
 }
 /* Close Button */
 .close {
-  color: #aaa;
+  color: #7c7777;
   position: relative;
   left: 50%;
   font-size: 28px;
@@ -106,12 +146,14 @@ table {
 
 th,
 td {
-  border: 1px solid black;
+  border: 1.5px solid white;
   padding: 8px;
+  background: black;
+  color: white;
 }
 
 th {
-  background-color: #f2f2f2;
+  background-color: var(--primary-clr);
 }
 
 tr:nth-child(even) {
@@ -136,12 +178,13 @@ button {
 
 button:hover {
   box-shadow: 0px 0.1em 0.2em rgb(45 35 66 / 40%),
-    0px 0.4em 0.7em -0.1em rgb(45 35 66 / 30%), inset 0px -0.1em 0px #3c4fe0;
+    0px 0.4em 0.7em -0.1em rgb(45 35 66 / 30%),
+    inset 0px -0.1em 0px var(--primary-clr);
   transform: translateY(-0.1em);
 }
 
 button:active {
-  box-shadow: inset 0px 0.1em 0.6em #3c4fe0;
+  box-shadow: inset 0px 0.1em 0.6em var(--primary-clr);
   transform: translateY(0em);
 }
 #instructions-btn,
@@ -166,7 +209,7 @@ main {
   height: 100%;
   position: absolute;
   left: -255px;
-  background: #3c4fe0;
+  background: var(--primary-clr);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -178,14 +221,14 @@ main {
   border-radius: 0px 40px 40px 0px;
 }
 .features.active {
-  text-shadow: 0 0 10px black;
+  text-shadow: 0 0 5px black;
   transition: 1s all ease;
-  transition-delay: .5s;
+  transition-delay: 0.3s;
   left: 0;
 }
 .arrow {
   width: 40px;
-  background: #3c4fe0;
+  background: var(--primary-clr);
   height: 40px;
   display: flex;
   justify-content: center;
@@ -199,54 +242,58 @@ main {
   border-radius: 0px 30px 30px 0px;
 }
 .arrow:hover {
-  box-shadow: 0 0 10px #3c4fe0;
+  box-shadow: 0 0 10px var(--primary-clr);
 }
 .arrow.active {
   animation: out 1s ease-in-out 1;
   transition: 0.5s all ease;
 }
 @keyframes out {
-    0%{
-      width: 40px;
-    }
-  50%{
-      width: 150px;
-    }
-    100%{
-      width: 40px;
-    }
+  0% {
+    width: 40px;
+  }
+  50% {
+    width: 150px;
+  }
+  100% {
+    width: 40px;
+  }
 }
-.arrow.active h1{
-  transition-delay: 1.2s;
+.arrow.active h1 {
+  transition-delay: 1s;
   transform: rotate(180deg);
 }
 .arrow > h1 {
   font-size: 2rem;
   transition: 1s all ease;
 }
-.arrow.active i{
-  animation: iout .99s linear 1;
+.arrow.active i {
+  animation: iout 0.99s linear 1;
 }
 @keyframes iout {
-  0%{
+  0% {
     transform: translate(0);
   }
-  50%{
+  50% {
     transform: translateX(60px);
   }
-  100%{
+  100% {
     transform: translate(0);
   }
 }
 ul {
   padding: 20px 10%;
-  list-style-type: disclosure-closed;
   font-size: 0.8rem;
 }
 ul > li {
   font-size: 1rem;
   text-align: left;
   margin-top: 10%;
+  list-style: circle;
+  color: gold;
+}
+ul > li::marker {
+  color: white;
 }
 section {
   display: flex;
@@ -300,13 +347,13 @@ input {
   transition: border 150ms cubic-bezier(0.4, 0, 0.2, 1);
   min-width: 200px;
   transform: scale(1);
-  transition: .5s all ease;
+  transition: 0.5s all ease;
 }
-input:focus{
+input:focus {
   transform: scale(1.05);
-  box-shadow: 0px 0px 10px -4px #1a41d9;
+  box-shadow: 0px 0px 10px -4px var(--primary-clr);
   border: none;
-  outline: 1px solid #1a41d9;
+  outline: 1px solid var(--primary-clr);
 }
 label {
   font-size: 1.2rem;
@@ -340,5 +387,8 @@ h2 {
   }
   button {
     padding: 0 1em;
+  }
+  .data-below-assesment {
+    min-height: 7vh;
   }
 }

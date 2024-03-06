@@ -23,7 +23,7 @@
   </head>
   <body>
     <header>
-      <span><h1>Marks Calculator</h1></span>
+      <span><h1>GPA Calculator</h1></span>
       <div class="modal-buttons-container">
         <span>
           <button id="instructions-btn" class="open-modal-btn">
@@ -32,28 +32,41 @@
           <span id="instructionsModal" class="modal">
             <div class="instructions-modal-content">
               <span class="close">&times;</span>
-              <p style="text-align: justify">
-                1) Enter Subject Name <br />
-                2) Enter Assessment marks. For example, Your physics marks for
-                Quizzes are like this: <br />
-                &nbsp;&nbsp;&nbsp;&nbsp; Obtained Marks: 19 <br />
-                &nbsp;&nbsp;&nbsp;&nbsp; Max Marks: 40 <br />
-                &nbsp;&nbsp;&nbsp;&nbsp; Weightage: 10 <br />
-                &nbsp;&nbsp;&nbsp;&nbsp; So, write the data accordingly in the
-                fields and click the submit button. <br />
-                3) Once you have entered the name, you can add assessment marks
-                for that subject without rewriting it and press the submit
-                button. <br />
-                4) Your Marks are also being updated in the Result Card. <br />
-                5) If you want to update the marks for a subject, then you can
-                copy that name from the Result Card and paste it in the Subject
-                name field. Then you can add more assessment marks for that
-                subject. <br />
-                6) Grades are Given According to University Criteria.<br />
-                7) You can also print the Result. <br />
+              <ul class="instructions-list">
+                <li>Enter Subject Name</li>
+                <li>
+                  Enter Assessment marks. For example, Your physics marks for
+                  Quizzes are like this: <br />
+                  &nbsp;&nbsp;&nbsp;&nbsp; Obtained Marks: 19 <br />
+                  &nbsp;&nbsp;&nbsp;&nbsp; Max Marks: 40 <br />
+                  &nbsp;&nbsp;&nbsp;&nbsp; Weightage: 10 <br />
+                  So, write the data accordingly in the fields and click the
+                  submit button.
+                </li>
+                <li>
+                  Once you have entered the name, you can add assessment marks
+                  for that subject without rewriting it and press the submit
+                  button.
+                </li>
+                <li>Your Marks are also being updated in the Result Card.</li>
+                <li>
+                  If you want to update the marks for a subject, then you can
+                  copy that name from the Result Card and paste it in the
+                  Subject name field. Then you can add more assessment marks for
+                  that subject.
+                </li>
+                <li>Grades are Given According to University Criteria.</li>
+                <li>You can also print the Result.</li>
+              </ul>
+
+              <span class="inst-btm">
                 Thanks for Using! <br />
-                Any Errors? Report AbdulAhad
-              </p>
+                <span class="err">Any Errors?</span> Report 👉<span class="name"
+                  ><a href=" https://wa.me/923024848792" target="_blank"
+                    >AbdulAhad</a
+                  >👈</span
+                >
+              </span>
             </div>
           </span>
         </span>
@@ -112,14 +125,9 @@
           <h1><i class="fas fa-angle-right"></i></h1>
         </span>
       </div>
-      <div>
+      <div style="padding: 20px 0">
         <span
-          style="
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin-top: 10%;
-          "
+          style="display: flex; justify-content: center; align-items: center"
           >Need Calculator ?
           <a href="https://ahad324.github.io/Calculator-App/" target="_blank"
             >Click Me</a
@@ -130,12 +138,9 @@
             <form action="#" class="subject-input-form">
               <span class="input">
                 <label for="">Enter Subject Name </label>
-                <input type="text" id="input-subject-name" autofocus/>
+                <input type="text" id="input-subject-name" autofocus />
               </span>
               <span class="message">ok</span>
-              <span>
-                <button id="submit-subject-btn">Submit</button>
-              </span>
             </form>
           </div>
         </section>
@@ -158,6 +163,9 @@
                   <label for="">Enter Weightage </label>
                   <input type="number" id="InputWeightage" />
                 </span>
+              </span>
+              <span>
+                <button id="submit-subject-btn" type="submit">Submit</button>
               </span>
             </form>
           </div>
