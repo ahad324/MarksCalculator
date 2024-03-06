@@ -367,11 +367,11 @@ h2 {
 }
 #subject-name-below-assesment,
 #obtained-marks-below-assesment {
-  background: crimson;
+  background: black;
   border-radius: 5px;
   padding: 2px;
   margin: 0px 5px;
-  color: chartreuse;
+  color: white;
 }
 .data-below-assesment {
   display: flex;
