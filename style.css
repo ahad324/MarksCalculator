@@ -251,7 +251,13 @@ main {
   z-index: 99999;
   color: whitesmoke;
   box-shadow: var(--box-shadow);
+}
+.features.active {
   border-radius: 0px 40px 40px 0px;
+  text-shadow: 0 0 5px black;
+  transition: 1s all ease;
+  transition-delay: 0.3s;
+  left: 0;
 }
 .features-content > ul > li{
   transition: 2s all ease;
@@ -269,12 +275,6 @@ main {
 }
 .features.active .features-content > ul > li:nth-child(odd){
   transition-delay: .4s;
-}
-.features.active {
-  text-shadow: 0 0 5px black;
-  transition: 1s all ease;
-  transition-delay: 0.3s;
-  left: 0;
 }
 .arrow {
   width: 40px;
