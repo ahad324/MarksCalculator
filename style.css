@@ -4,6 +4,7 @@
     0px 0.3em 0.7em -0.01em rgb(45 35 66 / 30%),
     inset 0px -0.01em 0px rgb(58 65 111 / 50%);
   --primary-clr: rgb(13 36 131);
+  --text-shadow: 2px 2px 2px BLACK;
 }
 * {
   margin: 0;
@@ -71,6 +72,8 @@ header > span {
   width: fit-content;
   color: white;
   border-radius: 10px;
+  box-shadow: var(--box-shadow);
+  text-shadow: var(--text-shadow);
 }
 
 .err {
@@ -91,8 +94,11 @@ header > span {
   list-style: decimal;
   margin-top: 10px;
 }
-.name {
-  color: var(--primary-clr);
+.instructions-list > li::marker {
+  color: chartreuse;
+}
+.name a {
+  color: #5468ff;
   text-shadow: 0 0 8px var(--primary-clr);
   transition: 0.5s all ease;
   padding: 6px;
@@ -115,13 +121,15 @@ header > span {
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  padding-top: 20px;
 }
 .finalgrade {
-  width: max-content;
+  width: 250px;
   font-size: 1.3rem;
   color: #3dd73d;
   margin-top: 20px;
   background: black;
+  border-radius: 5px;
 }
 /* Close Button */
 .close {
@@ -141,19 +149,22 @@ header > span {
 /* Result Table */
 table {
   width: 100%;
-  border-collapse: collapse;
+  /* border-collapse: collapse; */
 }
 
 th,
 td {
-  border: 1.5px solid white;
+  /* border: 1.5px solid white; */
   padding: 8px;
   background: black;
   color: white;
+  border-radius: 5px;
+  box-shadow: 0 0 8px 1px var(--primary-clr);
 }
 
 th {
   background-color: var(--primary-clr);
+  font-size: 1.2rem;
 }
 
 tr:nth-child(even) {
