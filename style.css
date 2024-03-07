@@ -145,8 +145,6 @@ header > span {
   margin-top: 20px;
   background: black;
   border-radius: 5px;
-  display: flex;
-  flex-direction: column;
 }
 .finalgrade , .finalGPA , .finalpercentage{
     display: flex;
