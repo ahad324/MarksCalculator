@@ -231,6 +231,23 @@ main {
   box-shadow: var(--box-shadow);
   border-radius: 0px 40px 40px 0px;
 }
+.features-content > ul > li{
+  transition: 2s all ease;
+  opacity: 0;
+  transform: translateX(-100%);
+}
+
+.features.active .features-content > ul > li{
+  transition: 2s all ease;
+  opacity: 1;
+  transform: translateX(0);
+}
+.features.active .features-content > ul > li:nth-child(even){
+  transition-delay: .2s;
+}
+.features.active .features-content > ul > li:nth-child(odd){
+  transition-delay: .4s;
+}
 .features.active {
   text-shadow: 0 0 5px black;
   transition: 1s all ease;
