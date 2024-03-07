@@ -133,18 +133,18 @@ header > span {
 }
 /* Close Button */
 .close {
-  color: #7c7777;
+  color: red;
   position: relative;
   left: 50%;
   font-size: 28px;
   font-weight: bold;
+  cursor: pointer;
 }
 
 .close:hover,
 .close:focus {
-  color: black;
+  color: whitesmoke;
   text-decoration: none;
-  cursor: pointer;
 }
 /* Result Table */
 table {
