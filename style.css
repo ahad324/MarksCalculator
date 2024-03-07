@@ -140,12 +140,13 @@ header > span {
 }
 .finalresultcontainer{
   width: 300px;
+  min-height: 25vh;
   font-size: 1.3rem;
   margin-top: 20px;
   background: black;
   border-radius: 5px;
   display: flex;
-    flex-direction: column;
+  flex-direction: column;
 }
 .finalgrade , .finalGPA , .finalpercentage{
     display: flex;
