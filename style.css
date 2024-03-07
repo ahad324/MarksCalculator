@@ -116,21 +116,6 @@ header > span {
   gap: 20px;
   margin-top: 20px;
 }
-.download-result-content {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  padding-top: 20px;
-}
-.finalgrade {
-  width: 300px;
-  font-size: 1.3rem;
-  color: #3dd73d;
-  margin-top: 20px;
-  background: black;
-  border-radius: 5px;
-}
 /* Close Button */
 .close {
   color: red;
@@ -146,6 +131,41 @@ header > span {
   color: whitesmoke;
   text-decoration: none;
 }
+.download-result-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding-top: 20px;
+}
+.finalresultcontainer{
+  width: 300px;
+  font-size: 1.3rem;
+  margin-top: 20px;
+  background: black;
+  border-radius: 5px;
+  display: flex;
+    flex-direction: column;
+}
+.finalgrade , .finalGPA , .finalpercentage{
+    display: flex;
+    justify-content: space-between;
+    padding: 5px 20px;
+    border-left: 2px solid yellow;
+    border-right: 2px solid yellow;
+    border-radius: 3px;
+}
+.finalgrade-tittle , .finalGPA-tittle , .finalpercentage-tittle{
+  color: crimson;
+  text-shadow: 0 0 10px red;
+}
+.finalgrade-value , .finalGPA-value , .finalpercentage-value{
+  color: #3dd73d;
+  text-shadow: 0 0 10px #3dd73d;
+  text-align: center;
+  width: 30%;
+}
+
 /* Result Table */
 table {
   width: 100%;
@@ -166,9 +186,10 @@ th {
   background-color: var(--primary-clr);
   font-size: 1.2rem;
 }
-
-tr:nth-child(even) {
-  background-color: #f2f2f2;
+.subject{
+  text-shadow: 0 0 10px rgb(159, 112, 26);
+  color: orange;
+  font-weight: 800;
 }
 button {
   font-size: 18px;
@@ -201,6 +222,7 @@ button:active {
 #instructions-btn,
 .delete-btn {
   background: crimson;
+  box-shadow: 0 0 5px red;
 }
 #instructions-btn:hover,
 .delete-btn:hover {

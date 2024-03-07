@@ -57,7 +57,9 @@ window.addEventListener("click", function (event) {
 
 var submitSubjectBtn = document.getElementById("submit-subject-btn");
 var tableBody = document.querySelector("#resultModal table tbody");
-var finalGradeSpan = document.querySelector(".finalgrade");
+var finalGradeValue = document.querySelector(".finalgrade-value");
+var finalGPAValue = document.querySelector(".finalGPA-value");
+var finalPercentageValue = document.querySelector(".finalpercentage-value");
 var namebelowassesment = document.getElementById(
   "subject-name-below-assesment"
 );
@@ -303,19 +305,16 @@ function updateFinalGradeAndGPA() {
 
   // Calculate GPA
   var gpa = calculateGPA(percentage);
+ if(totalMaxMarks==0 && percentage==0){
+  finalGradeValue.innerHTML ="__";
+  finalGPAValue.innerHTML="__";
+  finalPercentageValue.innerHTML="__";
+ }else{
 
-  if (totalObtMarks == 0 && totalMaxMarks == 0) {
-    finalGradeSpan.textContent = "";
-  } else {
-    finalGradeSpan.innerHTML =
-      "FinalGrade: " +
-      grade +
-      "<br>GPA: " +
-      gpa +
-      "<br> Obt_Percentage: " +
-      percentage +
-      "%";
-  }
+   finalGradeValue.innerHTML =grade;
+   finalGPAValue.innerHTML=gpa;
+   finalPercentageValue.innerHTML=percentage + "%";
+ }
 }
 
 // Event delegation for delete buttons
@@ -380,6 +379,7 @@ function updateTable() {
     let subjectCell = newRow.insertCell();
     subjectCell.textContent = subject.name;
     subjectCell.setAttribute("subject-index", index + 1);
+    subjectCell.classList.add("subject");
 
     let marksCell = newRow.insertCell();
     marksCell.textContent = subject.marks;
