@@ -216,6 +216,7 @@ submitSubjectBtn.addEventListener("click", function (event) {
     let subjectCell = newRow.insertCell();
     subjectCell.textContent = inputSubjectName;
     subjectCell.setAttribute("subject-index", subjectcount);
+    subjectCell.classList.add("subject");
 
     let marksCell = newRow.insertCell();
     marksCell.textContent = totalObtMarksForASubject;
