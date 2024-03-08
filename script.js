@@ -1,3 +1,7 @@
+if (localStorage.getItem("RoyalData")) {
+  localStorage.removeItem("RoyalData");
+}
+
 // Side Bar Toogle
 let arrow = document.getElementsByClassName("arrow")[0];
 let featurecontainer = document.getElementsByClassName("features")[0];
@@ -57,9 +61,9 @@ window.addEventListener("click", function (event) {
 
 var submitSubjectBtn = document.getElementById("submit-subject-btn");
 var tableBody = document.querySelector("#resultModal table tbody");
-var finalGradeValue = document.querySelector(".finalgrade-value");
+// var finalGradeValue = document.querySelector(".finalgrade-value");
 var finalGPAValue = document.querySelector(".finalGPA-value");
-var finalPercentageValue = document.querySelector(".finalpercentage-value");
+// var finalPercentageValue = document.querySelector(".finalpercentage-value");
 var namebelowassesment = document.getElementById(
   "subject-name-below-assesment"
 );
@@ -72,6 +76,8 @@ let subjectcount = 0; // Counter for subjects
 var message = document.getElementsByClassName("message")[0];
 
 let inputSubjectName = document.getElementById("input-subject-name");
+let inputCreditHours = document.getElementById("input-subject-cr");
+
 inputSubjectName.addEventListener("input", () => {
   let existingSubjectIndex = DataObj.findIndex(
     (subject) => subject.name === inputSubjectName.value.trim()
@@ -82,9 +88,13 @@ inputSubjectName.addEventListener("input", () => {
     message.innerHTML =
       "Subject already exists you can update marks for this subject";
     // console.log("GO on")
+
+    inputCreditHours.value = DataObj[existingSubjectIndex].cr;
+    inputCreditHours.disabled = true;
   } else {
     message.classList.remove("error");
     message.innerHTML = "";
+    inputCreditHours.disabled = false;
   }
 });
 
@@ -92,6 +102,8 @@ inputSubjectName.addEventListener("input", () => {
 submitSubjectBtn.addEventListener("click", function (event) {
   event.preventDefault(); // Prevent form submission
 
+  inputCreditHours.disabled = true;
+  // console.log(inputCreditHours.value);
   // Retrieve input values
   let inputSubjectName = document
     .getElementById("input-subject-name")
@@ -163,24 +175,25 @@ submitSubjectBtn.addEventListener("click", function (event) {
         existingSubjectIndex + 1
       }"] td[data-marks]`
     );
-    let gradeCell = document.querySelector(
+    let SubjectGPACell = document.querySelector(
       `#resultModal table tbody tr[subject-index="${
         existingSubjectIndex + 1
-      }"] td[data-grade]`
+      }"] td[data-gpa]`
     );
 
-    if (marksCell && gradeCell) {
+    if (marksCell && SubjectGPACell) {
       marksCell.setAttribute("data-marks", existingSubject.marks);
       marksCell.textContent = existingSubject.marks;
       marksbelowassesment.textContent = existingSubject.marks;
       // Update grade based on percentage
       let percentage = calculatePercentage(finalObtainedMarks);
-      let ObtainedGradeinSubject = calculateGrade(percentage);
-      existingSubject.grade = ObtainedGradeinSubject;
-      gradeCell.textContent = ObtainedGradeinSubject;
-      gradeCell.setAttribute("data-grade", ObtainedGradeinSubject);
+      let SubjectGPA = calculateGPA(percentage);
+      existingSubject.gpa = SubjectGPA;
+      SubjectGPACell.textContent = SubjectGPA;
+      SubjectGPACell.setAttribute("data-gpa", SubjectGPA);
 
-      message.classList.add("success");
+      (existingSubject.gradePoint = SubjectGPA * existingSubject.cr),
+        message.classList.add("success");
       message.innerHTML =
         "Marks Updated successfully for " + existingSubject.name;
       setTimeout(() => {
@@ -199,11 +212,13 @@ submitSubjectBtn.addEventListener("click", function (event) {
       inputWeightage
     );
     let percentage = calculatePercentage(totalObtMarksForASubject);
-    let ObtainedGradeinSub = calculateGrade(percentage);
+    let SubjectGPA = calculateGPA(percentage);
     DataObj.push({
       name: inputSubjectName,
       marks: totalObtMarksForASubject,
-      grade: ObtainedGradeinSub,
+      gpa: SubjectGPA,
+      cr: parseFloat(inputCreditHours.value),
+      gradePoint: SubjectGPA * parseFloat(inputCreditHours.value),
     });
     // =================================================================
     // localStorage.setItem(inputSubjectName,totalObtMarksForASubject)
@@ -225,13 +240,18 @@ submitSubjectBtn.addEventListener("click", function (event) {
 
     newRow.insertCell().textContent = 100;
 
-    let gradeCell = newRow.insertCell();
-    gradeCell.textContent = ObtainedGradeinSub;
-    gradeCell.setAttribute("data-grade", ObtainedGradeinSub);
-    gradeCell.setAttribute("grade-index", subjectcount);
+    let SubjectGPACell = newRow.insertCell();
+    SubjectGPACell.textContent = SubjectGPA;
+    SubjectGPACell.setAttribute("data-gpa", SubjectGPA);
+    SubjectGPACell.setAttribute("grade-index", subjectcount);
+
+    let CRCell = newRow.insertCell();
+    CRCell.textContent = inputCreditHours.value;
+    CRCell.setAttribute("data-cr", inputCreditHours.value);
+    CRCell.setAttribute("cr-index", subjectcount);
 
     newRow.insertCell().innerHTML =
-      '<button class="delete-btn">Delete</button>';
+      '<button class="delete-btn"><i class="fa-solid fa-trash"></i></button>';
     newRow.setAttribute("subject-index", subjectcount);
 
     updateDataObj();
@@ -305,19 +325,27 @@ function updateFinalGradeAndGPA() {
   var grade = calculateGrade(percentage);
 
   // Calculate GPA
-  var gpa = calculateGPA(percentage);
- if(totalMaxMarks==0 && percentage==0){
-  finalGradeValue.innerHTML ="__";
-  finalGPAValue.innerHTML="__";
-  finalPercentageValue.innerHTML="__";
- }else{
-
-   finalGradeValue.innerHTML =grade;
-   finalGPAValue.innerHTML=gpa;
-   finalPercentageValue.innerHTML=percentage + "%";
- }
+  var gpa = CalculateFinalGpa();
+  if (totalMaxMarks == 0 && percentage == 0) {
+    // finalGradeValue.innerHTML = "__";
+    finalGPAValue.innerHTML = "__";
+    // finalPercentageValue.innerHTML = "__";
+  } else {
+    // finalGradeValue.innerHTML = grade;
+    finalGPAValue.innerHTML = gpa;
+    // finalPercentageValue.innerHTML = percentage + "%";
+  }
 }
-
+function CalculateFinalGpa() {
+  var totalCR = 0;
+  var totalGradePoints = 0;
+  DataObj.forEach(function (subject, index) {
+    totalCR += parseFloat(subject.cr);
+    totalGradePoints += subject.gradePoint;
+    // console.log("TOTAL CR: " + totalCR + " \nTOTALgradePoints: " + totalGradePoints)
+  });
+  return (totalGradePoints / totalCR).toFixed(2);
+}
 // Event delegation for delete buttons
 tableBody.addEventListener("click", function (event) {
   if (event.target.classList.contains("delete-btn")) {
@@ -342,7 +370,10 @@ tableBody.addEventListener("click", function (event) {
         .querySelector("td[data-marks]")
         .setAttribute("subject-index", newIndexValue);
       row
-        .querySelector("td[data-grade]")
+        .querySelector("td[data-gpa]")
+        .setAttribute("subject-index", newIndexValue);
+      row
+        .querySelector("td[data-cr]")
         .setAttribute("subject-index", newIndexValue);
     });
 
@@ -389,25 +420,31 @@ function updateTable() {
 
     newRow.insertCell().textContent = 100;
 
-    let gradeCell = newRow.insertCell();
+    let SubjectGPACell = newRow.insertCell();
     let percentage = calculatePercentage(subject.marks);
-    let ObtainedGradeinSub = calculateGrade(percentage);
-    gradeCell.textContent = ObtainedGradeinSub;
-    gradeCell.setAttribute("data-grade", ObtainedGradeinSub);
-    gradeCell.setAttribute("grade-index", index + 1);
+    let SubjectGPA = calculateGPA(percentage);
+    SubjectGPACell.textContent = SubjectGPA;
+    SubjectGPACell.setAttribute("data-gpa", SubjectGPA);
+    SubjectGPACell.setAttribute("grade-index", index + 1);
+    // console.log(subject)
+
+    let CRCell = newRow.insertCell();
+    CRCell.textContent = subject.cr;
+    CRCell.setAttribute("data-cr", subject.cr);
+    CRCell.setAttribute("cr-index", index + 1);
 
     newRow.insertCell().innerHTML =
-      '<button class="delete-btn">Delete</button>';
+      '<button class="delete-btn"><i class="fa-solid fa-trash"></i></button>';
     newRow.setAttribute("subject-index", index + 1);
   });
 }
 
 function updateDataObj() {
-  localStorage.setItem("RoyalData", JSON.stringify(DataObj));
+  localStorage.setItem("GPACalculator", JSON.stringify(DataObj));
 }
 window.addEventListener("load", function () {
-  if (localStorage.getItem("RoyalData")) {
-    DataObj = JSON.parse(localStorage.getItem("RoyalData"));
+  if (localStorage.getItem("GPACalculator")) {
+    DataObj = JSON.parse(localStorage.getItem("GPACalculator"));
     // Update the table with loaded data
     updateTable();
     updateFinalGradeAndGPA();

@@ -82,25 +82,26 @@
                       <th>Subject</th>
                       <th>Obt_Marks</th>
                       <th>Total_Marks</th>
-                      <th>Grade</th>
+                      <th>GPA</th>
+                      <th>CR</th>
                       <th>Action</th>
                     </tr>
                   </thead>
                   <tbody></tbody>
                 </table>
                 <div class="finalresultcontainer">
-                  <span class="finalgrade">
+                  <!-- <span class="finalgrade">
                     <span class="finalgrade-tittle">Final Grade:</span>
                     <span class="finalgrade-value">__</span>
-                  </span>
+                  </span> -->
                   <span class="finalGPA">
-                    <span class="finalGPA-tittle">GPA:</span>
+                    <span class="finalGPA-tittle">SGPA:</span>
                     <span class="finalGPA-value">__</span>
                   </span>
-                  <span class="finalpercentage">
+                  <!-- <span class="finalpercentage">
                     <span class="finalpercentage-tittle">Obt_Percentage:</span>
                     <span class="finalpercentage-value">__</span>
-                  </span>
+                  </span> -->
                 </div>
                 </span>
               </span>
@@ -153,6 +154,10 @@
               <span class="input">
                 <label for="">Enter Subject Name </label>
                 <input type="text" id="input-subject-name" autofocus />
+              </span>
+              <span class="input">
+                <label for="">Enter Credit Hours </label>
+                <input type="number" id="input-subject-cr" />
               </span>
               <span class="message">ok</span>
             </form>

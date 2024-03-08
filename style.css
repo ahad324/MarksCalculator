@@ -138,27 +138,33 @@ header > span {
   flex-direction: column;
   padding-top: 20px;
 }
-.finalresultcontainer{
+.finalresultcontainer {
   width: 300px;
   min-height: 23vh;
   font-size: 1.3rem;
-  margin-top: 20px;
+  margin-top: 10%;
   background: black;
   border-radius: 5px;
 }
-.finalgrade , .finalGPA , .finalpercentage{
-    display: flex;
-    justify-content: space-between;
-    padding: 5px 20px;
-    border-left: 2px solid yellow;
-    border-right: 2px solid yellow;
-    border-radius: 3px;
+.finalgrade,
+.finalGPA,
+.finalpercentage {
+  display: flex;
+  justify-content: space-between;
+  padding: 5px 20px;
+  border-left: 2px solid yellow;
+  border-right: 2px solid yellow;
+  border-radius: 3px;
 }
-.finalgrade-tittle , .finalGPA-tittle , .finalpercentage-tittle{
+.finalgrade-tittle,
+.finalGPA-tittle,
+.finalpercentage-tittle {
   color: crimson;
   text-shadow: 0 0 10px red;
 }
-.finalgrade-value , .finalGPA-value , .finalpercentage-value{
+.finalgrade-value,
+.finalGPA-value,
+.finalpercentage-value {
   color: #3dd73d;
   text-shadow: 0 0 10px #3dd73d;
   text-align: center;
@@ -185,7 +191,7 @@ th {
   background-color: var(--primary-clr);
   font-size: 1.2rem;
 }
-.subject{
+.subject {
   text-shadow: 0 0 10px rgb(159, 112, 26);
   color: orange;
   font-weight: 800;
@@ -230,6 +236,9 @@ button:active {
 }
 .delete-btn {
   height: 2em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 main {
   display: flex;
@@ -258,22 +267,22 @@ main {
   transition-delay: 0.3s;
   left: 0;
 }
-.features-content > ul > li{
+.features-content > ul > li {
   transition: 2s all ease;
   opacity: 0;
   transform: translateX(-100%);
 }
 
-.features.active .features-content > ul > li{
+.features.active .features-content > ul > li {
   transition: 2s all ease;
   opacity: 1;
   transform: translateX(0);
 }
-.features.active .features-content > ul > li:nth-child(even){
-  transition-delay: .2s;
+.features.active .features-content > ul > li:nth-child(even) {
+  transition-delay: 0.2s;
 }
-.features.active .features-content > ul > li:nth-child(odd){
-  transition-delay: .4s;
+.features.active .features-content > ul > li:nth-child(odd) {
+  transition-delay: 0.4s;
 }
 .arrow {
   width: 40px;
@@ -397,6 +406,10 @@ input {
   min-width: 200px;
   transform: scale(1);
   transition: 0.5s all ease;
+}
+input:disabled {
+  background: #d5d4d4;
+  box-shadow: inset 0 0 5px black;
 }
 input:focus {
   transform: scale(1.05);
