@@ -31,7 +31,7 @@ header {
   flex-flow: column;
   height: 25vh;
   background-color: var(--primary-clr);
-  padding: 15px 0;
+  padding: 15px 0 0 0;
 }
 header > span {
   width: 100%;
@@ -158,13 +158,15 @@ header > span {
 }
 .finalgrade-tittle,
 .finalGPA-tittle,
-.finalpercentage-tittle {
+.finalpercentage-tittle,
+.obtainedCGPA-tittle {
   color: crimson;
   text-shadow: 0 0 10px red;
 }
 .finalgrade-value,
 .finalGPA-value,
-.finalpercentage-value {
+.finalpercentage-,
+#obtCGPA {
   color: #3dd73d;
   text-shadow: 0 0 10px #3dd73d;
   text-align: center;
@@ -244,12 +246,111 @@ main {
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
+  margin-top: 30px;
+}
+.btns-bg-swiper-element {
+  background: black;
+  width: 70px;
+  height: 8vh;
+  position: absolute;
+  z-index: 1;
+  transform: translateX(-50px);
+  transition: 1s all ease;
+  border-radius: 5px;
+}
+.CGPA-btn,
+.SGPA-btn {
+  width: 70px;
+  background: rgb(211 255 8 / 13%);
+  color: whitesmoke;
+  cursor: pointer;
+  z-index: 1;
+  backdrop-filter: blur(48px);
+  border-radius: 5px;
+  text-align: center;
+  height: 8vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.Swiper-btns {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 10vh;
+}
+.swiper-btns-container {
+  width: 200px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background: #5468ff;
+  height: 100%;
+  position: relative;
+  border-radius: 5px;
+}
+.toggle-sections {
+  overflow: hidden;
+  /* margin-top: 5%; */
+  width: 250px;
+  display: flex;
+  justify-content: center;
+  /* align-items: center; */
+}
+.CGPA-Section {
+  transform: translateX(100%);
+  transition: 1s all ease;
+  opacity: 1;
+}
+.SGPA-Section {
+  transition: 1s all ease;
+  transform: translateX(50%);
+}
+.CGPA-Section-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+#semesters-input {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 15px;
+  margin: 25px 0px;
+}
+.Add-semester-btn-container,
+.Calculate-CGPA-btn-container {
+  margin: 10% 0;
+  display: block;
+}
+#add-sem-btn {
+  width: 130px;
+  font-size: 1rem;
+  padding: 5px;
+}
+.ObtCGPA-Container {
+  background: black;
+  color: white;
+  height: 6vh;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 100%;
+  padding: 10px;
+  border-radius: 10px;
+}
+.obtainedCGPA-tittle {
+  font-size: 1.3rem;
 }
 .features {
   width: 250px;
   height: 100%;
   position: absolute;
   left: -255px;
+  /* top: 40%; */
   background: var(--primary-clr);
   display: flex;
   justify-content: center;
@@ -443,7 +544,7 @@ h2 {
   background: #3dd73d;
   width: 100%;
 }
-@media (max-width: 400px) {
+@media (max-width: 425px) {
   h1 {
     font-size: 2rem;
   }

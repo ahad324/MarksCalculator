@@ -2,6 +2,75 @@ if (localStorage.getItem("RoyalData")) {
   localStorage.removeItem("RoyalData");
 }
 
+let CGPAbtn = document.querySelector(".Swiper-btns .CGPA-btn");
+let SGPAbtn = document.querySelector(".Swiper-btns .SGPA-btn");
+let btnbg = document.querySelector(".Swiper-btns .btns-bg-swiper-element");
+let CGPASec = document.querySelector(".CGPA-Section");
+let SGPASec = document.querySelector(".SGPA-Section");
+SGPAbtn.addEventListener("click", () => {
+  btnbg.style.transform = "translateX(-50px)";
+  // console.log(GPASec,SGPASec)
+
+  SGPASec.style.transform = "translateX(50%)";
+  CGPASec.style.transform = "translateX(100%)";
+  CGPASec.style.opacity = 0;
+  SGPASec.style.opacity = 1;
+  // console.log("GPA button clicked");
+  // GPAbtn.classList.add("active");
+  // SGPAbtn.classList.remove("active");
+});
+
+CGPAbtn.addEventListener("click", () => {
+  btnbg.style.transform = "translateX(50px)";
+  SGPASec.style.transform = "translateX(-100%)";
+  CGPASec.style.transform = "translateX(-50%)";
+  SGPASec.style.opacity = 0;
+  CGPASec.style.opacity = 1;
+  // console.log("SGPA button clicked");
+  // SGPAbtn.classList.add("active");
+  // GPAbtn.classList.remove("active");
+});
+let addsembtn = document.getElementById("add-sem-btn");
+let semesterscount = 1;
+addsembtn.addEventListener("click", () => {
+  const semestersInput = document.getElementById("semesters-input");
+  // Create the label element
+  const label = document.createElement("label");
+  label.setAttribute("for", `input-sem-sgpa-${semesterscount + 1}`);
+  label.textContent = `Enter semester ${semesterscount + 1}'s SGPA`;
+
+  // Create the input element
+  const input = document.createElement("input");
+  input.setAttribute("type", "number");
+  input.setAttribute("id", `input-sem-sgpa-${semesterscount + 1}`);
+  input.setAttribute("required", true);
+  input.setAttribute("step", 0.01);
+
+  semesterscount++;
+  // Append the label and input elements to the parent container
+  semestersInput.appendChild(label);
+  semestersInput.appendChild(input);
+  // console.log(semestersInput);
+  // console.log("ok");
+});
+
+let CalculateCGPAbtn = document.getElementById("calculate-CGPA-btn");
+CalculateCGPAbtn.addEventListener("click", () => {
+  let obtainedCGPA = 0;
+  let sumofAllSGPA = 0;
+  for (let i = 1; i <= semesterscount; i++) {
+    let inputsgpavalue = document.getElementById(`input-sem-sgpa-${i}`).value;
+    sumofAllSGPA += Number(inputsgpavalue);
+    // console.log(inputsgpavalue);
+  }
+  obtainedCGPA = (sumofAllSGPA / semesterscount).toFixed(2);
+  let ObtainedCGPAShow = document.getElementById("obtCGPA");
+  ObtainedCGPAShow.innerHTML = obtainedCGPA;
+  // console.log(obtainedCGPA);
+  // console.log(sumofAllSGPA);
+});
+// Button Toogles
+
 // Side Bar Toogle
 let arrow = document.getElementsByClassName("arrow")[0];
 let featurecontainer = document.getElementsByClassName("features")[0];
@@ -23,6 +92,9 @@ function openModal(modal) {
   modal.style.display = "block";
   arrow.style.display = "none";
   featurecontainer.style.display = "none";
+  btnbg.style.display = "none";
+  CGPAbtn.style.display = "none";
+  SGPAbtn.style.display = "none";
 }
 
 // Function to close the modal
@@ -30,6 +102,9 @@ function closeModal(modal) {
   modal.style.display = "none";
   arrow.style.display = "flex";
   featurecontainer.style.display = "flex";
+  btnbg.style.display = "flex";
+  CGPAbtn.style.display = "flex";
+  SGPAbtn.style.display = "flex";
 }
 
 // Event listener for instructions button

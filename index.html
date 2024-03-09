@@ -121,75 +121,117 @@
       >
     </header>
 
+
+    <div class="features">
+      <span class="features-content">
+        <h2>Features</h2>
+        <ul>
+          <li>
+            Automatic Data Saving (You can reload or close the page,your data
+            will not lost on this device.)
+          </li>
+          <li>Interactive Result Card</li>
+          <li>Dynamic Subject Management</li>
+          <li>Downloadable Result Card</li>
+          <li>Error Handling and Validation</li>
+        </ul>
+      </span>
+      <span class="arrow">
+        <h1><i class="fas fa-angle-right"></i></h1>
+      </span>
+    </div>
+
+
     <main>
-      <div class="features">
-        <span class="features-content">
-          <h2>Features</h2>
-          <ul>
-            <li>
-              Automatic Data Saving (You can reload or close the page,your data
-              will not lost on this device.)
-            </li>
-            <li>Interactive Result Card</li>
-            <li>Dynamic Subject Management</li>
-            <li>Downloadable Result Card</li>
-            <li>Error Handling and Validation</li>
-          </ul>
-        </span>
-        <span class="arrow">
-          <h1><i class="fas fa-angle-right"></i></h1>
+      <div class="Swiper-btns">
+        <span class="btns-bg-swiper-element"></span>
+        <span class="swiper-btns-container">
+          <span id="SGPA-btn" class="SGPA-btn">
+            SGPA
+          </span>
+          <span id="CGPA-btn" class="CGPA-btn">
+            CGPA
+          </span>
         </span>
       </div>
-      <div style="padding: 20px 0">
-        <span
-          style="display: flex; justify-content: center; align-items: center"
-          >Need Calculator ?
-          <a href="https://ahad324.github.io/Calculator-App/" target="_blank"
-            >Click Me</a
-          ></span
-        >
-        <section>
-          <div>
-            <form action="#" class="subject-input-form">
-              <span class="input">
-                <label for="">Enter Subject Name </label>
-                <input type="text" id="input-subject-name" autofocus />
-              </span>
-              <span class="input">
-                <label for="">Enter Credit Hours </label>
-                <input type="number" id="input-subject-cr" />
-              </span>
-              <span class="message">ok</span>
-            </form>
-          </div>
-        </section>
-        <section>
-          <div id="Assesments">
-            <span>
-              <h2>Assesments</h2>
-            </span>
-            <form action="#" class="assessment-form">
-              <span class="assesment-form-inner">
+      <span
+            style="display: flex; justify-content: center; align-items: center;margin-top:4%"
+            >Need Calculator ?
+            <a href="https://ahad324.github.io/Calculator-App/" target="_blank"
+              >Click Me</a
+            ></span
+          >
+      <div class="toggle-sections">
+        
+
+        <div class="SGPA-Section">
+          <section>
+            <div>
+              <form action="#" class="subject-input-form">
                 <span class="input">
-                  <label for="">Enter Obtained Marks </label>
-                  <input type="number" id="InputObtMarks" />
+                  <label for="">Enter Subject Name </label>
+                  <input type="text" id="input-subject-name" autofocus />
                 </span>
                 <span class="input">
-                  <label for="">Enter Max_Marks </label>
-                  <input type="number" id="InputMaxMarks" />
+                  <label for="">Enter Credit Hours </label>
+                  <input type="number" id="input-subject-cr" />
                 </span>
-                <span class="input">
-                  <label for="">Enter Weightage </label>
-                  <input type="number" id="InputWeightage" />
-                </span>
-              </span>
+                <span class="message">ok</span>
+              </form>
+            </div>
+          </section>
+          <section>
+            <div id="Assesments">
               <span>
-                <button id="submit-subject-btn" type="submit">Submit</button>
+                <h2>Assesments</h2>
               </span>
-            </form>
+              <form action="#" class="assessment-form">
+                <span class="assesment-form-inner">
+                  <span class="input">
+                    <label for="">Enter Obtained Marks </label>
+                    <input type="number" id="InputObtMarks" />
+                  </span>
+                  <span class="input">
+                    <label for="">Enter Max_Marks </label>
+                    <input type="number" id="InputMaxMarks" />
+                  </span>
+                  <span class="input">
+                    <label for="">Enter Weightage </label>
+                    <input type="number" id="InputWeightage" />
+                  </span>
+                </span>
+                <span>
+                  <button id="submit-subject-btn" type="submit">Submit</button>
+                </span>
+              </form>
+            </div>
+          </section>
+        </div>
+        
+        <div class="CGPA-Section">
+          <span class="CGPA-Section-content">
+            <form action="#">            
+            <span class="input">
+              <span id="semesters-input">
+                <label for="input-sem-sgpa-1">Enter semester 1's SGPA </label>
+                <input type="number" id="input-sem-sgpa-1"  required step="0.01"/>
+              </span>
+            </span>
+            <span class="Add-semester-btn-container">
+              <button id="add-sem-btn">Add Semester</button>
+            </span>
+            <span class="Calculate-CGPA-btn-container">
+              <button id="calculate-CGPA-btn" type="submit">Calculate CGPA</button>
+            </span>
+          </form>
+          <div class="ObtCGPA-Container">
+            <strong class="obtainedCGPA-tittle">Obtained CGPA : </strong>
+            <span id="obtCGPA"></span>
           </div>
-        </section>
+          </span>
+        </div>
       </div>
+
     </main>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.3/html2pdf.bundle.min.js"></script>
 
