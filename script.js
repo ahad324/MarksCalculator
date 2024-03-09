@@ -9,37 +9,58 @@ let CGPASec = document.querySelector(".CGPA-Section");
 let SGPASec = document.querySelector(".SGPA-Section");
 SGPAbtn.addEventListener("click", () => {
   btnbg.style.transform = "translateX(-50px)";
-  // console.log(GPASec,SGPASec)
 
   SGPASec.style.transform = "translateX(50%)";
   CGPASec.style.transform = "translateX(100%)";
   CGPASec.style.opacity = 0;
   SGPASec.style.opacity = 1;
-  // console.log("GPA button clicked");
-  // GPAbtn.classList.add("active");
-  // SGPAbtn.classList.remove("active");
 });
 
 CGPAbtn.addEventListener("click", () => {
   btnbg.style.transform = "translateX(50px)";
+  
   SGPASec.style.transform = "translateX(-100%)";
   CGPASec.style.transform = "translateX(-50%)";
   SGPASec.style.opacity = 0;
   CGPASec.style.opacity = 1;
-  // console.log("SGPA button clicked");
-  // SGPAbtn.classList.add("active");
-  // GPAbtn.classList.remove("active");
 });
-let addsembtn = document.getElementById("add-sem-btn");
+
 let semesterscount = 1;
-addsembtn.addEventListener("click", () => {
+
+// Function to calculate CGPA
+function calculateCGPA() {
+  let obtainedCGPA = 0;
+  let sumofAllSGPA = 0;
+
+  // Loop through each semester input field
+  for (let i = 1; i <= semesterscount; i++) {
+    let inputsgpavalue = document.getElementById(`input-sem-sgpa-${i}`).value;
+    sumofAllSGPA += Number(inputsgpavalue);
+  }
+
+  // Calculate CGPA
+  obtainedCGPA = (sumofAllSGPA / semesterscount).toFixed(2);
+
+  // Display CGPA
+  let obtainedCGPAShow = document.getElementById("obtCGPA");
+  obtainedCGPAShow.style.transform = "translateY(15px)";
+  obtainedCGPAShow.style.opacity = "0";
+  setTimeout(() => {
+    obtainedCGPAShow.style.transform = "translateY(0px)";
+    obtainedCGPAShow.style.opacity = "1";
+    obtainedCGPAShow.innerHTML = obtainedCGPA;
+  }, 500);
+}
+
+// Listen for changes in the input fields
+document.getElementById("semesters-input").addEventListener("input", calculateCGPA);
+
+document.getElementById("add-sem-btn").addEventListener("click", () => {
   const semestersInput = document.getElementById("semesters-input");
-  // Create the label element
   const label = document.createElement("label");
   label.setAttribute("for", `input-sem-sgpa-${semesterscount + 1}`);
   label.textContent = `Enter semester ${semesterscount + 1}'s SGPA`;
 
-  // Create the input element
   const input = document.createElement("input");
   input.setAttribute("type", "number");
   input.setAttribute("id", `input-sem-sgpa-${semesterscount + 1}`);
@@ -47,28 +68,14 @@ addsembtn.addEventListener("click", () => {
   input.setAttribute("step", 0.01);
 
   semesterscount++;
-  // Append the label and input elements to the parent container
   semestersInput.appendChild(label);
   semestersInput.appendChild(input);
-  // console.log(semestersInput);
-  // console.log("ok");
+
+  // Calculate CGPA when adding a new input field
+  calculateCGPA();
 });
 
-let CalculateCGPAbtn = document.getElementById("calculate-CGPA-btn");
-CalculateCGPAbtn.addEventListener("click", () => {
-  let obtainedCGPA = 0;
-  let sumofAllSGPA = 0;
-  for (let i = 1; i <= semesterscount; i++) {
-    let inputsgpavalue = document.getElementById(`input-sem-sgpa-${i}`).value;
-    sumofAllSGPA += Number(inputsgpavalue);
-    // console.log(inputsgpavalue);
-  }
-  obtainedCGPA = (sumofAllSGPA / semesterscount).toFixed(2);
-  let ObtainedCGPAShow = document.getElementById("obtCGPA");
-  ObtainedCGPAShow.innerHTML = obtainedCGPA;
-  // console.log(obtainedCGPA);
-  // console.log(sumofAllSGPA);
-});
+
 // Button Toogles
 
 // Side Bar Toogle

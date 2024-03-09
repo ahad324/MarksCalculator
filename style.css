@@ -293,7 +293,7 @@ main {
 .toggle-sections {
   overflow: hidden;
   /* margin-top: 5%; */
-  width: 250px;
+  width: 300px;
   display: flex;
   justify-content: center;
   /* align-items: center; */
@@ -344,6 +344,10 @@ main {
 }
 .obtainedCGPA-tittle {
   font-size: 1.3rem;
+}
+#obtCGPA{
+  /* transform: translateY(15px); */
+  transition: 1s all ease;
 }
 .features {
   width: 250px;
