@@ -273,6 +273,7 @@ main {
   display: flex;
   justify-content: center;
   align-items: center;
+  box-shadow: var(--box-shadow);
 }
 .Swiper-btns {
   display: flex;
@@ -289,6 +290,7 @@ main {
   height: 100%;
   position: relative;
   border-radius: 5px;
+  box-shadow: var(--box-shadow);
 }
 .toggle-sections {
   overflow: hidden;
