@@ -321,8 +321,7 @@ main {
   gap: 15px;
   margin: 25px 0px;
 }
-.Add-semester-btn-container,
-.Calculate-CGPA-btn-container {
+.Add-semester-btn-container{
   margin: 10% 0;
   display: block;
 }
