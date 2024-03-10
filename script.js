@@ -18,7 +18,7 @@ SGPAbtn.addEventListener("click", () => {
 
 CGPAbtn.addEventListener("click", () => {
   btnbg.style.transform = "translateX(50px)";
-  
+
   SGPASec.style.transform = "translateX(-100%)";
   CGPASec.style.transform = "translateX(-50%)";
   SGPASec.style.opacity = 0;
@@ -53,7 +53,9 @@ function calculateCGPA() {
 }
 
 // Listen for changes in the input fields
-document.getElementById("semesters-input").addEventListener("input", calculateCGPA);
+document
+  .getElementById("semesters-input")
+  .addEventListener("input", calculateCGPA);
 
 document.getElementById("add-sem-btn").addEventListener("click", () => {
   const semestersInput = document.getElementById("semesters-input");
@@ -74,7 +76,6 @@ document.getElementById("add-sem-btn").addEventListener("click", () => {
   // Calculate CGPA when adding a new input field
   calculateCGPA();
 });
-
 
 // Button Toogles
 
@@ -468,20 +469,6 @@ tableBody.addEventListener("click", function (event) {
   }
 });
 
-// Download Result Card
-document
-  .getElementById("download-pdf-btn")
-  .addEventListener("click", function () {
-    var resultcontent = document.querySelector(
-      "#resultModal .result-modal-content .download-result-content"
-    );
-    html2pdf().from(resultcontent).set({ filename: "result_card.pdf" }).save();
-    setTimeout(function () {
-      // clearing console
-      console.clear();
-    }, 2000);
-  });
-
 function updateTable() {
   // Clear existing table rows
   tableBody.innerHTML = "";
@@ -532,3 +519,17 @@ window.addEventListener("load", function () {
     updateFinalGradeAndGPA();
   }
 });
+
+// Download Result Card
+document
+  .getElementById("download-pdf-btn")
+  .addEventListener("click", function () {
+    var resultcontent = document.querySelector(
+      "#resultModal .result-modal-content .download-result-content"
+    );
+    html2pdf().from(resultcontent).set({ filename: "result_card.pdf" }).save();
+    setTimeout(function () {
+      // clearing console
+      console.clear();
+    }, 2000);
+  });
