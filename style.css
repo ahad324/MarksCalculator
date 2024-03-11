@@ -290,6 +290,7 @@ main {
   justify-content: center;
   align-items: center;
   box-shadow: var(--box-shadow);
+  transition: 1s all ease;
 }
 .Swiper-btns {
   display: flex;
@@ -317,7 +318,7 @@ main {
   /* align-items: center; */
 }
 .CGPA-Section {
-  transform: translateX(100%);
+  transform: translateX(100%) scale(0.5);
   transition: 1s all ease;
   opacity: 1;
 }
