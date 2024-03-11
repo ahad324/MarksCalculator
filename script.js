@@ -144,9 +144,9 @@ window.addEventListener("click", function (event) {
 
 var submitSubjectBtn = document.getElementById("submit-subject-btn");
 var tableBody = document.querySelector("#resultModal table tbody");
-// var finalGradeValue = document.querySelector(".finalgrade-value");
+var finalGradeValue = document.querySelector(".finalgrade-value");
 var finalGPAValue = document.querySelector(".finalGPA-value");
-// var finalPercentageValue = document.querySelector(".finalpercentage-value");
+var finalPercentageValue = document.querySelector(".finalpercentage-value");
 var namebelowassesment = document.getElementById(
   "subject-name-below-assesment"
 );
@@ -343,7 +343,7 @@ submitSubjectBtn.addEventListener("click", function (event) {
   document.getElementById("InputObtMarks").value = "";
   document.getElementById("InputMaxMarks").value = "";
   document.getElementById("InputWeightage").value = "";
-  updateFinalGradeAndGPA();
+  updateFinalGradeAndSGPA();
 });
 
 // Function to calculate GPA based on percentage
@@ -367,6 +367,9 @@ function calculateTotalObtainedMarks(obtMarks, maxMarks, weightage) {
 function calculatePercentage(obtMarks) {
   return ((obtMarks / 100) * 100).toFixed(2);
 }
+function sgpaToPercentage(sgpa) {
+  return (sgpa / 4.0) * 100;
+}
 
 function calculateGrade(percentage) {
   if (percentage >= 85) return "A";
@@ -381,8 +384,8 @@ function calculateGrade(percentage) {
   else if (percentage >= 50) return "D";
   else return "F";
 }
-// Update final grade and GPA function
-function updateFinalGradeAndGPA() {
+// Update final grade and SGPA function
+function updateFinalGradeAndSGPA() {
   var totalObtMarks = 0;
   var totalMaxMarks = 0;
 
@@ -399,27 +402,23 @@ function updateFinalGradeAndGPA() {
     }
   });
 
-  // Calculate the final grade only if totalMaxMarks is not zero
-  var percentage =
-    totalMaxMarks !== 0 ? (totalObtMarks / totalMaxMarks) * 100 : 0;
-  percentage = Math.round(percentage * 100) / 100;
-
-  // Calculate grade
+  // Calculate SGPA
+  var Sgpa = CalculateFinalSGpa();
+  var percentage = sgpaToPercentage(Sgpa);
   var grade = calculateGrade(percentage);
-
-  // Calculate GPA
-  var gpa = CalculateFinalGpa();
-  if (totalMaxMarks == 0 && percentage == 0) {
-    // finalGradeValue.innerHTML = "__";
+  console.log(totalObtMarks, percentage);
+  if (totalObtMarks === 0 && (percentage === 0 || isNaN(percentage))) {
+    console.log("I'm in ");
+    finalGradeValue.innerHTML = "__";
     finalGPAValue.innerHTML = "__";
-    // finalPercentageValue.innerHTML = "__";
+    finalPercentageValue.innerHTML = "__";
   } else {
-    // finalGradeValue.innerHTML = grade;
-    finalGPAValue.innerHTML = gpa;
-    // finalPercentageValue.innerHTML = percentage + "%";
+    finalGradeValue.innerHTML = grade;
+    finalGPAValue.innerHTML = Sgpa;
+    finalPercentageValue.innerHTML = percentage.toFixed(2) + "%";
   }
 }
-function CalculateFinalGpa() {
+function CalculateFinalSGpa() {
   var totalCR = 0;
   var totalGradePoints = 0;
   DataObj.forEach(function (subject, index) {
@@ -465,7 +464,7 @@ tableBody.addEventListener("click", function (event) {
 
     // Update localStorage and final grade/GPA
     updateDataObj();
-    updateFinalGradeAndGPA();
+    updateFinalGradeAndSGPA();
   }
 });
 
@@ -516,7 +515,7 @@ window.addEventListener("load", function () {
     DataObj = JSON.parse(localStorage.getItem("GPACalculator"));
     // Update the table with loaded data
     updateTable();
-    updateFinalGradeAndGPA();
+    updateFinalGradeAndSGPA();
   }
 });
 
