@@ -17,7 +17,23 @@
 body {
   width: 100%;
   min-height: 100vh;
-  background: white;
+  background-image: radial-gradient(
+    circle at top center,
+    rgb(235, 235, 235) 0%,
+    rgb(235, 235, 235) 10%,
+    rgb(229, 229, 229) 10%,
+    rgb(229, 229, 229) 19%,
+    rgb(222, 222, 222) 19%,
+    rgb(222, 222, 222) 22%,
+    rgb(216, 216, 216) 22%,
+    rgb(216, 216, 216) 24%,
+    rgb(209, 209, 209) 24%,
+    rgb(209, 209, 209) 63%,
+    rgb(203, 203, 203) 63%,
+    rgb(203, 203, 203) 75%,
+    rgb(196, 196, 196) 75%,
+    rgb(196, 196, 196) 100%
+  );
   color: black;
 }
 *::selection {
@@ -323,7 +339,7 @@ main {
   gap: 15px;
   margin: 25px 0px;
 }
-.Add-semester-btn-container{
+.Add-semester-btn-container {
   margin: 10% 0;
   display: block;
 }
@@ -346,7 +362,7 @@ main {
 .obtainedCGPA-tittle {
   font-size: 1.3rem;
 }
-#obtCGPA{
+#obtCGPA {
   /* transform: translateY(15px); */
   transition: 1s all ease;
 }
