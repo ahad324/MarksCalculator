@@ -258,13 +258,11 @@ submitSubjectBtn.addEventListener("click", function (event) {
     }
     existingSubject.marks = finalObtainedMarks.toFixed(2);
     let marksCell = document.querySelector(
-      `#resultModal table tbody tr[subject-index="${
-        existingSubjectIndex + 1
+      `#resultModal table tbody tr[subject-index="${existingSubjectIndex + 1
       }"] td[data-marks]`
     );
     let SubjectGPACell = document.querySelector(
-      `#resultModal table tbody tr[subject-index="${
-        existingSubjectIndex + 1
+      `#resultModal table tbody tr[subject-index="${existingSubjectIndex + 1
       }"] td[data-gpa]`
     );
 
@@ -536,3 +534,9 @@ document
       console.clear();
     }, 2000);
   });
+
+
+// Pre-Loader function
+document.addEventListener("DOMContentLoaded", function () {
+  document.querySelector('.loader-container').classList.add('hidden');
+});
