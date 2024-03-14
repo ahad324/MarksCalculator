@@ -574,6 +574,7 @@ main {
   transition: 0.5s all ease;
   box-shadow: -8px 0px 20px -5px #242f85;
   border-radius: 0px 30px 30px 0px;
+  font-size: 2rem;
 }
 .arrow:hover {
   box-shadow: 0 0 10px var(--primary-clr);
@@ -593,13 +594,13 @@ main {
     width: 40px;
   }
 }
-.arrow.active h1 {
+.arrow.active > i {
   transition-delay: 1s;
   transform: rotate(180deg);
 }
-.arrow > h1 {
-  font-size: 2rem;
+.arrow > i {
   transition: 1s all ease;
+  font-size: 2rem;
 }
 .arrow.active i {
   animation: iout 0.99s linear 1;
@@ -612,7 +613,7 @@ main {
     transform: translateX(60px);
   }
   100% {
-    transform: translate(0);
+    transform: translate(0) rotate(180deg);
   }
 }
 ul {
@@ -741,6 +742,7 @@ h2 {
 .blog-post-heading {
   font-weight: bolder;
   margin: 20px 0;
+  text-shadow: var(--box-shadow);
 }
 p {
   text-align: justify;

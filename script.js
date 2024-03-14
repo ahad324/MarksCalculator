@@ -81,7 +81,6 @@ document.getElementById("add-sem-btn").addEventListener("click", () => {
   calculateCGPA();
 });
 
-// Button Toogles
 
 // Side Bar Toogle
 let arrow = document.getElementsByClassName("arrow")[0];
