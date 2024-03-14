@@ -219,7 +219,7 @@ header > span {
   color: #000;
   display: none;
   position: fixed;
-  z-index: 1;
+  z-index: 99;
   left: 0;
   top: 0;
   width: 100%;
@@ -535,7 +535,7 @@ main {
   align-items: center;
   flex-direction: column;
   transition: 1s all ease;
-  z-index: 99999;
+  z-index: 9;
   color: whitesmoke;
   box-shadow: var(--box-shadow);
 }

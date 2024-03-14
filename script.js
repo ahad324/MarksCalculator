@@ -102,21 +102,11 @@ var closeBtns = document.getElementsByClassName("close");
 // Function to open the modal
 function openModal(modal) {
   modal.style.display = "block";
-  arrow.style.display = "none";
-  featurecontainer.style.display = "none";
-  btnbg.style.display = "none";
-  CGPAbtn.style.display = "none";
-  SGPAbtn.style.display = "none";
 }
 
 // Function to close the modal
 function closeModal(modal) {
   modal.style.display = "none";
-  arrow.style.display = "flex";
-  featurecontainer.style.display = "flex";
-  btnbg.style.display = "flex";
-  CGPAbtn.style.display = "flex";
-  SGPAbtn.style.display = "flex";
 }
 
 // Event listener for instructions button
