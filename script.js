@@ -248,11 +248,13 @@ submitSubjectBtn.addEventListener("click", function (event) {
     }
     existingSubject.marks = finalObtainedMarks.toFixed(2);
     let marksCell = document.querySelector(
-      `#resultModal table tbody tr[subject-index="${existingSubjectIndex + 1
+      `#resultModal table tbody tr[subject-index="${
+        existingSubjectIndex + 1
       }"] td[data-marks]`
     );
     let SubjectGPACell = document.querySelector(
-      `#resultModal table tbody tr[subject-index="${existingSubjectIndex + 1
+      `#resultModal table tbody tr[subject-index="${
+        existingSubjectIndex + 1
       }"] td[data-gpa]`
     );
 
@@ -525,25 +527,24 @@ document
     }, 2000);
   });
 
-
 // Pre-Loader function
 document.addEventListener("DOMContentLoaded", function () {
-  document.querySelector('.loader-container').classList.add('hidden');
+  document.querySelector(".loader-container").classList.add("hidden");
 });
 // Offline Message function
-window.addEventListener('load', function() {
-  var offlineMessage = document.getElementById('offlineMessage');
+window.addEventListener("load", function () {
+  var offlineMessage = document.getElementById("offlineMessage");
 
   function updateOnlineStatus() {
-    console.log(navigator.onLine)
-      if (navigator.onLine) {
-          offlineMessage.style.display = 'none';
-      } else {
-          offlineMessage.style.display = 'flex';
-      }
+    console.log(navigator.onLine);
+    if (navigator.onLine) {
+      offlineMessage.style.display = "none";
+    } else {
+      offlineMessage.style.display = "flex";
+    }
   }
 
-  window.addEventListener('online',  updateOnlineStatus);
-  window.addEventListener('offline', updateOnlineStatus);
+  window.addEventListener("online", updateOnlineStatus);
+  window.addEventListener("offline", updateOnlineStatus);
   updateOnlineStatus();
 });
