@@ -1,0 +1,150 @@
+/* Global Styles */
+@import url("https://fonts.googleapis.com/css2?family=Anta&display=swap");
+
+:root {
+  --box-shadow: 0px 0.01em 0.01em rgb(45 35 66 / 40%),
+    0px 0.3em 0.7em -0.01em rgb(45 35 66 / 30%),
+    inset 0px -0.01em 0px rgb(58 65 111 / 50%);
+  --primary-clr: rgb(13 36 131);
+  --text-shadow: 2px 2px 2px BLACK;
+}
+
+body {
+  font-family: 'Anta', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f2f2f2;
+  color: #333;
+}
+
+header {
+  background-color: var(--primary-clr);
+  color: white;
+  text-align: center;
+  padding: 1rem 0;
+}
+
+main {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+h1 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+h2 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+
+p {
+  font-size: 1rem;
+  line-height: 1.5;
+  margin-bottom: 20px;
+}
+
+ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+li {
+  margin-bottom: 10px;
+}
+
+a {
+  color: var(--primary-clr);
+}
+button {
+  font-size: 18px;
+  display: inline-block;
+  outline: 0;
+  border: 0;
+  cursor: pointer;
+  will-change: box-shadow, transform;
+  background: radial-gradient(100% 100% at 100% 0%, #89e5ff 0%, #5468ff 100%);
+  box-shadow: var(--box-shadow);
+  padding: 0 2em;
+  border-radius: 0.3em;
+  color: #fff;
+  height: 2.6em;
+  text-shadow: var(--box-shadow);
+  transition: box-shadow 0.15s ease, transform 0.15s ease;
+}
+
+button:hover {
+  box-shadow: 0px 0.1em 0.2em rgb(45 35 66 / 40%),
+    0px 0.4em 0.7em -0.1em rgb(45 35 66 / 30%),
+    inset 0px -0.1em 0px var(--primary-clr);
+  transform: translateY(-0.1em);
+}
+
+button:active {
+  box-shadow: inset 0px 0.1em 0.6em var(--primary-clr);
+  transform: translateY(0em);
+}
+input {
+  border: solid 1.5px #9e9e9e;
+  border-radius: 0.5rem;
+  background: none;
+  padding: 5px 20px 10px 10px;
+  font-size: 1rem;
+  transition: border 150ms cubic-bezier(0.4, 0, 0.2, 1);
+  min-width: 200px;
+  transform: scale(1);
+  transition: 0.5s all ease;
+}
+input:disabled {
+  background: #d5d4d4;
+  box-shadow: inset 0 0 5px black;
+}
+input:focus {
+  transform: scale(1.05);
+  box-shadow: 0px 0px 10px -4px var(--primary-clr);
+  border: none;
+  outline: 1px solid var(--primary-clr);
+}
+footer {
+  background-color: var(--primary-clr);
+  color: white;
+  text-align: center;
+  padding: 1rem 0;
+  width: 100%;
+}
+
+/* Specific Page Styles */
+
+/* Privacy Policy */
+.privacy-policy-container {
+  background-color: white;
+  padding: 20px;
+  box-shadow: var(--box-shadow);
+  border-radius: 10px;
+}
+
+/* Terms & Conditions */
+.terms-conditions-container {
+  background-color: white;
+  padding: 20px;
+  box-shadow: var(--box-shadow);
+  border-radius: 10px;
+}
+
+/* About Us */
+.about-us-container {
+  background-color: white;
+  padding: 20px;
+  box-shadow: var(--box-shadow);
+  border-radius: 10px;
+}
+
+/* Contact Us */
+.contact-us-container {
+  background-color: white;
+  padding: 20px;
+  box-shadow: var(--box-shadow);
+  border-radius: 10px;
+}
