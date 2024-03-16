@@ -204,6 +204,9 @@ header {
 }
 header > span {
   width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .modal-buttons-container {
   display: flex;
@@ -532,7 +535,7 @@ main {
   align-items: center;
   flex-direction: column;
   transition: 1s all ease;
-  z-index: 9;
+  z-index: 8;
   color: whitesmoke;
   box-shadow: var(--box-shadow);
 }
@@ -774,6 +777,13 @@ p {
 .Menu-at-top a:hover {
   text-decoration: underline;
 }
+.menu-icon{
+    color: white;
+    left: 10px;
+    position: absolute;
+    font-size: 1.5rem;
+    display: none;
+}
 
 @media (max-width: 425px) {
   h1 {
@@ -795,8 +805,24 @@ p {
     padding: 10px 0;
   }
   .Menu-at-top{
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    /* gap: 20px; */
+    position: fixed;
+    height: 100%;
+    width: 50%;
+    top: 50px;
+    flex-direction: column;
+    box-shadow: var(--box-shadow);
+    border-top-right-radius: 10px;
+    transform: translateX(-100%);
+    transition: 1s all ease;
+    opacity: 0;
+    z-index: 9;
+  }
+  .Menu-at-top.menu-open{
+    transition: 1s all ease;
+    transform: translateX(0);
+    opacity: 1;
+  }
+  .menu-icon{
+    display: block;
   }
 }

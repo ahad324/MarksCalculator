@@ -547,3 +547,8 @@ window.addEventListener("load", function () {
   window.addEventListener("offline", updateOnlineStatus);
   updateOnlineStatus();
 });
+document.getElementsByClassName("menu-icon")[0].addEventListener("click", (e) => {
+  e.target.classList.toggle("fa-xmark")
+  document.getElementsByClassName("Menu-at-top")[0].classList.toggle("menu-open");
+console.log("ok");
+})
