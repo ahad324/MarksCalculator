@@ -639,6 +639,11 @@ section {
   align-items: center;
   margin: 25px 0px;
 }
+img{
+  width: 100%;
+  mix-blend-mode: multiply;
+  border-radius: 20px;
+}
 #Assesments {
   gap: 40px;
 }
