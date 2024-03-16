@@ -762,25 +762,23 @@ p {
   top: 0; 
   z-index: 1000;
   background: var(--primary-clr);
-  /* box-shadow: var(--box-shadow); */
   width: 100%;
   min-height: 50px;
   justify-content: space-evenly;
   display: flex;
   align-items: center;
 }
-
-/* Additional styles for the menu items if needed */
 .Menu-at-top a {
-  /* Add styles for links in the sticky menu */
   text-decoration: none;
   color: white;
   padding: 10px 0;
+  padding:10px;
 }
-
-/* Add hover effect for menu items */
 .Menu-at-top a:hover {
-  text-decoration: underline;
+  color: black;
+  background-color: whitesmoke;
+  border-radius: 10px;
+  box-shadow: var(--box-shadow);
 }
 .menu-icon{
     color: white;
