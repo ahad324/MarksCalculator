@@ -6,6 +6,27 @@
   --primary-clr: rgb(13 36 131);
   --text-shadow: 2px 2px 2px BLACK;
 }
+/* Showing Alert */
+.alert {
+  display: block;
+  background: black;
+  color: crimson;
+  text-shadow: 0 0 8px crimson;
+  width: 200px;
+  border-radius: 5px;
+  box-shadow: var(--box-shadow);
+  position: fixed;
+  top: 20%;
+  left: 10%;
+  padding: 10px;
+  z-index: 9;
+  transform: translateX(-1000px);
+  transition: 1s all ease;
+}
+.alert.active {
+  transition: 1s all ease;
+  transform: translateX(0);
+}
 /* Showing offline status */
 .offline-message {
   display: none;
@@ -639,7 +660,7 @@ section {
   align-items: center;
   margin: 25px 0px;
 }
-img{
+img {
   width: 100%;
   mix-blend-mode: multiply;
   border-radius: 20px;
@@ -759,7 +780,7 @@ p {
 }
 .Menu-at-top {
   position: sticky;
-  top: 0; 
+  top: 0;
   z-index: 1000;
   background: var(--primary-clr);
   width: 100%;
@@ -772,7 +793,7 @@ p {
   text-decoration: none;
   color: white;
   padding: 10px 0;
-  padding:10px;
+  padding: 10px;
 }
 .Menu-at-top a:hover {
   color: black;
@@ -780,12 +801,12 @@ p {
   border-radius: 10px;
   box-shadow: var(--box-shadow);
 }
-.menu-icon{
-    color: white;
-    left: 10px;
-    position: absolute;
-    font-size: 1.5rem;
-    display: none;
+.menu-icon {
+  color: white;
+  left: 10px;
+  position: absolute;
+  font-size: 1.5rem;
+  display: none;
 }
 
 @media (max-width: 425px) {
@@ -807,7 +828,7 @@ p {
   .blog-post-header {
     padding: 10px 0;
   }
-  .Menu-at-top{
+  .Menu-at-top {
     position: fixed;
     height: 100%;
     width: 50%;
@@ -820,12 +841,12 @@ p {
     opacity: 0;
     z-index: 9;
   }
-  .Menu-at-top.menu-open{
+  .Menu-at-top.menu-open {
     transition: 1s all ease;
     transform: translateX(0);
     opacity: 1;
   }
-  .menu-icon{
+  .menu-icon {
     display: block;
   }
 }

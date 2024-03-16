@@ -81,7 +81,6 @@ document.getElementById("add-sem-btn").addEventListener("click", () => {
   calculateCGPA();
 });
 
-
 // Side Bar Toogle
 let arrow = document.getElementsByClassName("arrow")[0];
 let featurecontainer = document.getElementsByClassName("features")[0];
@@ -147,6 +146,8 @@ var marksbelowassesment = document.getElementById(
   "obtained-marks-below-assesment"
 );
 
+let alert = document.getElementsByClassName("alert")[0];
+let alerttime = 4000;
 let DataObj = []; // Object to store subject , total Obtained marks and grade
 let subjectcount = 0; // Counter for subjects
 var message = document.getElementsByClassName("message")[0];
@@ -201,17 +202,35 @@ submitSubjectBtn.addEventListener("click", function (event) {
     isNaN(inputMaxMarks) ||
     isNaN(inputWeightage)
   ) {
-    alert("Please fill out all fields with valid values.");
+    alert.innerHTML = "Please fill out all fields with valid values.";
+    alert.classList.add("active");
+    setTimeout(() => {
+      alert.classList.remove("active");
+      alert.innerHTML = "";
+    }, alerttime);
+    // alert("Please fill out all fields with valid values.");
     return;
   }
 
   if (inputObtMarks > inputMaxMarks) {
-    alert("Obtained marks cannot exceed maximum marks.");
+    alert.innerHTML = "Obtained marks cannot exceed maximum marks";
+    alert.classList.add("active");
+    setTimeout(() => {
+      alert.classList.remove("active");
+      alert.innerHTML = "";
+    }, alerttime);
+    // alert("Obtained marks cannot exceed maximum marks.");
     return;
   }
 
   if (inputWeightage > 100) {
-    alert("Weightage cannot exceed 100.");
+    alert.innerHTML = "Weightage cannot exceed 100.";
+    alert.classList.add("active");
+    setTimeout(() => {
+      alert.classList.remove("active");
+      alert.innerHTML = "";
+    }, alerttime);
+    // alert("Weightage cannot exceed 100.");
     return;
   }
 
@@ -242,7 +261,13 @@ submitSubjectBtn.addEventListener("click", function (event) {
     let finalObtainedMarks =
       parseFloat(totalObtMarksForASubject) + parseFloat(existingSubject.marks);
     if (finalObtainedMarks > 100) {
-      alert("Total obtained marks cannot exceed 100");
+      alert.innerHTML = "Total obtained marks in Result Card cannot exceed 100";
+      alert.classList.add("active");
+      setTimeout(() => {
+        alert.classList.remove("active");
+        alert.innerHTML = "";
+      }, alerttime);
+      // alert("Total obtained marks cannot exceed 100");
       return;
     }
     existingSubject.marks = finalObtainedMarks.toFixed(2);
@@ -547,7 +572,11 @@ window.addEventListener("load", function () {
   window.addEventListener("offline", updateOnlineStatus);
   updateOnlineStatus();
 });
-document.getElementsByClassName("menu-icon")[0].addEventListener("click", (e) => {
-  e.target.classList.toggle("fa-xmark")
-  document.getElementsByClassName("Menu-at-top")[0].classList.toggle("menu-open");
-})
+document
+  .getElementsByClassName("menu-icon")[0]
+  .addEventListener("click", (e) => {
+    e.target.classList.toggle("fa-xmark");
+    document
+      .getElementsByClassName("Menu-at-top")[0]
+      .classList.toggle("menu-open");
+  });
