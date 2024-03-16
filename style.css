@@ -749,13 +749,12 @@ p {
   padding: 0 10px;
   font-size: 1.2rem;
 }
-.Menu-at-bottom {
+.Menu-at-top {
   position: sticky;
   top: 0; 
   z-index: 1000;
   background: var(--primary-clr);
-  border-bottom: 1px solid #e0e0e0;
-  margin-top: 20px;
+  /* box-shadow: var(--box-shadow); */
   width: 100%;
   min-height: 50px;
   justify-content: space-evenly;
@@ -764,16 +763,15 @@ p {
 }
 
 /* Additional styles for the menu items if needed */
-.Menu-at-bottom a {
+.Menu-at-top a {
   /* Add styles for links in the sticky menu */
   text-decoration: none;
-  color: #333;
   color: white;
   padding: 10px 0;
 }
 
 /* Add hover effect for menu items */
-.Menu-at-bottom a:hover {
+.Menu-at-top a:hover {
   text-decoration: underline;
 }
 
@@ -796,7 +794,7 @@ p {
   .blog-post-header {
     padding: 10px 0;
   }
-  .Menu-at-bottom{
+  .Menu-at-top{
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     /* gap: 20px; */
