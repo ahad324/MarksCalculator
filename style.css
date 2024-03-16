@@ -749,14 +749,34 @@ p {
   padding: 0 10px;
   font-size: 1.2rem;
 }
-.Menu-at-bottom{
+.Menu-at-bottom {
+  position: sticky;
+  top: 0; 
+  z-index: 1000;
+  background: var(--primary-clr);
+  border-bottom: 1px solid #e0e0e0;
   margin-top: 20px;
   width: 100%;
-  /* background: red; */
+  min-height: 50px;
   justify-content: space-evenly;
   display: flex;
   align-items: center;
 }
+
+/* Additional styles for the menu items if needed */
+.Menu-at-bottom a {
+  /* Add styles for links in the sticky menu */
+  text-decoration: none;
+  color: #333;
+  color: white;
+  padding: 10px 0;
+}
+
+/* Add hover effect for menu items */
+.Menu-at-bottom a:hover {
+  text-decoration: underline;
+}
+
 @media (max-width: 425px) {
   h1 {
     font-size: 2rem;
@@ -779,6 +799,6 @@ p {
   .Menu-at-bottom{
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
+    /* gap: 20px; */
   }
 }
