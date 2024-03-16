@@ -19,7 +19,7 @@
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://gradegenie.netlify.app/terms&conditions</loc>
+        <loc>https://gradegenie.netlify.app/terms&amp;conditions</loc>
         <lastmod>2024-03-04</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
