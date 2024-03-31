@@ -137,7 +137,7 @@ window.addEventListener("click", function (event) {
 var submitSubjectBtn = document.getElementById("submit-subject-btn");
 var tableBody = document.querySelector("#resultModal table tbody");
 var finalGradeValue = document.querySelector(".finalgrade-value");
-var finalGPAValue = document.querySelector(".finalGPA-value");
+var finalSGPAValue = document.querySelector(".finalSGPA-value");
 var finalPercentageValue = document.querySelector(".finalpercentage-value");
 var namebelowassesment = document.getElementById(
   "subject-name-below-assesment"
@@ -260,6 +260,7 @@ submitSubjectBtn.addEventListener("click", function (event) {
     );
     let finalObtainedMarks =
       parseFloat(totalObtMarksForASubject) + parseFloat(existingSubject.marks);
+    // console.log(finalObtainedMarks);
     if (finalObtainedMarks > 100) {
       alert.innerHTML = "Total obtained marks in Result Card cannot exceed 100";
       alert.classList.add("active");
@@ -270,7 +271,7 @@ submitSubjectBtn.addEventListener("click", function (event) {
       // alert("Total obtained marks cannot exceed 100");
       return;
     }
-    existingSubject.marks = finalObtainedMarks.toFixed(2);
+    existingSubject.marks = finalObtainedMarks;
     let marksCell = document.querySelector(
       `#resultModal table tbody tr[subject-index="${
         existingSubjectIndex + 1
@@ -307,10 +308,8 @@ submitSubjectBtn.addEventListener("click", function (event) {
   } else {
     // Add the subject and its total marks to DataObj
     subjectcount++;
-    let totalObtMarksForASubject = calculateTotalObtainedMarks(
-      inputObtMarks,
-      inputMaxMarks,
-      inputWeightage
+    let totalObtMarksForASubject = Math.round(
+      calculateTotalObtainedMarks(inputObtMarks, inputMaxMarks, inputWeightage)
     );
     let percentage = calculatePercentage(totalObtMarksForASubject);
     let SubjectGPA = calculateGPA(percentage);
@@ -385,9 +384,6 @@ function calculateTotalObtainedMarks(obtMarks, maxMarks, weightage) {
 function calculatePercentage(obtMarks) {
   return ((obtMarks / 100) * 100).toFixed(2);
 }
-function sgpaToPercentage(sgpa) {
-  return (sgpa / 4.0) * 100;
-}
 
 function calculateGrade(percentage) {
   if (percentage >= 85) return "A";
@@ -402,7 +398,7 @@ function calculateGrade(percentage) {
   else if (percentage >= 50) return "D";
   else return "F";
 }
-// Update final grade and SGPA function
+// // Update final grade and SGPA function
 function updateFinalGradeAndSGPA() {
   var totalObtMarks = 0;
   var totalMaxMarks = 0;
@@ -422,17 +418,17 @@ function updateFinalGradeAndSGPA() {
 
   // Calculate SGPA
   var Sgpa = CalculateFinalSGpa();
-  var percentage = sgpaToPercentage(Sgpa);
+  var percentage = (totalObtMarks / totalMaxMarks) * 100;
   var grade = calculateGrade(percentage);
-  console.log(totalObtMarks, percentage);
+  // console.log(totalObtMarks, percentage);
   if (totalObtMarks === 0 && (percentage === 0 || isNaN(percentage))) {
-    console.log("I'm in ");
+    // console.log("I'm in ");
     finalGradeValue.innerHTML = "__";
-    finalGPAValue.innerHTML = "__";
+    finalSGPAValue.innerHTML = "__";
     finalPercentageValue.innerHTML = "__";
   } else {
     finalGradeValue.innerHTML = grade;
-    finalGPAValue.innerHTML = Sgpa;
+    finalSGPAValue.innerHTML = Sgpa;
     finalPercentageValue.innerHTML = percentage.toFixed(2) + "%";
   }
 }
@@ -580,3 +576,12 @@ document
       .getElementsByClassName("Menu-at-top")[0]
       .classList.toggle("menu-open");
   });
+// Theme Toggler 🌞 -> 🌑 OR 🌑 -> 🌞
+
+const themeToggler = document.querySelector(".theme-toggler");
+const body = document.querySelector("body");
+
+themeToggler.addEventListener("click", () => {
+  body.classList.toggle("dark-theme");
+});
+

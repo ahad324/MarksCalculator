@@ -210,6 +210,12 @@ body {
     rgb(196, 196, 196) 100%
   );
   color: black;
+  transition: 0.1s all ease;
+}
+body.dark-theme {
+  transition: 0.1s all ease;
+  background: #0d0c0c;
+  color: white;
 }
 *::selection {
   color: white;
@@ -228,6 +234,34 @@ header > span {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+body.dark-theme .theme-toggler {
+  background: white;
+}
+body.dark-theme .theme-toggler::before {
+  transition: 1s all ease;
+  content: "🌑";
+}
+.theme-toggler {
+  transition: 1s all ease;
+  cursor: pointer;
+  z-index: 9;
+  position: fixed;
+  top: 85%;
+  left: 94%;
+  width: 40px;
+  background: #0d0c0c;
+  height: 40px;
+  border-radius: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5rem;
+  box-shadow: var(--box-shadow);
+}
+.theme-toggler::before {
+  transition: 1s all ease;
+  content: "🌞";
 }
 .modal-buttons-container {
   display: flex;
@@ -340,7 +374,7 @@ header > span {
   border-radius: 5px;
 }
 .finalgrade,
-.finalGPA,
+.finalSGPA,
 .finalpercentage {
   display: flex;
   justify-content: space-between;
@@ -350,14 +384,14 @@ header > span {
   border-radius: 3px;
 }
 .finalgrade-tittle,
-.finalGPA-tittle,
+.finalSGPA-tittle,
 .finalpercentage-tittle,
 .obtainedCGPA-tittle {
   color: crimson;
   text-shadow: 0 0 10px red;
 }
 .finalgrade-value,
-.finalGPA-value,
+.finalSGPA-value,
 .finalpercentage-value,
 #obtCGPA {
   color: #3dd73d;
@@ -455,19 +489,20 @@ main {
 .CGPA-btn,
 .SGPA-btn {
   width: 70px;
-  background: rgb(211 255 8 / 13%);
-  color: whitesmoke;
   cursor: pointer;
+  color: white;
   z-index: 1;
-  backdrop-filter: blur(48px);
   border-radius: 5px;
   text-align: center;
   height: 8vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  box-shadow: var(--box-shadow);
   transition: 1s all ease;
+  background: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
 }
 .Swiper-btns {
   display: flex;
@@ -661,9 +696,64 @@ section {
   margin: 25px 0px;
 }
 img {
-  width: 100%;
-  mix-blend-mode: multiply;
+  width: 90%;
   border-radius: 20px;
+  filter: drop-shadow(0px 0px 10px rgb(186, 184, 184));
+}
+strong {
+  font-weight: bolder;
+  color: crimson;
+  text-shadow: 0 0 1px #ff0008;
+}
+strong:nth-child(5),
+strong:nth-child(6) {
+  color: green;
+  text-shadow: 0 0 1px green;
+}
+
+strong:nth-child(7) {
+  color: rgb(3, 23, 241);
+  text-shadow: none;
+}
+marquee {
+  color: forestgreen;
+  text-shadow: 0 0 20px forestgreen;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.details-section {
+  /* background: red; */
+  padding: 10px;
+  width: 95%;
+  border-radius: 10px;
+}
+details {
+  min-height: 40px;
+  background-color: #181818;
+  color: yellow;
+  /* padding: 5px; */
+  margin: 10px;
+  border-radius: 10px;
+  box-shadow: var(--text-shadow);
+  cursor: pointer;
+}
+summary {
+  display: flex;
+  justify-content: left;
+  font-size: 1.5rem;
+  align-items: center;
+  margin-top: 4px;
+}
+details > p {
+  font-size: 1rem;
+  color: azure;
+}
+details,
+summary {
+  padding: 5px 10px;
+  text-align: left;
 }
 #Assesments {
   gap: 40px;
@@ -715,13 +805,21 @@ input {
 }
 input:disabled {
   background: #d5d4d4;
-  box-shadow: inset 0 0 5px black;
+  box-shadow: inset 0 0 5px #00000030;
 }
 input:focus {
   transform: scale(1.05);
   box-shadow: 0px 0px 10px -4px var(--primary-clr);
   border: none;
   outline: 1px solid var(--primary-clr);
+}
+body.dark-theme input:focus {
+  box-shadow: 0px 0px 10px -4px yellow;
+  border: none;
+  outline: 1px solid yellow;
+}
+body.dark-theme input {
+  color: #f5f5f5;
 }
 label {
   font-size: 1.2rem;
@@ -810,6 +908,9 @@ p {
 }
 
 @media (max-width: 425px) {
+  .theme-toggler {
+    left: 90%;
+  }
   h1 {
     font-size: 2rem;
   }
@@ -848,5 +949,8 @@ p {
   }
   .menu-icon {
     display: block;
+  }
+  img{
+    width: 100%;
   }
 }
