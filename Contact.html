@@ -127,11 +127,18 @@
       var nameInput = document.querySelector("#name");
       var emailInput = document.querySelector("#email");
       var messageInput = document.querySelector("#message");
-
+      var btn = document.getElementsByTagName("button")[0];
+      console.log(btn);
       document
         .getElementsByTagName("form")[0]
         .addEventListener("submit", function (e) {
           e.preventDefault();
+          btn.disabled = true;
+          btn.innerHTML = "Sending...";
+          setTimeout(() => {
+            btn.disabled = false;
+            btn.innerHTML = "Submit";
+          }, 2000);
           sendEmail();
         });
 

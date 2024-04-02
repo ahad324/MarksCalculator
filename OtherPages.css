@@ -96,6 +96,7 @@ input {
   min-width: 200px;
   transform: scale(1);
   transition: 0.5s all ease;
+  margin: 10px;
 }
 input:disabled {
   background: #d5d4d4;
@@ -152,4 +153,10 @@ footer {
   color: lime;
   display: none;
   margin-top: 10px;
+}
+textarea{
+  width: 100%;
+  min-height: 30vh;
+  margin-top: 10px;
+  resize: none;
 }
