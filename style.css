@@ -824,8 +824,8 @@ body.dark-theme input {
 label {
   font-size: 1.2rem;
 }
-h1 {
-  font-size: 3rem;
+h1,.blog-post-main-heading {
+  font-size: clamp(2rem, -1.5rem + 8vw, 3rem);
   color: whitesmoke;
 }
 h2 {
@@ -910,9 +910,6 @@ p {
 @media (max-width: 425px) {
   .theme-toggler {
     left: 90%;
-  }
-  h1 {
-    font-size: 2rem;
   }
   button {
     padding: 0 1em;
