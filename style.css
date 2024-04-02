@@ -210,10 +210,10 @@ body {
     rgb(196, 196, 196) 100%
   );
   color: black;
-  transition: 0.1s all ease;
+  transition: 0.3s all ease;
 }
 body.dark-theme {
-  transition: 0.1s all ease;
+  transition: 0.3s all ease;
   background: #0d0c0c;
   color: white;
 }
