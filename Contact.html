@@ -111,6 +111,7 @@
           <textarea id="message" name="message" rows="4" required></textarea
           ><br /><br />
           <button type="submit">Submit</button>
+          <span id="confirmation">Message sent successfully.</span>
         </form>
       </section>
     </main>
@@ -118,5 +119,51 @@
     <footer>
       <p>&copy; 2024 Grade Genie. All rights reserved.</p>
     </footer>
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"
+    ></script>
+    <script>
+      var nameInput = document.querySelector("#name");
+      var emailInput = document.querySelector("#email");
+      var messageInput = document.querySelector("#message");
+
+      document
+        .getElementsByTagName("form")[0]
+        .addEventListener("submit", function (e) {
+          e.preventDefault();
+          sendEmail();
+        });
+
+      function sendEmail() {
+        var params = {
+          from_mail: emailInput.value,
+          from_name: nameInput.value,
+          message: messageInput.value,
+        };
+
+        emailjs
+          .send(
+            "service_u95p0ps",
+            "template_gyreqf9",
+            params,
+            "hqVI9Kr1m8IIkGMKC"
+          )
+          .then(function (response) {
+            document.querySelector("#confirmation").style.display = "block";
+            nameInput.value = "";
+            emailInput.value = "";
+            messageInput.value = "";
+
+            // Remove message after seven seconds
+            setTimeout(function () {
+              document.querySelector("#confirmation").style.display = "none";
+            }, 7000);
+          })
+          .catch(function (error) {
+            alert("Oops! Something went wrong!😔");
+          });
+      }
+    </script>
   </body>
 </html>
