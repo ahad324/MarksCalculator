@@ -697,6 +697,7 @@ section {
   margin: 25px 0px;
 }
 img {
+  cursor: pointer;
   width: 90%;
   border-radius: 20px;
   filter: drop-shadow(0px 0px 10px rgb(186, 184, 184));

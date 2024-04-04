@@ -585,3 +585,24 @@ themeToggler.addEventListener("click", () => {
   body.classList.toggle("dark-theme");
 });
 
+// Image Toggler
+let image  = document.getElementsByTagName("img")[0];
+console.log(image)
+function toggleFullScreen() {
+  if (!document.fullscreenElement) {
+    image.requestFullscreen().catch(err => {
+      console.error('Error attempting to enable full-screen mode:', err.message);
+    });
+  } else {
+    if (document.exitFullscreen) {
+      document.exitFullscreen();
+    }
+  }
+}
+
+image.addEventListener("click", toggleFullScreen);
+
+document.addEventListener("fullscreenchange", () => {
+  if (!document.fullscreenElement) {
+  }
+});
