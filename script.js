@@ -1,6 +1,7 @@
 if (localStorage.getItem("RoyalData")) {
   localStorage.removeItem("RoyalData");
 }
+var clickedsubmmitbutton = 0;
 
 let CGPAbtn = document.querySelector(".Swiper-btns .CGPA-btn");
 let SGPAbtn = document.querySelector(".Swiper-btns .SGPA-btn");
@@ -180,7 +181,6 @@ submitSubjectBtn.addEventListener("click", function (event) {
   event.preventDefault(); // Prevent form submission
 
   inputCreditHours.disabled = true;
-  // console.log(inputCreditHours.value);
   // Retrieve input values
   let inputSubjectName = document
     .getElementById("input-subject-name")
@@ -233,14 +233,16 @@ submitSubjectBtn.addEventListener("click", function (event) {
     // alert("Weightage cannot exceed 100.");
     return;
   }
-
-  // =================================================================
-  // if(localStorage.getItem(inputSubjectName)){
-  //     console.log(localStorage.getItem(inputSubjectName))
-  //     console.log("oks")
-
-  //   }
-  // =================================================================
+  // When user CLicks on SUBMIT Button then resultcard button will beat
+  clickedsubmmitbutton == 0
+    ? (clickedsubmmitbutton = 1)
+    : (clickedsubmmitbutton = 2);
+  if (clickedsubmmitbutton == 1) {
+    resultcardBtn.classList.add("clickedsubmit");
+    resultcardBtn.addEventListener("click", () => {
+      resultcardBtn.classList.remove("clickedsubmit");
+    });
+  }
   // Check if the subject already exists in DataObj
 
   let existingSubjectIndex = DataObj.findIndex(
@@ -586,12 +588,15 @@ themeToggler.addEventListener("click", () => {
 });
 
 // Image Toggler
-let image  = document.getElementsByTagName("img")[0];
-console.log(image)
+let image = document.getElementsByTagName("img")[0];
+console.log(image);
 function toggleFullScreen() {
   if (!document.fullscreenElement) {
-    image.requestFullscreen().catch(err => {
-      console.error('Error attempting to enable full-screen mode:', err.message);
+    image.requestFullscreen().catch((err) => {
+      console.error(
+        "Error attempting to enable full-screen mode:",
+        err.message
+      );
     });
   } else {
     if (document.exitFullscreen) {

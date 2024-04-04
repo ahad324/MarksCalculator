@@ -453,6 +453,18 @@ button:active {
   box-shadow: inset 0px 0.1em 0.6em var(--primary-clr);
   transform: translateY(0em);
 }
+#resultcard-btn.clickedsubmit {
+  animation: beat 0.3s ease-in-out infinite;
+}
+@keyframes beat {
+  0% {
+    transform: scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
 #instructions-btn,
 .delete-btn {
   background: crimson;
@@ -824,7 +836,8 @@ body.dark-theme input {
 label {
   font-size: 1.2rem;
 }
-h1,.blog-post-main-heading {
+h1,
+.blog-post-main-heading {
   font-size: clamp(2rem, -1.5rem + 8vw, 3rem);
   color: whitesmoke;
 }
@@ -947,7 +960,7 @@ p {
   .menu-icon {
     display: block;
   }
-  img{
+  img {
     width: 100%;
   }
 }
