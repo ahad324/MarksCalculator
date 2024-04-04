@@ -477,45 +477,46 @@ main {
   margin-top: 30px;
 }
 .btns-bg-swiper-element {
-  background: black;
-  width: 70px;
-  height: 8vh;
+  background: #e2e226;
+  filter: drop-shadow(var(--box-shadow));
+  width: 85px;
+  height: 50px;
   position: absolute;
   z-index: 1;
-  transform: translateX(-50px);
+  transform: translateX(-62.8px);
   transition: 1s all ease;
   border-radius: 5px;
 }
 .CGPA-btn,
 .SGPA-btn {
-  width: 70px;
+  width: 80px;
   cursor: pointer;
   color: white;
   z-index: 1;
   border-radius: 5px;
   text-align: center;
-  height: 8vh;
+  height: 45px;
   display: flex;
   justify-content: center;
   align-items: center;
   transition: 1s all ease;
-  background: rgba(255, 255, 255, 0.2);
+  background: black;
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-  backdrop-filter: blur(5px);
-  -webkit-backdrop-filter: blur(5px);
+  /* backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px); */
 }
 .Swiper-btns {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 10vh;
+  height: 60px;
 }
 .swiper-btns-container {
-  width: 200px;
+  width: 250px;
   display: flex;
   justify-content: space-around;
   align-items: center;
-  background: #5468ff;
+  background: var(--primary-clr);
   height: 100%;
   position: relative;
   border-radius: 5px;

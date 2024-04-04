@@ -8,10 +8,10 @@ let btnbg = document.querySelector(".Swiper-btns .btns-bg-swiper-element");
 let CGPASec = document.querySelector(".CGPA-Section");
 let SGPASec = document.querySelector(".SGPA-Section");
 SGPAbtn.addEventListener("click", (e) => {
-  btnbg.style.transform = "translateX(-50px)";
+  btnbg.style.transform = "translateX(-62.8px)";
 
   e.target.style.transform = "scale(1)";
-  CGPAbtn.style.transform = "scale(0.8)";
+  CGPAbtn.style.transform = "scale(0.9)";
   SGPASec.style.transform = "translateX(50%) scale(1)";
   CGPASec.style.transform = "translateX(100%) scale(0.5)";
   CGPASec.style.opacity = 0;
@@ -19,10 +19,10 @@ SGPAbtn.addEventListener("click", (e) => {
 });
 
 CGPAbtn.addEventListener("click", (e) => {
-  btnbg.style.transform = "translateX(50px)";
+  btnbg.style.transform = "translateX(62px)";
 
   e.target.style.transform = "scale(1)";
-  SGPAbtn.style.transform = "scale(0.8)";
+  SGPAbtn.style.transform = "scale(0.9)";
   SGPASec.style.transform = "translateX(-100%) scale(0.5)";
   CGPASec.style.transform = "translateX(-50%) scale(1)";
   SGPASec.style.opacity = 0;
