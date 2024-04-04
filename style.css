@@ -432,7 +432,7 @@ button {
   border: 0;
   cursor: pointer;
   will-change: box-shadow, transform;
-  background: radial-gradient(100% 100% at 100% 0%, #89e5ff 0%, #5468ff 100%);
+  background: radial-gradient(100% 100% at 100% 0%, #51a9c2 0%, #2c3cb6 100%);
   box-shadow: var(--box-shadow);
   padding: 0 2em;
   border-radius: 0.3em;
@@ -717,7 +717,7 @@ strong:nth-child(7) {
   color: rgb(3, 23, 241);
   text-shadow: none;
 }
-marquee {
+.data-saving-message {
   color: forestgreen;
   text-shadow: 0 0 20px forestgreen;
   border-radius: 10px;
@@ -726,7 +726,6 @@ marquee {
   align-items: center;
 }
 .details-section {
-  /* background: red; */
   padding: 10px;
   width: 95%;
   border-radius: 10px;
@@ -735,7 +734,6 @@ details {
   min-height: 40px;
   background-color: #181818;
   color: yellow;
-  /* padding: 5px; */
   margin: 10px;
   border-radius: 10px;
   box-shadow: var(--text-shadow);
