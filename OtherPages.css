@@ -87,7 +87,7 @@ body {
 }
 .Menu-links a {
   text-decoration: none;
-  color: white;
+  color: #dad9d9;
   padding: 7px;
   transition: 0.1s all ease;
   border-radius: 10px;
