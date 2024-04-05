@@ -9,3 +9,13 @@ menu_icon.addEventListener("click", (e) => {
     .querySelectorAll(".Menu-links-link")
     .forEach((e) => e.classList.toggle("menu-open"));
 });
+
+window.addEventListener("scroll", () => {
+  console.log(window.scrollY);
+  const menuBar = document.querySelector(".Menu-bar");
+  if (window.scrollY > 100) {
+    menuBar.style.boxShadow = "var(--box-shadow)";
+  } else {
+    menuBar.style.boxShadow = "none";
+  }
+});

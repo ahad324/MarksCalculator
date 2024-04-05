@@ -275,13 +275,11 @@ submitSubjectBtn.addEventListener("click", function (event) {
     }
     existingSubject.marks = finalObtainedMarks;
     let marksCell = document.querySelector(
-      `#resultModal table tbody tr[subject-index="${
-        existingSubjectIndex + 1
+      `#resultModal table tbody tr[subject-index="${existingSubjectIndex + 1
       }"] td[data-marks]`
     );
     let SubjectGPACell = document.querySelector(
-      `#resultModal table tbody tr[subject-index="${
-        existingSubjectIndex + 1
+      `#resultModal table tbody tr[subject-index="${existingSubjectIndex + 1
       }"] td[data-gpa]`
     );
 
@@ -613,3 +611,13 @@ document.addEventListener("fullscreenchange", () => {
   if (!document.fullscreenElement) {
   }
 });
+
+window.addEventListener("scroll", () => {
+  console.log(window.scrollY)
+  const menuBar = document.querySelector(".Menu-bar");
+  if (window.scrollY > 100) {
+    menuBar.style.boxShadow = "var(--box-shadow)";
+  } else {
+    menuBar.style.boxShadow = "none";
+  }
+})
