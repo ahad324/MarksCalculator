@@ -59,7 +59,7 @@
       name="keywords"
       content="marks calculator, CGPA calculator, SGPA calculator, GPA calculator, grade point average, cumulative grade point average, semester grade point average, calculate GPA,sgpacalculator,cgpacalculator, cumulative gpa, dividing the total, grade calculator, course grade, basic calculations, gpa calculator, total grade points, letter grade, overall gpa, number of credits, academic year"
     />
-    <link rel="canonical" href="https://ahad324.github.io/MarksCalculator/" />
+    <link rel="canonical" href="https://gradegenie.site/" />
     <meta
       property="og:title"
       content="Marks Calculator - Calculate CGPA, SGPA, and GPA"
@@ -69,10 +69,7 @@
       content="A comprehensive tool to calculate CGPA, SGPA, and GPA with an easy and beautiful UI ✨. Understanding Grading Criteria, GPA, SGPA, and CGPA."
     />
     <meta property="og:type" content="website" />
-    <meta
-      property="og:url"
-      content="https://ahad324.github.io/MarksCalculator/"
-    />
+    <meta property="og:url" content="https://gradegenie.site/" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta
       name="twitter:title"
@@ -83,7 +80,6 @@
       content="A comprehensive tool to calculate CGPA, SGPA, and GPA with an easy and beautiful UI ✨. Understanding Grading Criteria, GPA, SGPA, and CGPA."
     />
     <meta name="robots" content="index, follow" />
-    <script src="https://kit.fontawesome.com/7bfc8cee80.js"></script>
     <link rel="stylesheet" href="OtherPages.css" />
   </head>
   <body>
@@ -93,7 +89,11 @@
           <img src="./GradeGenius.png" class="logo" alt="Logo" />
           <h1 class="gradegenie">Grade Genie</h1>
         </span>
-        <i class="fa-solid fa-bars menu-icon"></i>
+        <span class="menu-icon">
+          <i class="menu-icon-bar"></i>
+          <i class="menu-icon-bar"></i>
+          <i class="menu-icon-bar"></i>
+        </span>
       </div>
       <div class="Menu-links">
         <a class="Menu-links-link" href="https://gradegenie.site/">Home</a>
@@ -147,23 +147,12 @@
     <footer>
       <p>&copy; 2024 Grade Genie. All rights reserved.</p>
     </footer>
+    <script src="Otherpages.js"></script>
     <script
       type="text/javascript"
       src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"
     ></script>
     <script>
-      document
-        .getElementsByClassName("menu-icon")[0]
-        .addEventListener("click", (e) => {
-          e.target.classList.toggle("fa-xmark");
-          document
-            .getElementsByClassName("Menu-links")[0]
-            .classList.toggle("menu-open");
-          document
-            .querySelectorAll(".Menu-links-link")
-            .forEach((e) => e.classList.toggle("menu-open"));
-        });
-
       var nameInput = document.querySelector("#name");
       var emailInput = document.querySelector("#email");
       var messageInput = document.querySelector("#message");

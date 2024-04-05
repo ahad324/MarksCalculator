@@ -20,7 +20,7 @@ SGPAbtn.addEventListener("click", (e) => {
 });
 
 CGPAbtn.addEventListener("click", (e) => {
-  btnbg.style.transform = "translateX(62px)";
+  btnbg.style.transform = "translateX(62.5px)";
 
   e.target.style.transform = "scale(1)";
   SGPAbtn.style.transform = "scale(0.9)";
@@ -353,7 +353,7 @@ submitSubjectBtn.addEventListener("click", function (event) {
     CRCell.setAttribute("cr-index", subjectcount);
 
     newRow.insertCell().innerHTML =
-      '<button class="delete-btn"><i class="fa-solid fa-trash"></i></button>';
+      '<button class="delete-btn"><i>❌</i></button>';
     newRow.setAttribute("subject-index", subjectcount);
 
     updateDataObj();
@@ -518,7 +518,7 @@ function updateTable() {
     CRCell.setAttribute("cr-index", index + 1);
 
     newRow.insertCell().innerHTML =
-      '<button class="delete-btn"><i class="fa-solid fa-trash"></i></button>';
+      '<button class="delete-btn"><i>❌</i></button>';
     newRow.setAttribute("subject-index", index + 1);
   });
 }
@@ -569,17 +569,18 @@ window.addEventListener("load", function () {
   window.addEventListener("offline", updateOnlineStatus);
   updateOnlineStatus();
 });
-document
-  .getElementsByClassName("menu-icon")[0]
-  .addEventListener("click", (e) => {
-    e.target.classList.toggle("fa-xmark");
-    document
-      .getElementsByClassName("Menu-links")[0]
-      .classList.toggle("menu-open");
-    document
-      .querySelectorAll(".Menu-links-link")
-      .forEach((e) => e.classList.toggle("menu-open"));
-  });
+
+let menu_icon = document.getElementsByClassName("menu-icon")[0];
+
+menu_icon.addEventListener("click", (e) => {
+  menu_icon.classList.toggle("cross");
+  document
+    .getElementsByClassName("Menu-links")[0]
+    .classList.toggle("menu-open");
+  document
+    .querySelectorAll(".Menu-links-link")
+    .forEach((e) => e.classList.toggle("menu-open"));
+});
 // Theme Toggler 🌞 -> 🌑 OR 🌑 -> 🌞
 
 const themeToggler = document.querySelector(".theme-toggler");
@@ -590,7 +591,7 @@ themeToggler.addEventListener("click", () => {
 });
 
 // Image Toggler
-let image = document.getElementsByTagName("img")[0];
+let image = document.querySelector(".marksimage");
 function toggleFullScreen() {
   if (!document.fullscreenElement) {
     image.requestFullscreen().catch((err) => {
