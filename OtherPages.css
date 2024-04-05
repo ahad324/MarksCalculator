@@ -8,7 +8,25 @@
   --primary-clr: rgb(13 36 131);
   --text-shadow: 2px 2px 2px BLACK;
 }
+::-webkit-scrollbar {
+  width: 12px;
+}
 
+/* Track */
+::-webkit-scrollbar-track {
+  background: #9e9e9e;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: var(--primary-clr);
+  border-radius: 2px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
 body {
   font-family: "Anta", sans-serif;
   margin: 0;
@@ -16,7 +34,77 @@ body {
   background-color: #f2f2f2;
   color: #333;
 }
+.Menu-bar {
+  width: 100%;
+  height: 10vh;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 0;
+  background: var(--primary-clr);
+  position: sticky;
+  top: 0;
+  z-index: 11;
+}
+.gradegenie{
+  font-size: clamp(2rem, -1.5rem + 8vw, 2.5rem);
+  color: whitesmoke;
+  font-weight: 100;
+}
+.logo-section-container,
+.logo-section {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* background: red; */
+}
+.logo-section {
+  justify-content: flex-start;
+  padding-left: 10px;
+}
+.logo-section-container {
+  width: 50%;
+}
+.logo {
+  width: 40px;
+  height: 40px;
+  border-radius: 40%;
+  filter: none;
+}
+.Menu-links {
+  position: sticky;
+  top: 10px;
+  z-index: 1000;
+  background: transparent;
+  width: 80%;
+  min-height: 50px;
+  justify-content: space-evenly;
+  display: flex;
+  align-items: center;
+  border-radius: 10px;
+  margin: auto;
+}
+.Menu-links a {
+  text-decoration: none;
+  color: white;
+  padding: 7px;
+  transition: 0.1s all ease;
+  border-radius: 10px;
+}
+.Menu-links a:hover , .Menu-links a.active{
+  color: black;
+  background-color: whitesmoke;
+  box-shadow: var(--box-shadow);
+}
 
+.menu-icon {
+  color: white;
+  right: 10px;
+  position: absolute;
+  font-size: 1.5rem;
+  display: none;
+}
 header {
   background-color: var(--primary-clr);
   color: white;
@@ -65,7 +153,7 @@ button {
   border: 0;
   cursor: pointer;
   will-change: box-shadow, transform;
-  background: radial-gradient(100% 100% at 100% 0%, #89e5ff 0%, #5468ff 100%);
+  background: radial-gradient(100% 100% at 100% 0%, #51a9c2 0%, #2c3cb6 100%);
   box-shadow: var(--box-shadow);
   padding: 0 2em;
   border-radius: 0.3em;
@@ -159,4 +247,78 @@ textarea{
   min-height: 30vh;
   margin-top: 10px;
   resize: none;
+}
+
+@media (max-width: 768px) {
+.Menu-links {
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  top: 100%;
+  background: crimson;
+  flex-direction: column;
+  box-shadow: var(--box-shadow);
+  border-radius: 10px;
+  transition: 0.5s all ease-in-out;
+  z-index: 10;
+  box-shadow: var(--box-shadow);
+}
+.Menu-links.menu-open {
+  transition: 0.5s all ease-in-out;
+  top: 70px;
+}
+.Menu-links a {
+  font-size: 1.5rem;
+  transition: 1s all ease;
+}
+.Menu-links a.menu-open {
+  transition: 1s all ease;
+}
+.Menu-links a:nth-child(1) {
+  transform: translateY(150px);
+}
+.Menu-links a:nth-child(2) {
+  transform: translateY(160px);
+}
+.Menu-links a:nth-child(3) {
+  transform: translateY(170px);
+}
+.Menu-links a:nth-child(4) {
+  transform: translateY(175px);
+}
+.Menu-links a:nth-child(5) {
+  transform: translateY(180px);
+}
+
+.Menu-links a.menu-open:nth-child(1) {
+  transition-delay: 0.1s;
+  transform: translateY(0);
+}
+.Menu-links a.menu-open:nth-child(2) {
+  transition-delay: 0.2s;
+  transform: translateY(0);
+}
+.Menu-links a.menu-open:nth-child(3) {
+  transition-delay: 0.3s;
+  transform: translateY(0);
+}
+.Menu-links a.menu-open:nth-child(4) {
+  transition-delay: 0.4s;
+  transform: translateY(0);
+}
+.Menu-links a.menu-open:nth-child(5) {
+  transition-delay: 0.5s;
+  transform: translateY(0);
+}
+.menu-icon {
+  display: block;
+  cursor: pointer;
+}
+.logo-section {
+  justify-content: flex-start;
+  padding-left: 10px;
+}
+.logo-section-container {
+  width: 100%;
+}
 }
