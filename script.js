@@ -576,6 +576,9 @@ document
     document
       .getElementsByClassName("Menu-links")[0]
       .classList.toggle("menu-open");
+    document
+      .querySelectorAll(".Menu-links-link")
+      .forEach((e) => e.classList.toggle("menu-open"));
   });
 // Theme Toggler 🌞 -> 🌑 OR 🌑 -> 🌞
 
