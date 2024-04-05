@@ -276,14 +276,16 @@ header {
 .Menu-links a {
   text-decoration: none;
   color: white;
-  padding: 10px;
+  padding: 7px;
+  transition: .1s all ease;
+  border-radius: 10px;
 }
 .Menu-links a:hover {
   color: black;
   background-color: whitesmoke;
-  border-radius: 10px;
   box-shadow: var(--box-shadow);
 }
+
 .menu-icon {
   color: white;
   right: 10px;
@@ -992,6 +994,9 @@ p {
   .Menu-links.menu-open {
     transition: 0.5s all ease-in-out;
     top: 70px;
+  }
+  .Menu-links a{
+    font-size: 1.5rem;
   }
   .menu-icon {
     display: block;

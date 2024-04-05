@@ -558,7 +558,6 @@ window.addEventListener("load", function () {
   var offlineMessage = document.getElementById("offlineMessage");
 
   function updateOnlineStatus() {
-    console.log(navigator.onLine);
     if (navigator.onLine) {
       offlineMessage.style.display = "none";
     } else {
@@ -589,7 +588,6 @@ themeToggler.addEventListener("click", () => {
 
 // Image Toggler
 let image = document.getElementsByTagName("img")[0];
-console.log(image);
 function toggleFullScreen() {
   if (!document.fullscreenElement) {
     image.requestFullscreen().catch((err) => {
