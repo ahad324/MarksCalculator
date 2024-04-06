@@ -49,8 +49,8 @@
     <meta name="google-adsense-account" content="ca-pub-2873043143634833" />
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Privacy Policy - GradeGenie - Calculate CGPA, SGPA, and GPA</title>
-    <link rel="shortcut icon" href="../images/GradeGenius.png" type="image/x-icon" />
+    <title>Contact Us - GradeGenie - Calculate CGPA, SGPA, and GPA</title>
+    <link rel="shortcut icon" href="./GradeGenius.png" type="image/x-icon" />
     <meta
       name="description"
       content="A comprehensive tool to calculate CGPA, SGPA, and GPA with an easy and beautiful UI ✨. Understanding Grading Criteria, GPA, SGPA, and CGPA. Understanding Grading Criteria, GPA, SGPA, and CGPA."
@@ -86,7 +86,7 @@
     <div class="Menu-bar">
       <div class="logo-section-container">
         <span class="logo-section">
-          <img src="../images/GradeGenius.png" class="logo" alt="Logo" />
+          <img src="./GradeGenius.png" class="logo" alt="Logo" />
           <h1 class="gradegenie">Grade Genie</h1>
         </span>
         <span class="menu-icon">
@@ -100,7 +100,7 @@
         <a class="Menu-links-link" href="./About.html" target="_blank"
           >About Us</a
         >
-        <a class="Menu-links-link" href="./Contact.html" target="_blank"
+        <a class="Menu-links-link active" href="./Contact.html" target="_blank"
           >Contact Us</a
         >
         <a
@@ -109,81 +109,97 @@
           target="_blank"
           >Terms</a
         >
-        <a
-          class="Menu-links-link active"
-          href="./PrivacyPolicy.html"
-          target="_blank"
+        <a class="Menu-links-link" href="./PrivacyPolicy.html" target="_blank"
           >PrivacyPolicy</a
         >
       </div>
     </div>
     <header>
-      <h1>Privacy Policy</h1>
+      <h1>Contact Us</h1>
     </header>
-    <main class="privacy-policy-container">
-      <p>
-        This Privacy Policy describes how GradeGenie collects, uses, and shares
-        information when you use our website
-        <a href="https://gradegenie.site/">gradegenie</a>.
-      </p>
 
-      <h2>Information We Collect</h2>
+    <main class="contact-us-container">
+      <section>
+        <h2>Get in Touch</h2>
+        <p>
+          We'd love to hear from you! Whether you have a question, feedback, or
+          just want to say hello, feel free to reach out to us using the form
+          below.
+        </p>
+      </section>
 
-      <ul>
-        <li>
-          <strong>Personal Information:</strong> We do not collect any
-          personally identifiable information from users of our website.
-        </li>
-        <li>
-          <strong>Usage Information:</strong> We may collect non-personally
-          identifiable information about how the Service is accessed and used.
-          This information may include your Internet Protocol (IP) address,
-          browser type, browser version, the pages of our Service that you
-          visit, the time and date of your visit, the time spent on those pages,
-          and other diagnostic data.
-        </li>
-      </ul>
-
-      <h2>How We Use Information</h2>
-
-      <p>We use the collected information for various purposes:</p>
-
-      <ul>
-        <li>To provide and maintain the Service.</li>
-        <li>To monitor the usage of the Service.</li>
-        <li>To detect, prevent, and address technical issues.</li>
-        <li>To improve the content and functionality of the Service.</li>
-      </ul>
-
-      <h2>Cookies</h2>
-
-      <p>
-        We do not use cookies or similar tracking technologies on our website.
-      </p>
-
-      <h2>Third-Party Links</h2>
-
-      <p>
-        Our Service may contain links to third-party websites or services that
-        are not owned or controlled by us. We have no control over, and assume
-        no responsibility for, the content, privacy policies, or practices of
-        any third-party websites or services.
-      </p>
-
-      <h2>Changes to This Privacy Policy</h2>
-
-      <p>
-        We may update our Privacy Policy from time to time. We will notify you
-        of any changes by posting the new Privacy Policy on this page.
-      </p>
-
-      <h2>Contact Us</h2>
-
-      <p>
-        If you have any questions about this Privacy Policy, please contact us
-        at gradegenieapp@gmail.com.
-      </p>
+      <section>
+        <h2>Contact Form</h2>
+        <form action="#">
+          <label for="name">Name:</label>
+          <input type="text" id="name" name="name" required /><br /><br />
+          <label for="email">Email:</label>
+          <input type="email" id="email" name="email" required /><br /><br />
+          <label for="message">Message:</label><br />
+          <textarea id="message" name="message" rows="4" required></textarea
+          ><br /><br />
+          <button type="submit">Submit</button>
+          <span id="confirmation">Message sent successfully.</span>
+        </form>
+      </section>
     </main>
-    <script src="../JS/Otherpages.js"></script>
+
+    <footer>
+      <p>&copy; 2024 Grade Genie. All rights reserved.</p>
+    </footer>
+    <script src="./Otherpages.js"></script>
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"
+    ></script>
+    <script>
+      var nameInput = document.querySelector("#name");
+      var emailInput = document.querySelector("#email");
+      var messageInput = document.querySelector("#message");
+      var btn = document.getElementsByTagName("button")[0];
+      console.log(btn);
+      document
+        .getElementsByTagName("form")[0]
+        .addEventListener("submit", function (e) {
+          e.preventDefault();
+          btn.disabled = true;
+          btn.innerHTML = "Sending...";
+          setTimeout(() => {
+            btn.disabled = false;
+            btn.innerHTML = "Submit";
+          }, 2000);
+          sendEmail();
+        });
+
+      function sendEmail() {
+        var params = {
+          from_mail: emailInput.value,
+          from_name: nameInput.value,
+          message: messageInput.value,
+        };
+
+        emailjs
+          .send(
+            "service_u95p0ps",
+            "template_gyreqf9",
+            params,
+            "hqVI9Kr1m8IIkGMKC"
+          )
+          .then(function (response) {
+            document.querySelector("#confirmation").style.display = "block";
+            nameInput.value = "";
+            emailInput.value = "";
+            messageInput.value = "";
+
+            // Remove message after seven seconds
+            setTimeout(function () {
+              document.querySelector("#confirmation").style.display = "none";
+            }, 7000);
+          })
+          .catch(function (error) {
+            alert("Oops! Something went wrong!😔");
+          });
+      }
+    </script>
   </body>
 </html>
