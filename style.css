@@ -864,6 +864,12 @@ details {
   border-radius: 10px;
   box-shadow: var(--text-shadow);
   cursor: pointer;
+  transition: max-height 1s ease;
+  max-height: 0;
+  overflow: hidden;
+}
+details[open] {
+  max-height: 200px;
 }
 summary {
   display: flex;
@@ -957,6 +963,8 @@ h1,
 }
 h2 {
   font-size: 2rem;
+  margin-bottom: 20px;
+  font-weight: 800;
 }
 #subject-name-below-assesment,
 #obtained-marks-below-assesment {
@@ -997,6 +1005,38 @@ h2 {
   font-weight: bolder;
   margin: 20px 0;
   text-shadow: var(--box-shadow);
+}
+.calculator-blog {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+.calculator-blog-inner {
+  cursor: pointer;
+  border-radius: 10px;
+  padding: 10px;
+  transform: scale(0.9);
+  background: #877f7f4a;
+  border: 1px solid black;
+  transition: 0.2s all ease;
+}
+.calculator-blog:hover .calculator-blog-inner:not(:hover) {
+  filter: blur(2px);
+}
+.calculator-blog-inner:hover {
+  transform: scale(1);
+  box-shadow: var(--box-shadow);
+}
+small {
+  display: block;
+  padding: 10px 0;
+  color: var(--primary-clr);
+  text-shadow: 0 0 1px green;
+}
+body.dark-theme small {
+  color: #73ec73;
+}
+small > i {
+  color: red;
 }
 p {
   text-align: justify;
@@ -1097,5 +1137,8 @@ p {
   }
   img {
     width: 100%;
+  }
+  .calculator-blog {
+    grid-template-columns: repeat(1, 1fr);
   }
 }
