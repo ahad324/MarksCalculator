@@ -963,8 +963,6 @@ h1,
 }
 h2 {
   font-size: 2rem;
-  margin-bottom: 20px;
-  font-weight: 800;
 }
 #subject-name-below-assesment,
 #obtained-marks-below-assesment {
@@ -979,7 +977,7 @@ h2 {
   justify-content: center;
   align-items: center;
   min-height: 5vh;
-  background: #3aca3a;
+  background: #31c031;
   width: 100%;
 }
 
@@ -1025,6 +1023,10 @@ h2 {
 .calculator-blog-inner:hover {
   transform: scale(1);
   box-shadow: var(--box-shadow);
+}
+.calculator-blog-inner > h2{
+  margin-bottom: 20px;
+  font-weight: 800;
 }
 small {
   display: block;
@@ -1072,7 +1074,9 @@ p {
     background: crimson;
     flex-direction: column;
     box-shadow: var(--box-shadow);
-    border-radius: 10px;
+    border-radius: 0px;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
     transition: 0.5s all ease-in-out;
     z-index: 10;
     box-shadow: var(--box-shadow);
