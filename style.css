@@ -129,6 +129,7 @@
   background: black;
   position: fixed;
   z-index: 999999;
+  transition: 1s all ease;
 }
 .loader {
   width: 72px;
@@ -136,10 +137,9 @@
   margin: auto;
   position: relative;
   transition: opacity 0.5s;
-  opacity: 1;
 }
 .hidden {
-  opacity: 0;
+  transform: translateY(-200%);
   pointer-events: none;
 }
 .loader:before {
@@ -1024,7 +1024,7 @@ h2 {
   transform: scale(1);
   box-shadow: var(--box-shadow);
 }
-.calculator-blog-inner > h2{
+.calculator-blog-inner > h2 {
   margin-bottom: 20px;
   font-weight: 800;
 }
