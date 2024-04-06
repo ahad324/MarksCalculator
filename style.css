@@ -136,7 +136,7 @@
   height: 72px;
   margin: auto;
   position: relative;
-  transition: opacity 0.5s;
+  transition: transform 0.5s;
 }
 .hidden {
   transform: translateY(-200%);
