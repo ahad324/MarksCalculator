@@ -171,5 +171,16 @@
       <p>&copy; 2024 Grade Genie. All rights reserved.</p>
     </footer>
     <script src="./Otherpages.js"></script>
+    <script src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+    <script>
+       const lenis = new Lenis();
+ 
+       function raf(time) {
+          lenis.raf(time);
+          requestAnimationFrame(raf);
+       }
+ 
+       requestAnimationFrame(raf);
+    </script>
   </body>
 </html>

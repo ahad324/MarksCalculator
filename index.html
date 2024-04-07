@@ -458,6 +458,17 @@
    </div>
    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.3/html2pdf.bundle.min.js"></script>
    <script src="./script.js"></script>
+   <script src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+   <script>
+      const lenis = new Lenis();
+
+      function raf(time) {
+         lenis.raf(time);
+         requestAnimationFrame(raf);
+      }
+
+      requestAnimationFrame(raf);
+   </script>
 </body>
 
 </html>

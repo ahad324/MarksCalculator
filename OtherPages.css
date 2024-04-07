@@ -1,6 +1,27 @@
 /* Global Styles */
 @import url("https://fonts.googleapis.com/css2?family=Anta&display=swap");
 
+/* LENIS SMOOTH SCROLL */
+html.lenis, html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
+}
+
 :root {
   --box-shadow: 0px 0.01em 0.01em rgb(45 35 66 / 40%),
     0px 0.3em 0.7em -0.01em rgb(45 35 66 / 30%),

@@ -109,11 +109,7 @@
         </span>
       </div>
       <div class="Menu-links">
-        <a
-          class="Menu-links-link"
-          href="https://gradegenie.site/"
-          >Home</a
-        >
+        <a class="Menu-links-link" href="https://gradegenie.site/">Home</a>
         <a class="Menu-links-link" href="./About.html" target="_blank"
           >About Us</a
         >
@@ -207,5 +203,16 @@
       </p>
     </main>
     <script src="./Otherpages.js"></script>
+    <script src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+    <script>
+      const lenis = new Lenis();
+
+      function raf(time) {
+        lenis.raf(time);
+        requestAnimationFrame(raf);
+      }
+
+      requestAnimationFrame(raf);
+    </script>
   </body>
 </html>
