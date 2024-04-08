@@ -448,9 +448,7 @@ function CalculateFinalSGpa() {
 }
 // Event delegation for delete buttons
 tableBody.addEventListener("click", function (event) {
-  console.log("Outside")
   if (event.target.classList.contains("delete-btn")) {
-    console.log("Inside")
     var row = event.target.closest("tr");
     var index = parseInt(row.getAttribute("subject-index"));
 
