@@ -20,5 +20,15 @@ window.addEventListener("scroll", () => {
 });
 // Pre-Loader function
 document.addEventListener("DOMContentLoaded", function () {
-  document.querySelector(".loader-container").classList.add("hidden");
+  setTimeout(() => {
+    document.querySelector(".slideup").classList.add("hidden");
+
+    const fadeElements = document.querySelectorAll(".fade-in");
+    fadeElements.forEach((element, index) => {
+      element.style.transform = "translateY(0)";
+      const transitionDelay = (index + 1) * 0.1;
+
+      element.style.transitionDelay = `${transitionDelay}s`;
+    });
+  }, 500);
 });

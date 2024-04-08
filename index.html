@@ -67,8 +67,15 @@
    <div class="loader-container">
       <div class="loader"></div>
    </div>
-   <div class="Menu-bar">
+   <div class="slideup">
+      <span class="slideup-tittle">
+         <h3> GradeGenie </h3>
+         <h3>Home</h3>
+      </span>
+   </div>
 
+
+   <div class="Menu-bar">
       <div class="logo-section-container">
          <span class="logo-section">
             <img src="./GradeGenius.png" class="logo" alt="Logo">
@@ -120,7 +127,7 @@
                         Subject name field. Then you can add more assessment marks for
                         that subject.
                      </li>
-                     <li>For more instructions read the blog below.</li>
+                     <li>For more instructions read <a href="#instructions-blog">here</a></li>
                      <li>You can also print the Result.</li>
                   </ul>
                   <span class="inst-btm">
@@ -176,7 +183,7 @@
       </span>
       </span>
       </div>
-      <span class="data-below-assesment">Your Marks For <span id="subject-name-below-assesment"></span> are
+      <span class="data-below-assesment fade-in">Your Marks For <span id="subject-name-below-assesment"></span> are
          <span id="obtained-marks-below-assesment"></span>/100</span>
    </header>
    <div class="features">
@@ -193,14 +200,14 @@
             <li>Error Handling and Validation</li>
          </ul>
       </span>
-      <span class="arrow">
+      <span class="arrow fade-in">
          <i>></i>
       </span>
    </div>
 
 
 
-   <main>
+   <main class="fade-in">
       <div class="Swiper-btns">
          <span class="btns-bg-swiper-element"></span>
          <span class="swiper-btns-container">
@@ -382,7 +389,7 @@
                standardized
                measure of your academic performance across different courses and semesters.</p>
          </section>
-         <section class="blog-post-section">
+         <section class="blog-post-section" id="instructions-blog">
             <h2 class="blog-post-heading">How can you use this Tool</h2>
             <p>First Enter the subject Name and Credit Hours.Let's take a student's performance in
                <strong>Physics.</strong>
@@ -461,7 +468,8 @@
    <script src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
    <script>
       const lenis = new Lenis();
-
+      const modalContent = document.querySelector(".instructions-modal-content");
+      const lenisInstance = new Lenis(modalContent);
       function raf(time) {
          lenis.raf(time);
          requestAnimationFrame(raf);

@@ -101,11 +101,13 @@ var closeBtns = document.getElementsByClassName("close");
 // Function to open the modal
 function openModal(modal) {
   modal.style.display = "block";
+  // modal.style.transform = "translateX(0)";
 }
 
 // Function to close the modal
 function closeModal(modal) {
   modal.style.display = "none";
+  // modal.style.transform = "translateX(-200%)";
 }
 
 // Event listener for instructions button
@@ -549,9 +551,20 @@ document
     }, 2000);
   });
 
-// Pre-Loader function
+// Pre-Loader and Fade in function
 document.addEventListener("DOMContentLoaded", function () {
   document.querySelector(".loader-container").classList.add("hidden");
+  setTimeout(() => {
+    document.querySelector(".slideup").classList.add("hidden");
+
+    const fadeElements = document.querySelectorAll(".fade-in");
+    fadeElements.forEach((element, index) => {
+      element.style.transform = "translateY(0)";
+      const transitionDelay = (index + 1) * 0.1;
+
+      element.style.transitionDelay = `${transitionDelay}s`;
+    });
+  }, 700);
 });
 // Offline Message function
 window.addEventListener("load", function () {

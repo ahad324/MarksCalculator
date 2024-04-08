@@ -1,8 +1,41 @@
 /* Global Styles */
 @import url("https://fonts.googleapis.com/css2?family=Anta&display=swap");
+.slideup {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #f2f2f2;
+  width: 100%;
+  height: 110%;
+  position: absolute;
+  background: #0f0e0e;
+  z-index: 999;
+  transition: 1s all ease;
+}
+.slideup.hidden {
+  transition: 1s all ease;
+  transform: translateY(-100%);
+}
+.slideup-tittle {
+  font-size: 1.8rem;
+  text-align: center;
+}
+h3:nth-child(2) {
+  color: yellow;
+}
+.slideup.hidden .slideup-tittle {
+  transition: 1s all ease;
+  transition-delay: 0.2s;
+  transform: translateY(-200px);
+}
+.fade-in {
+  transition: transform 1s ease-in-out;
+  transform: translateY(30px);
+}
 
 /* LENIS SMOOTH SCROLL */
-html.lenis, html.lenis body {
+html.lenis,
+html.lenis body {
   height: auto;
 }
 
@@ -27,6 +60,7 @@ html.lenis, html.lenis body {
     0px 0.3em 0.7em -0.01em rgb(45 35 66 / 30%),
     inset 0px -0.01em 0px rgb(58 65 111 / 50%);
   --primary-clr: rgb(13 36 131);
+  /* linear-gradient(45deg, #db1313, #f43156) */
   --text-shadow: 2px 2px 2px BLACK;
 }
 ::-webkit-scrollbar {
@@ -40,7 +74,7 @@ html.lenis, html.lenis body {
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: var(--primary-clr);
+  background: rgb(16, 15, 15);
   border-radius: 2px;
 }
 
@@ -48,86 +82,7 @@ html.lenis, html.lenis body {
 ::-webkit-scrollbar-thumb:hover {
   background: #555;
 }
-/* Pre-Loader */
-.loader-container {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: black;
-  position: fixed;
-  z-index: 999999;
-  transition: 1s all ease;
-}
-.loader {
-  width: 72px;
-  height: 72px;
-  margin: auto;
-  position: relative;
-  transition: transform 0.5s;
-}
-.hidden {
-  transform: translateY(-200%);
-  pointer-events: none;
-}
-.loader:before {
-  content: "";
-  width: 72px;
-  height: 7px;
-  background: #f0808050;
-  position: absolute;
-  top: 95px;
-  left: 0;
-  border-radius: 50%;
-  animation: shadow324 0.5s linear infinite;
-}
 
-.loader:after {
-  content: "";
-  width: 100%;
-  height: 100%;
-  background: #f08080;
-  position: absolute;
-  top: 0;
-  left: 0;
-  border-radius: 4px;
-  animation: jump7456 0.5s linear infinite;
-}
-
-@keyframes jump7456 {
-  15% {
-    border-bottom-right-radius: 3px;
-  }
-
-  25% {
-    transform: translateY(9px) rotate(22.5deg);
-  }
-
-  50% {
-    transform: translateY(18px) scale(1, 0.9) rotate(45deg);
-    border-bottom-right-radius: 40px;
-  }
-
-  75% {
-    transform: translateY(9px) rotate(67.5deg);
-  }
-
-  100% {
-    transform: translateY(0) rotate(90deg);
-  }
-}
-
-@keyframes shadow324 {
-  0%,
-  100% {
-    transform: scale(1, 1);
-  }
-
-  50% {
-    transform: scale(1.2, 1);
-  }
-}
 body {
   font-family: "Anta", sans-serif;
   margin: 0;
@@ -188,7 +143,7 @@ body {
 }
 .Menu-links a {
   text-decoration: none;
-  color: #dad9d9;
+  color: rgb(242 235 235);
   padding: 7px;
   transition: 0.1s all ease;
   border-radius: 10px;
@@ -244,16 +199,23 @@ body {
 }
 
 header {
-  background-color: var(--primary-clr);
+  background: var(--primary-clr);
   color: white;
   text-align: center;
   padding: 1rem 0;
+  box-shadow: var(--box-shadow);
+  position: relative;
+  z-index: -1;
 }
 
 main {
   max-width: 800px;
   margin: 0 auto;
   padding: 20px;
+  background-color: white;
+  padding: 20px;
+  box-shadow: var(--box-shadow);
+  border-radius: 10px;
 }
 
 h1 {
@@ -335,46 +297,14 @@ input:focus {
   outline: 1px solid var(--primary-clr);
 }
 footer {
-  background-color: var(--primary-clr);
+  background: var(--primary-clr);
   color: white;
   text-align: center;
   padding: 1rem 0;
   width: 100%;
-}
-
-/* Specific Page Styles */
-
-/* Privacy Policy */
-.privacy-policy-container {
-  background-color: white;
-  padding: 20px;
   box-shadow: var(--box-shadow);
-  border-radius: 10px;
 }
 
-/* Terms & Conditions */
-.terms-conditions-container {
-  background-color: white;
-  padding: 20px;
-  box-shadow: var(--box-shadow);
-  border-radius: 10px;
-}
-
-/* About Us */
-.about-us-container {
-  background-color: white;
-  padding: 20px;
-  box-shadow: var(--box-shadow);
-  border-radius: 10px;
-}
-
-/* Contact Us */
-.contact-us-container {
-  background-color: white;
-  padding: 20px;
-  box-shadow: var(--box-shadow);
-  border-radius: 10px;
-}
 #confirmation {
   color: lime;
   display: none;
