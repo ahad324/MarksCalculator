@@ -267,7 +267,7 @@ body {
   min-height: 100vh;
   color: black;
   transition: 0.5s all ease;
-  background: #dad9d9;
+  background: #f2f2f2;
 }
 body.dark-theme {
   transition: 0.5s all ease;
