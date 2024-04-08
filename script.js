@@ -277,13 +277,11 @@ submitSubjectBtn.addEventListener("click", function (event) {
     }
     existingSubject.marks = finalObtainedMarks;
     let marksCell = document.querySelector(
-      `#resultModal table tbody tr[subject-index="${
-        existingSubjectIndex + 1
+      `#resultModal table tbody tr[subject-index="${existingSubjectIndex + 1
       }"] td[data-marks]`
     );
     let SubjectGPACell = document.querySelector(
-      `#resultModal table tbody tr[subject-index="${
-        existingSubjectIndex + 1
+      `#resultModal table tbody tr[subject-index="${existingSubjectIndex + 1
       }"] td[data-gpa]`
     );
 
@@ -634,4 +632,17 @@ window.addEventListener("scroll", () => {
   } else {
     menuBar.style.boxShadow = "none";
   }
+});
+
+
+Array.from(document.getElementsByClassName('delayed-link')).forEach((e) => {
+  e.addEventListener('click', function (event) {
+    event.preventDefault();
+
+    document.querySelector(".delayed-link-slide").classList.add('show');
+
+    setTimeout(function () {
+      window.location.href = event.target.href;
+    }, 1000);
+  });
 });

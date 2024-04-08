@@ -32,3 +32,15 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }, 500);
 });
+
+Array.from(document.getElementsByClassName('delayed-link')).forEach((e) => {
+  e.addEventListener('click', function (event) {
+    event.preventDefault();
+    console.log(document.querySelector(".delayed-link-slide").classList)
+    document.querySelector(".delayed-link-slide").classList.add('show');
+
+    setTimeout(function () {
+      window.location.href = event.target.href;
+    }, 1000);
+  });
+});
