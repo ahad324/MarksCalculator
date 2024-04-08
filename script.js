@@ -355,7 +355,7 @@ submitSubjectBtn.addEventListener("click", function (event) {
     CRCell.setAttribute("cr-index", subjectcount);
 
     newRow.insertCell().innerHTML =
-      '<button class="delete-btn"><i>❌</i></button>';
+      '<button class="delete-btn">❌</button>';
     newRow.setAttribute("subject-index", subjectcount);
 
     updateDataObj();
@@ -448,7 +448,9 @@ function CalculateFinalSGpa() {
 }
 // Event delegation for delete buttons
 tableBody.addEventListener("click", function (event) {
+  console.log("Outside")
   if (event.target.classList.contains("delete-btn")) {
+    console.log("Inside")
     var row = event.target.closest("tr");
     var index = parseInt(row.getAttribute("subject-index"));
 
@@ -520,7 +522,7 @@ function updateTable() {
     CRCell.setAttribute("cr-index", index + 1);
 
     newRow.insertCell().innerHTML =
-      '<button class="delete-btn"><i>❌</i></button>';
+      '<button class="delete-btn">❌</button>';
     newRow.setAttribute("subject-index", index + 1);
   });
 }
