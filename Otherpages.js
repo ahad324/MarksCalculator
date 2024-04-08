@@ -36,7 +36,7 @@ document.addEventListener("DOMContentLoaded", function () {
 Array.from(document.getElementsByClassName('delayed-link')).forEach((e) => {
   e.addEventListener('click', function (event) {
     event.preventDefault();
-    console.log(document.querySelector(".delayed-link-slide").classList)
+    
     document.querySelector(".delayed-link-slide").classList.add('show');
 
     setTimeout(function () {
