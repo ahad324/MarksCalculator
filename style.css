@@ -334,7 +334,7 @@ header {
 }
 .Menu-links a {
   text-decoration: none;
-  color: #dad9d9;
+  color: rgb(242 235 235);
   padding: 7px;
   transition: 0.1s all ease;
   border-radius: 10px;
