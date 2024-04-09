@@ -549,21 +549,7 @@ document
     }, 2000);
   });
 
-// Pre-Loader and Fade in function
-document.addEventListener("DOMContentLoaded", function () {
-  document.querySelector(".loader-container").classList.add("hidden");
-  setTimeout(() => {
-    document.querySelector(".slideup").classList.add("hidden");
 
-    const fadeElements = document.querySelectorAll(".fade-in");
-    fadeElements.forEach((element, index) => {
-      element.style.transform = "translateY(0)";
-      const transitionDelay = (index + 1) * 0.1;
-
-      element.style.transitionDelay = `${transitionDelay}s`;
-    });
-  }, 700);
-});
 // Offline Message function
 window.addEventListener("load", function () {
   var offlineMessage = document.getElementById("offlineMessage");
@@ -635,14 +621,52 @@ window.addEventListener("scroll", () => {
 });
 
 
-Array.from(document.getElementsByClassName('delayed-link')).forEach((e) => {
-  e.addEventListener('click', function (event) {
+
+// Pre-Loader and Fade in function
+document.addEventListener("DOMContentLoaded", function () {
+  document.querySelector(".loader-container").classList.add("hidden");
+
+
+  setTimeout(() => {
+    setTimeout(() => {
+      document.querySelector(".slideup-container").style.display = "none";
+    }, 1000)
+    document.querySelector(".slideup-tittle").style.transform = "translateY(-500px)";
+    const slideupbars = document.querySelectorAll(".slideup-bar");
+    console.log(slideupbars)
+
+    slideupbars.forEach((e, i) => {
+      const transitionDelay = (i + 1) * 0.1;
+      e.classList.add("hidden");
+      e.style.transitionDelay = `${transitionDelay}s`;
+    })
+
+    const fadeElements = document.querySelectorAll(".fade-in");
+    fadeElements.forEach((element, index) => {
+      element.style.transform = "translateY(0)";
+      const transitionDelay = (index + 1) * 0.1;
+
+      element.style.transitionDelay = `${transitionDelay}s`;
+    });
+  }, 700);
+});
+
+Array.from(document.getElementsByClassName('delayed-link')).forEach((link) => {
+  link.addEventListener('click', function (event) {
     event.preventDefault();
 
-    document.querySelector(".delayed-link-slide").classList.add('show');
+    document.querySelector(".delayed-link-slide-down-container").style.transform = 'translateY(0)';
+    const slidedownbars = document.querySelectorAll(".delayed-link-slidedown-bar");
 
-    setTimeout(function () {
+    slidedownbars.forEach((e, i) => {
+      const transitionDelay = (i + 1) * 0.1;
+      e.classList.add("showing");
+      e.style.transitionDelay = `${transitionDelay}s`;
+    })
+
+    setTimeout(() => {
       window.location.href = event.target.href;
     }, 1000);
+
   });
 });

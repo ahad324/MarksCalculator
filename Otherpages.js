@@ -21,7 +21,19 @@ window.addEventListener("scroll", () => {
 // Pre-Loader function
 document.addEventListener("DOMContentLoaded", function () {
   setTimeout(() => {
-    document.querySelector(".slideup").classList.add("hidden");
+    setTimeout(() => {
+      document.querySelector(".slideup-container").style.display = "none";
+    }, 1000)
+    document.querySelector(".slideup-tittle").style.transform = "translateY(-500px)";
+    const slideupbars = document.querySelectorAll(".slideup-bar");
+    console.log(slideupbars)
+    
+    slideupbars.forEach((e, i) => {
+      const transitionDelay = (i + 1) * 0.1;
+      e.classList.add("hidden");
+      e.style.transitionDelay = `${transitionDelay}s`;
+    })
+
 
     const fadeElements = document.querySelectorAll(".fade-in");
     fadeElements.forEach((element, index) => {
@@ -33,14 +45,23 @@ document.addEventListener("DOMContentLoaded", function () {
   }, 500);
 });
 
-Array.from(document.getElementsByClassName('delayed-link')).forEach((e) => {
-  e.addEventListener('click', function (event) {
+Array.from(document.getElementsByClassName('delayed-link')).forEach((link) => {
+  link.addEventListener('click', function (event) {
     event.preventDefault();
-    
-    document.querySelector(".delayed-link-slide").classList.add('show');
 
-    setTimeout(function () {
+    document.querySelector(".delayed-link-slide-down-container").style.transform = 'translateY(0)';
+    const slidedownbars = document.querySelectorAll(".delayed-link-slidedown-bar");
+    console.log(slidedownbars)
+
+    slidedownbars.forEach((e, i) => {
+      const transitionDelay = (i + 1) * 0.1;
+      e.classList.add("showing");
+      e.style.transitionDelay = `${transitionDelay}s`;
+    })
+
+    setTimeout(()=> {
       window.location.href = event.target.href;
     }, 1000);
+
   });
 });
