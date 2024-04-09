@@ -633,7 +633,6 @@ document.addEventListener("DOMContentLoaded", function () {
     }, 1000)
     document.querySelector(".slideup-tittle").style.transform = "translateY(-500px)";
     const slideupbars = document.querySelectorAll(".slideup-bar");
-    console.log(slideupbars)
 
     slideupbars.forEach((e, i) => {
       const transitionDelay = (i + 1) * 0.1;

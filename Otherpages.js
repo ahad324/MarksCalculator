@@ -26,7 +26,6 @@ document.addEventListener("DOMContentLoaded", function () {
     }, 1000)
     document.querySelector(".slideup-tittle").style.transform = "translateY(-500px)";
     const slideupbars = document.querySelectorAll(".slideup-bar");
-    console.log(slideupbars)
     
     slideupbars.forEach((e, i) => {
       const transitionDelay = (i + 1) * 0.1;
@@ -51,7 +50,6 @@ Array.from(document.getElementsByClassName('delayed-link')).forEach((link) => {
 
     document.querySelector(".delayed-link-slide-down-container").style.transform = 'translateY(0)';
     const slidedownbars = document.querySelectorAll(".delayed-link-slidedown-bar");
-    console.log(slidedownbars)
 
     slidedownbars.forEach((e, i) => {
       const transitionDelay = (i + 1) * 0.1;
