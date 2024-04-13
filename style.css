@@ -301,6 +301,7 @@ html.lenis body {
 }
 
 @keyframes shadow324 {
+
   0%,
   100% {
     transform: scale(1, 1);
@@ -564,13 +565,13 @@ body.dark-theme .theme-toggler::before {
   padding: 10px 1%;
 }
 
-.instructions-list > li {
+.instructions-list>li {
   color: white;
   list-style: decimal;
   margin-top: 10px;
 }
 
-.instructions-list > li::marker {
+.instructions-list>li::marker {
   color: chartreuse;
 }
 
@@ -899,23 +900,23 @@ main {
   left: 0;
 }
 
-.features-content > ul > li {
+.features-content>ul>li {
   transition: 2s all ease;
   opacity: 0;
   transform: translateX(-100%);
 }
 
-.features.active .features-content > ul > li {
+.features.active .features-content>ul>li {
   transition: 2s all ease;
   opacity: 1;
   transform: translateX(0);
 }
 
-.features.active .features-content > ul > li:nth-child(even) {
+.features.active .features-content>ul>li:nth-child(even) {
   transition-delay: 0.2s;
 }
 
-.features.active .features-content > ul > li:nth-child(odd) {
+.features.active .features-content>ul>li:nth-child(odd) {
   transition-delay: 0.4s;
 }
 
@@ -959,12 +960,12 @@ main {
   }
 }
 
-.arrow.active > i {
+.arrow.active>i {
   transition-delay: 1s;
   transform: rotate(180deg);
 }
 
-.arrow > i {
+.arrow>i {
   transition: 1s all ease;
   font-size: 2.2rem;
   font-family: sans-serif;
@@ -993,7 +994,7 @@ ul {
   font-size: 0.8rem;
 }
 
-ul > li {
+ul>li {
   font-size: 1rem;
   text-align: left;
   margin-top: 10%;
@@ -1001,7 +1002,7 @@ ul > li {
   color: gold;
 }
 
-ul > li::marker {
+ul>li::marker {
   color: white;
 }
 
@@ -1079,7 +1080,7 @@ summary {
   margin-top: 4px;
 }
 
-details > p {
+details>p {
   font-size: 1rem;
   color: azure;
 }
@@ -1242,18 +1243,21 @@ h2 {
   color: black;
   background: linear-gradient(to right, rgb(95 126 255), rgb(106 135 255));
 }
+
 body.dark-theme .calculator-blog-inner {
   color: white;
 }
+
 body.dark-theme small {
   color: black;
 }
+
 .calculator-blog:hover .calculator-blog-inner:not(:hover) {
   transform: scale(0.9);
   filter: blur(2px);
 }
 
-.calculator-blog-inner > h2 {
+.calculator-blog-inner>h2 {
   margin-bottom: 20px;
   font-weight: 800;
 }
@@ -1266,7 +1270,7 @@ small {
   text-shadow: var(--box-shadow);
 }
 
-small > i {
+small>i {
   color: yellow;
 }
 
@@ -1274,6 +1278,16 @@ p {
   text-align: justify;
   padding: 0 10px;
   font-size: 1.2rem;
+}
+
+footer {
+  background: var(--primary-clr);
+  color: white;
+  text-align: center;
+  padding: 2rem 0;
+  width: 100%;
+  margin-top: 2%;
+  box-shadow: var(--box-shadow);
 }
 
 @media (max-width: 768px) {
@@ -1397,5 +1411,12 @@ p {
 
   .calculator-blog {
     grid-template-columns: repeat(1, 1fr);
+    align-content: center;
+    justify-items: center;
+    margin-top: 5%;
+  }
+
+  .calculator-blog-inner {
+    width: 80%;
   }
 }
