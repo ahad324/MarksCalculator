@@ -24,9 +24,9 @@ document.addEventListener("DOMContentLoaded", function () {
     setTimeout(() => {
       document.querySelector(".slideup-container").style.display = "none";
     }, 1000)
-    document.querySelector(".slideup-tittle").style.transform = "translateY(-500px)";
+    document.querySelector(".slideup-tittle").style.transform = "translateY(-500%)";
     const slideupbars = document.querySelectorAll(".slideup-bar");
-    
+
     slideupbars.forEach((e, i) => {
       const transitionDelay = (i + 1) * 0.1;
       e.classList.add("hidden");
@@ -57,7 +57,7 @@ Array.from(document.getElementsByClassName('delayed-link')).forEach((link) => {
       e.style.transitionDelay = `${transitionDelay}s`;
     })
 
-    setTimeout(()=> {
+    setTimeout(() => {
       window.location.href = event.target.href;
     }, 1000);
 

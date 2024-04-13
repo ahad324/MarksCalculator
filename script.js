@@ -631,7 +631,7 @@ document.addEventListener("DOMContentLoaded", function () {
     setTimeout(() => {
       document.querySelector(".slideup-container").style.display = "none";
     }, 1000)
-    document.querySelector(".slideup-tittle").style.transform = "translateY(-500px)";
+    document.querySelector(".slideup-tittle").style.transform = "translateY(-500%)";
     const slideupbars = document.querySelectorAll(".slideup-bar");
 
     slideupbars.forEach((e, i) => {
