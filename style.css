@@ -130,27 +130,25 @@ html.lenis body {
 
 /* Showing Alert */
 .alert {
-  display: block;
+  display: none;
   background: black;
   color: crimson;
   text-shadow: 0 0 8px crimson;
-  width: 200px;
+  min-width: 200px;
+  width: 50%;
   border-radius: 5px;
   box-shadow: var(--box-shadow);
   position: fixed;
-  top: 20%;
-  left: 10%;
-  padding: 10px;
-  z-index: 9;
-  transform: translateX(-1000px);
-  transition: 1s all ease;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 14px;
+  z-index: 11;
 }
 
 .alert.active {
-  transition: 1s all ease;
-  transform: translateX(0);
+  display: block;
 }
-
 /* Showing offline status */
 .offline-message {
   display: none;
@@ -570,6 +568,9 @@ body.dark-theme .theme-toggler::before {
   list-style: decimal;
   margin-top: 10px;
 }
+.instructions-list > li > a {
+  color: crimson;
+}
 
 .instructions-list>li::marker {
   color: chartreuse;
@@ -606,7 +607,15 @@ body.dark-theme .theme-toggler::before {
   font-weight: bold;
   cursor: pointer;
 }
-
+.alert-close{
+  color: red;
+  position: absolute;
+  top: -8px;
+    right: 5px;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+}
 .close:hover,
 .close:focus {
   color: whitesmoke;

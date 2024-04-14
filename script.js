@@ -127,7 +127,15 @@ for (var i = 0; i < closeBtns.length; i++) {
     closeModal(modal);
   });
 }
-
+// CUSTOM AlertBox
+let alerttext = document.getElementsByClassName("alert")[0];
+function alert(message) {
+  alerttext.innerHTML = message + '<i class="alert-close">&times;</i>';
+  alerttext.classList.add("active");
+  document.querySelector(".alert-close").addEventListener("click", () => {
+    alerttext.classList.remove("active");
+  });
+}
 // Event listener to close modal if user clicks outside of it
 window.addEventListener("click", function (event) {
   if (event.target.classList.contains("modal")) {
@@ -149,8 +157,6 @@ var marksbelowassesment = document.getElementById(
   "obtained-marks-below-assesment"
 );
 
-let alert = document.getElementsByClassName("alert")[0];
-let alerttime = 4000;
 let DataObj = []; // Object to store subject , total Obtained marks and grade
 let subjectcount = 0; // Counter for subjects
 var message = document.getElementsByClassName("message")[0];
@@ -204,35 +210,17 @@ submitSubjectBtn.addEventListener("click", function (event) {
     isNaN(inputMaxMarks) ||
     isNaN(inputWeightage)
   ) {
-    alert.innerHTML = "Please fill out all fields with valid values.";
-    alert.classList.add("active");
-    setTimeout(() => {
-      alert.classList.remove("active");
-      alert.innerHTML = "";
-    }, alerttime);
-    // alert("Please fill out all fields with valid values.");
+    alert("Please fill out all fields with valid values.");
     return;
   }
 
   if (inputObtMarks > inputMaxMarks) {
-    alert.innerHTML = "Obtained marks cannot exceed maximum marks";
-    alert.classList.add("active");
-    setTimeout(() => {
-      alert.classList.remove("active");
-      alert.innerHTML = "";
-    }, alerttime);
-    // alert("Obtained marks cannot exceed maximum marks.");
+    alert("Obtained marks cannot exceed maximum marks.");
     return;
   }
 
   if (inputWeightage > 100) {
-    alert.innerHTML = "Weightage cannot exceed 100.";
-    alert.classList.add("active");
-    setTimeout(() => {
-      alert.classList.remove("active");
-      alert.innerHTML = "";
-    }, alerttime);
-    // alert("Weightage cannot exceed 100.");
+    alert("Weightage cannot exceed 100.");
     return;
   }
   // When user CLicks on SUBMIT Button then resultcard button will beat
@@ -266,13 +254,7 @@ submitSubjectBtn.addEventListener("click", function (event) {
       parseFloat(totalObtMarksForASubject) + parseFloat(existingSubject.marks);
     // console.log(finalObtainedMarks);
     if (finalObtainedMarks > 100) {
-      alert.innerHTML = "Total obtained marks in Result Card cannot exceed 100";
-      alert.classList.add("active");
-      setTimeout(() => {
-        alert.classList.remove("active");
-        alert.innerHTML = "";
-      }, alerttime);
-      // alert("Total obtained marks cannot exceed 100");
+      alert("Total obtained marks in Result Card cannot exceed 100");
       return;
     }
     existingSubject.marks = finalObtainedMarks;
@@ -352,8 +334,7 @@ submitSubjectBtn.addEventListener("click", function (event) {
     CRCell.setAttribute("data-cr", inputCreditHours.value);
     CRCell.setAttribute("cr-index", subjectcount);
 
-    newRow.insertCell().innerHTML =
-      '<button class="delete-btn">❌</button>';
+    newRow.insertCell().innerHTML = '<button class="delete-btn">❌</button>';
     newRow.setAttribute("subject-index", subjectcount);
 
     updateDataObj();
@@ -517,8 +498,7 @@ function updateTable() {
     CRCell.setAttribute("data-cr", subject.cr);
     CRCell.setAttribute("cr-index", index + 1);
 
-    newRow.insertCell().innerHTML =
-      '<button class="delete-btn">❌</button>';
+    newRow.insertCell().innerHTML = '<button class="delete-btn">❌</button>';
     newRow.setAttribute("subject-index", index + 1);
   });
 }
@@ -548,7 +528,6 @@ document
       console.clear();
     }, 2000);
   });
-
 
 // Offline Message function
 window.addEventListener("load", function () {
@@ -620,25 +599,23 @@ window.addEventListener("scroll", () => {
   }
 });
 
-
-
 // Pre-Loader and Fade in function
 document.addEventListener("DOMContentLoaded", function () {
   document.querySelector(".loader-container").classList.add("hidden");
 
-
   setTimeout(() => {
     setTimeout(() => {
       document.querySelector(".slideup-container").style.display = "none";
-    }, 1000)
-    document.querySelector(".slideup-tittle").style.transform = "translateY(-500%)";
+    }, 1000);
+    document.querySelector(".slideup-tittle").style.transform =
+      "translateY(-500%)";
     const slideupbars = document.querySelectorAll(".slideup-bar");
 
     slideupbars.forEach((e, i) => {
       const transitionDelay = (i + 1) * 0.1;
       e.classList.add("hidden");
       e.style.transitionDelay = `${transitionDelay}s`;
-    })
+    });
 
     const fadeElements = document.querySelectorAll(".fade-in");
     fadeElements.forEach((element, index) => {
@@ -650,22 +627,25 @@ document.addEventListener("DOMContentLoaded", function () {
   }, 700);
 });
 
-Array.from(document.getElementsByClassName('delayed-link')).forEach((link) => {
-  link.addEventListener('click', function (event) {
+Array.from(document.getElementsByClassName("delayed-link")).forEach((link) => {
+  link.addEventListener("click", function (event) {
     event.preventDefault();
 
-    document.querySelector(".delayed-link-slide-down-container").style.transform = 'translateY(0)';
-    const slidedownbars = document.querySelectorAll(".delayed-link-slidedown-bar");
+    document.querySelector(
+      ".delayed-link-slide-down-container"
+    ).style.transform = "translateY(0)";
+    const slidedownbars = document.querySelectorAll(
+      ".delayed-link-slidedown-bar"
+    );
 
     slidedownbars.forEach((e, i) => {
       const transitionDelay = (i + 1) * 0.1;
       e.classList.add("showing");
       e.style.transitionDelay = `${transitionDelay}s`;
-    })
+    });
 
     setTimeout(() => {
       window.location.href = event.target.href;
     }, 1000);
-
   });
 });
