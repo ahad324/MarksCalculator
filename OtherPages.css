@@ -164,6 +164,23 @@ body {
   color: #333;
 }
 
+.converter_section {
+  display: grid;
+  justify-items: center;
+  align-content: center;
+  max-height: 100vh;
+  margin-top: 20px;
+}
+
+.btn.activebtn {
+  box-shadow: inset 0px 0.1em 0.6em var(--primary-clr);
+}
+
+figure {
+  font-size: 2rem;
+  font-weight: bolder;
+}
+
 .Menu-bar {
   width: 100%;
   height: 10vh;
@@ -286,6 +303,36 @@ body {
   border-radius: 4px;
 }
 
+.buttons-toggler-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.buttons-toggler {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+}
+
+.converters_sections {
+  display: grid;
+  justify-items: center;
+  align-content: center;
+}
+
+.converter_section {
+  display: none;
+}
+
+.converter_section.active {
+  display: block;
+}
+
+
 header {
   background: var(--primary-clr);
   color: white;
@@ -350,6 +397,7 @@ button {
   height: 2.6em;
   text-shadow: var(--box-shadow);
   transition: box-shadow 0.15s ease, transform 0.15s ease;
+  font-family: "Anta", sans-serif;
 }
 
 button:hover {

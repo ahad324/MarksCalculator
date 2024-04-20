@@ -149,6 +149,7 @@ html.lenis body {
 .alert.active {
   display: block;
 }
+
 /* Showing offline status */
 .offline-message {
   display: none;
@@ -568,7 +569,8 @@ body.dark-theme .theme-toggler::before {
   list-style: decimal;
   margin-top: 10px;
 }
-.instructions-list > li > a {
+
+.instructions-list>li>a {
   color: crimson;
 }
 
@@ -607,15 +609,17 @@ body.dark-theme .theme-toggler::before {
   font-weight: bold;
   cursor: pointer;
 }
-.alert-close{
+
+.alert-close {
   color: red;
   position: absolute;
   top: -8px;
-    right: 5px;
+  right: 5px;
   font-size: 28px;
   font-weight: bold;
   cursor: pointer;
 }
+
 .close:hover,
 .close:focus {
   color: whitesmoke;
