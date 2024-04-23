@@ -320,7 +320,7 @@ figure {
 }
 
 .buttons-toggler,
-.binary_operations {
+.binary_operations,.octal_operations,.hexadecimal_operations {
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
