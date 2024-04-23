@@ -241,6 +241,7 @@
       </div>
     </section>
     <hr />
+    <!-- OPERATIONS SECTIONS -->
     <section>
       <section class="binary_operations_section">
         <h1>Binary Operations</h1>
@@ -254,9 +255,13 @@
         </div>
 
         <div class="binary_operations">
-          <button class="btn" id="addBinary">Add</button>
-          <button class="btn" id="subtractBinary">Subtract</button>
-          <button class="btn" id="multiplyBinary">Multiply</button>
+          <button class="btn" onclick="performOperation('binary')">Add</button>
+          <button class="btn" onclick="performOperation('binary', 'subtract')">
+            Subtract
+          </button>
+          <button class="btn" onclick="performOperation('binary', 'multiply')">
+            Multiply
+          </button>
         </div>
 
         <div class="result">
@@ -264,71 +269,121 @@
           <input type="text" id="binary-result" readonly />
         </div>
       </section>
+      <hr />
+      <section class="octal_operations_section">
+        <h1>Octal Operations</h1>
+        <div>
+          <label for="octal1">Octal Number 1:</label>
+          <input type="text" id="octal1" placeholder="Enter octal number" />
+        </div>
+        <div>
+          <label for="octal2">Octal Number 2:</label>
+          <input type="text" id="octal2" placeholder="Enter octal number" />
+        </div>
+
+        <div class="octal_operations">
+          <button class="btn" onclick="performOperation('octal')">Add</button>
+          <button class="btn" onclick="performOperation('octal', 'subtract')">
+            Subtract
+          </button>
+          <button class="btn" onclick="performOperation('octal', 'multiply')">
+            Multiply
+          </button>
+        </div>
+
+        <div class="result">
+          <label for="octal-result">Result:</label>
+          <input type="text" id="octal-result" readonly />
+        </div>
+      </section>
+      <hr />
+      <section class="hexadecimal_operations_section">
+        <h1>Hexadecimal Operations</h1>
+        <div>
+          <label for="hexadecimal1">Hexadecimal Number 1:</label>
+          <input
+            type="text"
+            id="hexadecimal1"
+            placeholder="Enter hexadecimal number"
+          />
+        </div>
+        <div>
+          <label for="hexadecimal2">Hexadecimal Number 2:</label>
+          <input
+            type="text"
+            id="hexadecimal2"
+            placeholder="Enter hexadecimal number"
+          />
+        </div>
+
+        <div class="hexadecimal_operations">
+          <button class="btn" onclick="performOperation('hexadecimal')">
+            Add
+          </button>
+          <button
+            class="btn"
+            onclick="performOperation('hexadecimal', 'subtract')"
+          >
+            Subtract
+          </button>
+          <button
+            class="btn"
+            onclick="performOperation('hexadecimal', 'multiply')"
+          >
+            Multiply
+          </button>
+        </div>
+
+        <div class="result">
+          <label for="hexadecimal-result">Result:</label>
+          <input type="text" id="hexadecimal-result" readonly />
+        </div>
+      </section>
     </section>
+
     <script>
-      // Binary Addition
-      document.getElementById("addBinary").addEventListener("click", () => {
-        const binary1 = document.getElementById("binary1").value;
-        const binary2 = document.getElementById("binary2").value;
+      //LOGIC FOR OPERATIONS SECTIONS
+      function performOperation(type, operation = "add") {
+        const input1 = document.getElementById(`${type}1`).value;
+        const input2 = document.getElementById(`${type}2`).value;
 
-        if (/^[01]+$/.test(binary1) && /^[01]+$/.test(binary2)) {
-          const maxLength = Math.max(binary1.length, binary2.length);
-          const paddedBinary1 = binary1.padStart(maxLength, "0");
-          const paddedBinary2 = binary2.padStart(maxLength, "0");
-
-          let result = "";
-          let carry = 0;
-
-          for (let i = maxLength - 1; i >= 0; i--) {
-            const sum =
-              parseInt(paddedBinary1[i]) + parseInt(paddedBinary2[i]) + carry;
-            result = (sum % 2) + result;
-            carry = Math.floor(sum / 2);
-          }
-
-          if (carry > 0) {
-            result = carry + result;
-          }
-
-          document.getElementById("binary-result").value = result;
-        } else {
-          alert("Please enter valid binary numbers.");
+        let result;
+        switch (operation) {
+          case "add":
+            result = (
+              parseInt(input1, getTypeBase(type)) +
+              parseInt(input2, getTypeBase(type))
+            ).toString(getTypeBase(type));
+            break;
+          case "subtract":
+            result = (
+              parseInt(input1, getTypeBase(type)) -
+              parseInt(input2, getTypeBase(type))
+            ).toString(getTypeBase(type));
+            break;
+          case "multiply":
+            result = (
+              parseInt(input1, getTypeBase(type)) *
+              parseInt(input2, getTypeBase(type))
+            ).toString(getTypeBase(type));
+            break;
         }
-      });
 
-      // Binary Subtraction
-      document
-        .getElementById("subtractBinary")
-        .addEventListener("click", () => {
-          const binary1 = document.getElementById("binary1").value;
-          const binary2 = document.getElementById("binary2").value;
+        document.getElementById(`${type}-result`).value = result;
+      }
 
-          if (/^[01]+$/.test(binary1) && /^[01]+$/.test(binary2)) {
-            const result = (
-              parseInt(binary1, 2) - parseInt(binary2, 2)
-            ).toString(2);
-            document.getElementById("binary-result").value = result;
-          } else {
-            alert("Please enter valid binary numbers.");
-          }
-        });
-
-      // Binary Multiplication
-      document
-        .getElementById("multiplyBinary")
-        .addEventListener("click", () => {
-          const binary1 = document.getElementById("binary1").value;
-          const binary2 = document.getElementById("binary2").value;
-
-          if (/^[01]+$/.test(binary1) && /^[01]+$/.test(binary2)) {
-            const result = (
-              parseInt(binary1, 2) * parseInt(binary2, 2)
-            ).toString(2);
-            document.getElementById("binary-result").value = result;
-          } else {
-            alert("Please enter valid binary numbers.");
-          }
-        });
+      function getTypeBase(type) {
+        switch (type) {
+          case "binary":
+            return 2;
+          case "octal":
+            return 8;
+          case "hexadecimal":
+            return 16;
+          default:
+            return 10;
+        }
+      }
     </script>
     <script src="Otherpages.js"></script>
     <script>
