@@ -559,7 +559,7 @@ textarea {
     width: 100%;
   }
 
-  .btn {
+  .btn,.Opbtn {
     font-size: 13px;
   }
 }
