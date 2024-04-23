@@ -252,13 +252,27 @@
 
       binaryInput.addEventListener("input", (e) => {
         let binaryValue = binaryInput.value;
-        octal_output_from_binary.value = parseInt(binaryValue, 2).toString(8);
-        decimal_output_from_binary.value = parseInt(binaryValue, 2).toString(
-          10
-        );
-        hexa_output_from_binary.value = parseInt(binaryValue, 2)
-          .toString(16)
-          .toUpperCase();
+        if (binaryValue !== "") {
+          if (/^[01]+$/.test(binaryValue)) {
+            binaryInput.style.background = "transparent";
+            octal_output_from_binary.value = parseInt(binaryValue, 2).toString(
+              8
+            );
+            decimal_output_from_binary.value = parseInt(
+              binaryValue,
+              2
+            ).toString(10);
+            hexa_output_from_binary.value = parseInt(binaryValue, 2)
+              .toString(16)
+              .toUpperCase();
+          } else {
+            binaryInput.style.background = "crimson";
+          }
+        } else {
+          octal_output_from_binary.value = "";
+          decimal_output_from_binary.value = "";
+          hexa_output_from_binary.value = "";
+        }
       });
 
       //OCTAL TO ALL :
@@ -274,12 +288,26 @@
       );
       octalInput.addEventListener("input", () => {
         let octalValue = octalInput.value;
-
-        binary_output_from_octal.value = parseInt(octalValue, 8).toString(2);
-        decimal_output_from_octal.value = parseInt(octalValue, 8).toString(10);
-        hexa_output_from_octal.value = parseInt(octalValue, 8)
-          .toString(16)
-          .toUpperCase();
+        if (octalValue !== "") {
+          if (/^[0-7]+$/.test(octalValue)) {
+            octalInput.style.background = "transparent";
+            binary_output_from_octal.value = parseInt(octalValue, 8).toString(
+              2
+            );
+            decimal_output_from_octal.value = parseInt(octalValue, 8).toString(
+              10
+            );
+            hexa_output_from_octal.value = parseInt(octalValue, 8)
+              .toString(16)
+              .toUpperCase();
+          } else {
+            octalInput.style.background = "crimson";
+          }
+        } else {
+          binary_output_from_octal.value = "";
+          decimal_output_from_octal.value = "";
+          hexa_output_from_octal.value = "";
+        }
       });
 
       //DECIMAL TO ALL :
@@ -295,16 +323,29 @@
       );
       decimalInput.addEventListener("input", () => {
         let decimalValue = decimalInput.value;
+        if (decimalValue !== "") {
+          if (/^\d+$/.test(decimalValue)) {
+            decimalInput.style.background = "transparent";
 
-        binary_output_from_decimal.value = parseInt(decimalValue, 10).toString(
-          2
-        );
-        octal_output_from_decimal.value = parseInt(decimalValue, 10).toString(
-          8
-        );
-        hexa_output_from_decimal.value = parseInt(decimalValue, 10)
-          .toString(16)
-          .toUpperCase();
+            binary_output_from_decimal.value = parseInt(
+              decimalValue,
+              10
+            ).toString(2);
+            octal_output_from_decimal.value = parseInt(
+              decimalValue,
+              10
+            ).toString(8);
+            hexa_output_from_decimal.value = parseInt(decimalValue, 10)
+              .toString(16)
+              .toUpperCase();
+          } else {
+            decimalInput.style.background = "crimson";
+          }
+        } else {
+          binary_output_from_decimal.value = "";
+          octal_output_from_decimal.value = "";
+          hexa_output_from_decimal.value = "";
+        }
       });
 
       //HEXA TO ALL:
@@ -321,10 +362,22 @@
 
       hexaInput.addEventListener("input", () => {
         let hexaValue = hexaInput.value;
-
-        binary_output_from_hexa.value = parseInt(hexaValue, 16).toString(2);
-        octal_output_from_hexa.value = parseInt(hexaValue, 16).toString(8);
-        decimal_output_from_hexa.value = parseInt(hexaValue, 16).toString(10);
+        if (hexaValue !== "") {
+          if (/^[0-9A-Fa-f]+$/.test(hexaValue)) {
+            hexaInput.style.background = "transparent";
+            binary_output_from_hexa.value = parseInt(hexaValue, 16).toString(2);
+            octal_output_from_hexa.value = parseInt(hexaValue, 16).toString(8);
+            decimal_output_from_hexa.value = parseInt(hexaValue, 16).toString(
+              10
+            );
+          } else {
+            hexaInput.style.background = "crimson";
+          }
+        } else {
+          binary_output_from_hexa.value = "";
+          octal_output_from_hexa.value = "";
+          decimal_output_from_hexa.value = "";
+        }
       });
 
       let converter_sections = document.querySelectorAll(".converter_section");
