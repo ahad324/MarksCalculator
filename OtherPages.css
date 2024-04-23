@@ -315,7 +315,7 @@ figure {
   padding: 20px;
 }
 
-.buttons-toggler {
+.buttons-toggler,.binary_operations {
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
