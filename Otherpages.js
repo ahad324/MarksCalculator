@@ -18,6 +18,14 @@ window.addEventListener("scroll", () => {
     menuBar.style.boxShadow = "none";
   }
 });
+// Theme Toggler 🌞 -> 🌑 OR 🌑 -> 🌞
+
+const themeToggler = document.querySelector(".theme-toggler");
+const body = document.querySelector("body");
+
+themeToggler.addEventListener("click", () => {
+  body.classList.toggle("dark-theme");
+});
 // Pre-Loader function
 document.addEventListener("DOMContentLoaded", function () {
   setTimeout(() => {
