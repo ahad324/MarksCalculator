@@ -152,90 +152,184 @@
         >
       </div>
     </div>
-
-    <div class="buttons-toggler-container">
-      <div class="buttons-toggler fade-in">
-        <button class="btn binarytoAllBtn activebtn">Binary to All</button>
-        <button class="btn octaltoAllBtn">Octal to All</button>
-        <button class="btn decimaltoAllBtn">Decimal to All</button>
-        <button class="btn hexatoAllBtn">Hexa to All</button>
+    <section>
+      <div class="buttons-toggler-container">
+        <div class="buttons-toggler fade-in">
+          <button class="btn binarytoAllBtn activebtn">Binary to All</button>
+          <button class="btn octaltoAllBtn">Octal to All</button>
+          <button class="btn decimaltoAllBtn">Decimal to All</button>
+          <button class="btn hexatoAllBtn">Hexa to All</button>
+        </div>
       </div>
-    </div>
 
-    <div class="converters_sections">
-      <section class="converter_section active fade-in" id="binarytoAll">
+      <div class="converters_sections">
+        <section class="converter_section active fade-in" id="binarytoAll">
+          <div>
+            <label for="binary">Binary:</label>
+            <input
+              type="number"
+              id="binary"
+              placeholder="Enter binary number"
+            />
+          </div>
+
+          <div class="result">
+            <figure>Result :</figure>
+            <label for="octal-output-from-binary">Octal : </label>
+            <input id="octal-output-from-binary" readonly />
+            <label for="decimal-output-from-binary">Decimal : </label>
+            <input id="decimal-output-from-binary" readonly />
+            <label for="hexa-output-from-binary">Hexadecimal : </label>
+            <input id="hexa-output-from-binary" readonly />
+          </div>
+        </section>
+
+        <section class="converter_section" id="octaltoAll">
+          <div>
+            <label for="octal">Octal:</label>
+            <input type="number" id="octal" placeholder="Enter octal number" />
+          </div>
+
+          <div class="result">
+            <figure>Result :</figure>
+            <label for="binary-output-from-octal">Binary : </label>
+            <input id="binary-output-from-octal" readonly />
+            <label for="decimal-output-from-octal">Decimal : </label>
+            <input id="decimal-output-from-octal" readonly />
+            <label for="hexa-output-from-octal">Hexadecimal : </label>
+            <input id="hexa-output-from-octal" readonly />
+          </div>
+        </section>
+
+        <section class="converter_section" id="decimaltoAll">
+          <div>
+            <label for="decimal">Decimal:</label>
+            <input
+              type="number"
+              id="decimal"
+              placeholder="Enter decimal number"
+            />
+          </div>
+
+          <div class="result">
+            <figure>Result :</figure>
+            <label for="binary-output-from-decimal">Binary : </label>
+            <input id="binary-output-from-decimal" readonly />
+            <label for="octal-output-from-decimal">Octal : </label>
+            <input id="octal-output-from-decimal" readonly />
+            <label for="hexa-output-from-decimal">Hexadecimal : </label>
+            <input id="hexa-output-from-decimal" readonly />
+          </div>
+        </section>
+
+        <section class="converter_section" id="hexatoAll">
+          <div>
+            <label for="hexa">Hexadecimal:</label>
+            <input type="text" id="hexa" placeholder="Enter Hexa number" />
+          </div>
+
+          <div class="result">
+            <figure>Result :</figure>
+            <label for="binary-output-from-hexa">Binary : </label>
+            <input id="binary-output-from-hexa" readonly />
+            <label for="octal-output-from-hexa">Octal : </label>
+            <input id="octal-output-from-hexa" readonly />
+            <label for="decimal-output-from-hexa">Decimal : </label>
+            <input id="decimal-output-from-hexa" readonly />
+          </div>
+        </section>
+      </div>
+    </section>
+    <hr />
+    <section>
+      <section class="binary_operations_section">
+        <h1>Binary Operations</h1>
         <div>
-          <label for="binary">Binary:</label>
-          <input type="number" id="binary" placeholder="Enter binary number" />
+          <label for="binary1">Binary Number 1:</label>
+          <input type="text" id="binary1" placeholder="Enter binary number" />
+        </div>
+        <div>
+          <label for="binary2">Binary Number 2:</label>
+          <input type="text" id="binary2" placeholder="Enter binary number" />
+        </div>
+
+        <div class="binary_operations">
+          <button id="addBinary">Add</button>
+          <button id="subtractBinary">Subtract</button>
+          <button id="multiplyBinary">Multiply</button>
         </div>
 
         <div class="result">
-          <figure>Result :</figure>
-          <label for="octal-output-from-binary">Octal : </label>
-          <input id="octal-output-from-binary" readonly />
-          <label for="decimal-output-from-binary">Decimal : </label>
-          <input id="decimal-output-from-binary" readonly />
-          <label for="hexa-output-from-binary">Hexadecimal : </label>
-          <input id="hexa-output-from-binary" readonly />
+          <label for="binary-result">Result:</label>
+          <input type="text" id="binary-result" readonly />
         </div>
       </section>
+    </section>
+    <script>
+      // Binary Addition
+      document.getElementById("addBinary").addEventListener("click", () => {
+        const binary1 = document.getElementById("binary1").value;
+        const binary2 = document.getElementById("binary2").value;
 
-      <section class="converter_section" id="octaltoAll">
-        <div>
-          <label for="octal">Octal:</label>
-          <input type="number" id="octal" placeholder="Enter octal number" />
-        </div>
+        if (/^[01]+$/.test(binary1) && /^[01]+$/.test(binary2)) {
+          const maxLength = Math.max(binary1.length, binary2.length);
+          const paddedBinary1 = binary1.padStart(maxLength, "0");
+          const paddedBinary2 = binary2.padStart(maxLength, "0");
 
-        <div class="result">
-          <figure>Result :</figure>
-          <label for="binary-output-from-octal">Binary : </label>
-          <input id="binary-output-from-octal" readonly />
-          <label for="decimal-output-from-octal">Decimal : </label>
-          <input id="decimal-output-from-octal" readonly />
-          <label for="hexa-output-from-octal">Hexadecimal : </label>
-          <input id="hexa-output-from-octal" readonly />
-        </div>
-      </section>
+          let result = "";
+          let carry = 0;
 
-      <section class="converter_section" id="decimaltoAll">
-        <div>
-          <label for="decimal">Decimal:</label>
-          <input
-            type="number"
-            id="decimal"
-            placeholder="Enter decimal number"
-          />
-        </div>
+          for (let i = maxLength - 1; i >= 0; i--) {
+            const sum =
+              parseInt(paddedBinary1[i]) + parseInt(paddedBinary2[i]) + carry;
+            result = (sum % 2) + result;
+            carry = Math.floor(sum / 2);
+          }
 
-        <div class="result">
-          <figure>Result :</figure>
-          <label for="binary-output-from-decimal">Binary : </label>
-          <input id="binary-output-from-decimal" readonly />
-          <label for="octal-output-from-decimal">Octal : </label>
-          <input id="octal-output-from-decimal" readonly />
-          <label for="hexa-output-from-decimal">Hexadecimal : </label>
-          <input id="hexa-output-from-decimal" readonly />
-        </div>
-      </section>
+          if (carry > 0) {
+            result = carry + result;
+          }
 
-      <section class="converter_section" id="hexatoAll">
-        <div>
-          <label for="hexa">Hexadecimal:</label>
-          <input type="text" id="hexa" placeholder="Enter Hexa number" />
-        </div>
+          document.getElementById("binary-result").value = result;
+        } else {
+          alert("Please enter valid binary numbers.");
+        }
+      });
 
-        <div class="result">
-          <figure>Result :</figure>
-          <label for="binary-output-from-hexa">Binary : </label>
-          <input id="binary-output-from-hexa" readonly />
-          <label for="octal-output-from-hexa">Octal : </label>
-          <input id="octal-output-from-hexa" readonly />
-          <label for="decimal-output-from-hexa">Decimal : </label>
-          <input id="decimal-output-from-hexa" readonly />
-        </div>
-      </section>
-    </div>
+      // Binary Subtraction
+      document
+        .getElementById("subtractBinary")
+        .addEventListener("click", () => {
+          const binary1 = document.getElementById("binary1").value;
+          const binary2 = document.getElementById("binary2").value;
 
+          if (/^[01]+$/.test(binary1) && /^[01]+$/.test(binary2)) {
+            const result = (
+              parseInt(binary1, 2) - parseInt(binary2, 2)
+            ).toString(2);
+            document.getElementById("binary-result").value = result;
+          } else {
+            alert("Please enter valid binary numbers.");
+          }
+        });
+
+      // Binary Multiplication
+      document
+        .getElementById("multiplyBinary")
+        .addEventListener("click", () => {
+          const binary1 = document.getElementById("binary1").value;
+          const binary2 = document.getElementById("binary2").value;
+
+          if (/^[01]+$/.test(binary1) && /^[01]+$/.test(binary2)) {
+            const result = (
+              parseInt(binary1, 2) * parseInt(binary2, 2)
+            ).toString(2);
+            document.getElementById("binary-result").value = result;
+          } else {
+            alert("Please enter valid binary numbers.");
+          }
+        });
+    </script>
     <script src="Otherpages.js"></script>
     <script>
       //BINARY TO ALL :
