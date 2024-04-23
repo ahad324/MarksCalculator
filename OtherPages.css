@@ -173,7 +173,7 @@ body {
 }
 
 .btn.activebtn {
-  box-shadow: inset 0px 0.1em 0.6em var(--primary-clr);
+  box-shadow: inset 0px 0.1em 0.6em var(--primary-clr), inset 1px 1px 10px var(--primary-clr);
 }
 
 figure {
@@ -547,5 +547,9 @@ textarea {
 
   .logo-section-container {
     width: 100%;
+  }
+
+  .btn {
+    font-size: 13px;
   }
 }
