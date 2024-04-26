@@ -567,6 +567,9 @@ textarea {
   .Menu-links a:nth-child(5) {
     transform: translateY(180px);
   }
+  .Menu-links a:nth-child(6) {
+    transform: translateY(185px);
+  }
 
   .Menu-links a.menu-open:nth-child(1) {
     transition-delay: 0.1s;
@@ -590,6 +593,10 @@ textarea {
 
   .Menu-links a.menu-open:nth-child(5) {
     transition-delay: 0.5s;
+    transform: translateY(0);
+  }
+  .Menu-links a.menu-open:nth-child(6) {
+    transition-delay: 0.6s;
     transform: translateY(0);
   }
 
