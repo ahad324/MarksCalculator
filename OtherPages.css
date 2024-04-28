@@ -364,6 +364,10 @@ figure {
   padding: 20px;
 }
 
+.buttons-toggler-container:hover .buttons-toggler button:not(:hover) {
+  filter: blur(4px);
+}
+
 .buttons-toggler,
 .binary_operations,.octal_operations,.hexadecimal_operations {
   display: flex;
