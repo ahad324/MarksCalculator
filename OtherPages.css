@@ -168,6 +168,7 @@ body.dark-theme {
   background: #0d0c0c;
   color: #e5e5e5e8;
 }
+
 body.dark-theme .theme-toggler {
   background: white;
 }
@@ -199,6 +200,7 @@ body.dark-theme .theme-toggler::before {
   transition: 1s all ease;
   content: "🌞";
 }
+
 body.dark-theme input:focus {
   box-shadow: 0px 0px 10px -4px yellow;
   border: none;
@@ -369,7 +371,9 @@ figure {
 }
 
 .buttons-toggler,
-.binary_operations,.octal_operations,.hexadecimal_operations {
+.binary_operations,
+.octal_operations,
+.hexadecimal_operations {
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
@@ -507,14 +511,20 @@ footer {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  span{
-    a{
+
+  span {
+    a {
       color: #2eff00;
     }
   }
-  span:nth-child(2){
+
+  span:nth-child(2) {
     color: #2eff00;
   }
+}
+
+hr {
+  border-color: #2eff00;
 }
 
 #confirmation {
@@ -534,6 +544,7 @@ textarea {
   .theme-toggler {
     left: 90%;
   }
+
   .Menu-links {
     position: fixed;
     height: 100%;
@@ -583,6 +594,7 @@ textarea {
   .Menu-links a:nth-child(5) {
     transform: translateY(180px);
   }
+
   .Menu-links a:nth-child(6) {
     transform: translateY(185px);
   }
@@ -611,6 +623,7 @@ textarea {
     transition-delay: 0.5s;
     transform: translateY(0);
   }
+
   .Menu-links a.menu-open:nth-child(6) {
     transition-delay: 0.6s;
     transform: translateY(0);
@@ -630,7 +643,8 @@ textarea {
     width: 100%;
   }
 
-  .btn,.Opbtn {
+  .btn,
+  .Opbtn {
     font-size: 13px;
   }
 }

@@ -601,6 +601,15 @@ window.addEventListener("scroll", () => {
 
 // Pre-Loader and Fade in function
 document.addEventListener("DOMContentLoaded", function () {
+  // Showing Updates
+  let updatesContainer = document.querySelector(".updates");
+  setTimeout(() => {
+    updatesContainer.classList.add("show");
+  }, 1000);
+  setTimeout(() => {
+    updatesContainer.classList.remove("show");
+  }, 5000);
+
   document.querySelector(".loader-container").classList.add("hidden");
 
   setTimeout(() => {
