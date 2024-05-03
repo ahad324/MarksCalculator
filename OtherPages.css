@@ -503,6 +503,18 @@ footer {
   padding: 1rem 0;
   width: 100%;
   box-shadow: var(--box-shadow);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  span{
+    a{
+      color: #2eff00;
+    }
+  }
+  span:nth-child(2){
+    color: #2eff00;
+  }
 }
 
 #confirmation {
