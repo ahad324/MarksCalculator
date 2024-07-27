@@ -20,7 +20,7 @@ Explore GradeGenie and streamline your grade management! Visit the live site [he
 
    ```bash
    git clone https://github.com/ahad324/MarksCalculator.git
-   cd GradeGenie
+   cd MarksCalculator
    ```
 - **👩‍💻 Now just run the `index.html` file**
 
