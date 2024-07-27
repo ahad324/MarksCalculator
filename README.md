@@ -1,6 +1,10 @@
 <h1 style="margin: 0;"><img src="https://gradegenie.site/GradeGenius.png" alt="GradeGenie Logo" width="30" style="margin-right: 10px;"/> GradeGenie</h1>
 
 Welcome to **GradeGenie**, your ultimate tool for calculating GPA, CGPA, SGPA, and more! Whether you're a student aiming for academic excellence or simply managing your grades, GradeGenie is here to make grade management easy and efficient.
+<br><br>
+![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white)
+![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white)
+![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)
 
 ## 🚀 Features
 
