@@ -16,7 +16,7 @@ Welcome to **GradeGenie**, your ultimate tool for calculating GPA, CGPA, SGPA, a
 
 ## 🌟 Check It Out
 
-Explore GradeGenie and streamline your grade management! Visit the live site [here](https://gradegenie.site/).
+Explore GradeGenie and streamline your grade management! Visit the live site [here](https://ahad324.github.io/MarksCalculator/).
 
 ## 🔧 Getting Started
 
