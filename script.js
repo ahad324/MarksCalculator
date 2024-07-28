@@ -304,7 +304,7 @@ submitSubjectBtn.addEventListener("click", function (event) {
       );
       TotalMarksCell.textContent = existingSubject.totalmarks;
       // Update grade based on percentage
-      let percentage = calculatePercentage(finalObtainedMarks);
+      let percentage = calculatePercentage(finalObtainedMarks, TotalMarks);
       let SubjectGPA = calculateGPA(percentage);
       existingSubject.gpa = SubjectGPA;
       SubjectGPACell.textContent = SubjectGPA;
@@ -327,7 +327,7 @@ submitSubjectBtn.addEventListener("click", function (event) {
     let totalObtMarksForASubject = Math.round(
       calculateTotalObtainedMarks(inputObtMarks, inputMaxMarks, inputWeightage)
     );
-    let percentage = calculatePercentage(totalObtMarksForASubject);
+    let percentage = calculatePercentage(totalObtMarksForASubject, TotalMarks);
     let SubjectGPA = calculateGPA(percentage);
     DataObj.push({
       name: inputSubjectName,
@@ -401,8 +401,8 @@ function calculateGPA(percentage) {
 function calculateTotalObtainedMarks(obtMarks, maxMarks, weightage) {
   return ((obtMarks / maxMarks) * weightage).toFixed(2);
 }
-function calculatePercentage(obtMarks) {
-  return ((obtMarks / 100) * 100).toFixed(2);
+function calculatePercentage(obtMarks, totalMarks) {
+  return ((obtMarks / totalMarks) * 100).toFixed(2);
 }
 
 function calculateGrade(percentage) {
@@ -529,7 +529,7 @@ function updateTable() {
     TotalMarks.setAttribute("totalmarks-index", index + 1);
 
     let SubjectGPACell = newRow.insertCell();
-    let percentage = calculatePercentage(subject.marks);
+    let percentage = calculatePercentage(subject.marks, subject.totalmarks);
     let SubjectGPA = calculateGPA(percentage);
     SubjectGPACell.textContent = SubjectGPA;
     SubjectGPACell.setAttribute("data-gpa", SubjectGPA);
