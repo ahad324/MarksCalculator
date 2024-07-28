@@ -458,7 +458,7 @@ function CalculateFinalSGpa() {
   DataObj.forEach(function (subject, index) {
     totalCR += parseFloat(subject.cr);
     totalGradePoints += subject.gradePoint;
-    // console.log("TOTAL CR: " + totalCR + " \nTOTALgradePoints: " + totalGradePoints)
+    // console.log("CR: " + subject.cr + " \ngradePoints: " + subject.gradePoint)
   });
   return (totalGradePoints / totalCR).toFixed(2);
 }
