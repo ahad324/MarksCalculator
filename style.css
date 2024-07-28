@@ -165,24 +165,11 @@ html.lenis body {
   opacity: 0;
   justify-content: center;
   align-items: center;
-  animation: pop-out .2s linear 1;
   box-shadow: var(--box-shadow);
 
   p {
     font-weight: bold;
     color: black;
-  }
-}
-
-@keyframes pop-out {
-  from {
-    top: 40%;
-    opacity: 1;
-  }
-
-  to {
-    top: 60%;
-    opacity: 0;
   }
 }
 

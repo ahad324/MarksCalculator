@@ -650,7 +650,8 @@ document.addEventListener("DOMContentLoaded", function () {
   }, 1000);
   setTimeout(() => {
     updatesContainer.classList.remove("show");
-  }, 5000);
+    updatesContainer.style.display = "none"
+  }, 6000);
 
   document.querySelector(".loader-container").classList.add("hidden");
 
