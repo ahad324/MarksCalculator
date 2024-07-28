@@ -1,5 +1,9 @@
-if (localStorage.getItem("RoyalData")) {
-  localStorage.removeItem("RoyalData");
+if (!localStorage.getItem("viewed")) {
+  localStorage.setItem("viewed", true);
+
+  if (localStorage.getItem("GPACalculator")) {
+    localStorage.removeItem("GPACalculator");
+  }
 }
 var clickedsubmmitbutton = 0;
 
@@ -156,9 +160,13 @@ var namebelowassesment = document.getElementById(
 var marksbelowassesment = document.getElementById(
   "obtained-marks-below-assesment"
 );
+var totalmarksbelowassesment = document.getElementById(
+  "total-marks-below-assesment"
+);
 
 let DataObj = []; // Object to store subject , total Obtained marks and grade
 let subjectcount = 0; // Counter for subjects
+
 var message = document.getElementsByClassName("message")[0];
 
 let inputSubjectName = document.getElementById("input-subject-name");
@@ -202,7 +210,6 @@ submitSubjectBtn.addEventListener("click", function (event) {
   let inputWeightage = parseFloat(
     document.getElementById("InputWeightage").value.trim()
   );
-
   // Validation checks
   if (
     !inputSubjectName ||
@@ -223,6 +230,21 @@ submitSubjectBtn.addEventListener("click", function (event) {
     alert("Weightage cannot exceed 100.");
     return;
   }
+
+  // Check if the subject already exists in DataObj
+  // This is also useful for totalmarksforasubject
+  let existingSubjectIndex = DataObj.findIndex(
+    (subject) => subject.name === inputSubjectName
+  );
+
+  let TotalMarksForASubject = DataObj[existingSubjectIndex] ? DataObj[existingSubjectIndex].totalmarks : 0; // total marks for a subject updated dynamically
+  let TotalMarks = (TotalMarksForASubject += inputWeightage);
+
+  if (TotalMarks > 100) {
+    alert("Total Marks cannot exceed 100.");
+    return;
+  }
+
   // When user CLicks on SUBMIT Button then resultcard button will beat
   clickedsubmmitbutton == 0
     ? (clickedsubmmitbutton = 1)
@@ -233,11 +255,6 @@ submitSubjectBtn.addEventListener("click", function (event) {
       resultcardBtn.classList.remove("clickedsubmit");
     });
   }
-  // Check if the subject already exists in DataObj
-
-  let existingSubjectIndex = DataObj.findIndex(
-    (subject) => subject.name === inputSubjectName
-  );
 
   if (existingSubjectIndex !== -1 && existingSubjectIndex !== undefined) {
     // Update existing subject data
@@ -254,10 +271,13 @@ submitSubjectBtn.addEventListener("click", function (event) {
       parseFloat(totalObtMarksForASubject) + parseFloat(existingSubject.marks);
     // console.log(finalObtainedMarks);
     if (finalObtainedMarks > 100) {
-      alert("Total obtained marks in Result Card cannot exceed 100");
+      alert("Obtained marks in Result Card cannot exceed 100");
       return;
     }
     existingSubject.marks = finalObtainedMarks;
+    // Update totalmarks for the existing subject
+    existingSubject.totalmarks += inputWeightage;
+
     let marksCell = document.querySelector(
       `#resultModal table tbody tr[subject-index="${existingSubjectIndex + 1
       }"] td[data-marks]`
@@ -266,11 +286,23 @@ submitSubjectBtn.addEventListener("click", function (event) {
       `#resultModal table tbody tr[subject-index="${existingSubjectIndex + 1
       }"] td[data-gpa]`
     );
+    let TotalMarksCell = document.querySelector(
+      `#resultModal table tbody tr[subject-index="${existingSubjectIndex + 1
+      }"] td[data-totalmarks]`
+    );
 
     if (marksCell && SubjectGPACell) {
       marksCell.setAttribute("data-marks", existingSubject.marks);
       marksCell.textContent = existingSubject.marks;
+
       marksbelowassesment.textContent = existingSubject.marks;
+      totalmarksbelowassesment.textContent = existingSubject.totalmarks;
+
+      TotalMarksCell.setAttribute(
+        "data-totalmarks",
+        existingSubject.totalmarks
+      );
+      TotalMarksCell.textContent = existingSubject.totalmarks;
       // Update grade based on percentage
       let percentage = calculatePercentage(finalObtainedMarks);
       let SubjectGPA = calculateGPA(percentage);
@@ -303,12 +335,14 @@ submitSubjectBtn.addEventListener("click", function (event) {
       gpa: SubjectGPA,
       cr: parseFloat(inputCreditHours.value),
       gradePoint: SubjectGPA * parseFloat(inputCreditHours.value),
+      totalmarks: TotalMarks,
     });
     // =================================================================
     // localStorage.setItem(inputSubjectName,totalObtMarksForASubject)
     // =================================================================
     namebelowassesment.textContent = inputSubjectName;
     marksbelowassesment.textContent = totalObtMarksForASubject;
+    totalmarksbelowassesment.textContent = TotalMarksForASubject;
     // Create a new row in the result card table
     let newRow = tableBody.insertRow();
 
@@ -322,7 +356,10 @@ submitSubjectBtn.addEventListener("click", function (event) {
     marksCell.setAttribute("data-marks", totalObtMarksForASubject);
     marksCell.setAttribute("marks-index", subjectcount);
 
-    newRow.insertCell().textContent = 100;
+    let TotalMarksCell = newRow.insertCell();
+    TotalMarksCell.textContent = TotalMarks;
+    TotalMarksCell.setAttribute("data-totalmarks", TotalMarks);
+    TotalMarksCell.setAttribute("totalmarks-index", subjectcount);
 
     let SubjectGPACell = newRow.insertCell();
     SubjectGPACell.textContent = SubjectGPA;
@@ -389,8 +426,8 @@ function updateFinalGradeAndSGPA() {
   // Loop through each row in the table
   var rows = tableBody.querySelectorAll("tr");
   rows.forEach(function (row) {
-    var obtMarks = parseInt(row.cells[1].textContent);
-    var maxMarks = parseInt(row.cells[2].textContent);
+    var obtMarks = parseFloat(row.cells[1].textContent);
+    var maxMarks = parseFloat(row.cells[2].textContent);
 
     // Validate obtained and maximum marks
     if (!isNaN(obtMarks) && !isNaN(maxMarks) && maxMarks !== 0) {
@@ -454,6 +491,9 @@ tableBody.addEventListener("click", function (event) {
       row
         .querySelector("td[data-cr]")
         .setAttribute("subject-index", newIndexValue);
+      row
+        .querySelector("td[data-totalmarks]")
+        .setAttribute("totalmarks-index", newIndexValue);
     });
 
     // Update subject count
@@ -483,7 +523,10 @@ function updateTable() {
     marksCell.setAttribute("data-marks", subject.marks);
     marksCell.setAttribute("marks-index", index + 1);
 
-    newRow.insertCell().textContent = 100;
+    let TotalMarks = newRow.insertCell();
+    TotalMarks.textContent = subject.totalmarks;
+    TotalMarks.setAttribute("data-totalmarks", subject.totalmarks);
+    TotalMarks.setAttribute("totalmarks-index", index + 1);
 
     let SubjectGPACell = newRow.insertCell();
     let percentage = calculatePercentage(subject.marks);
@@ -491,7 +534,6 @@ function updateTable() {
     SubjectGPACell.textContent = SubjectGPA;
     SubjectGPACell.setAttribute("data-gpa", SubjectGPA);
     SubjectGPACell.setAttribute("grade-index", index + 1);
-    // console.log(subject)
 
     let CRCell = newRow.insertCell();
     CRCell.textContent = subject.cr;
@@ -504,11 +546,11 @@ function updateTable() {
 }
 
 function updateDataObj() {
-  localStorage.setItem("GPACalculator", JSON.stringify(DataObj));
+  localStorage.setItem("GradeCalculator", JSON.stringify(DataObj));
 }
 window.addEventListener("load", function () {
-  if (localStorage.getItem("GPACalculator")) {
-    DataObj = JSON.parse(localStorage.getItem("GPACalculator"));
+  if (localStorage.getItem("GradeCalculator")) {
+    DataObj = JSON.parse(localStorage.getItem("GradeCalculator"));
     // Update the table with loaded data
     updateTable();
     updateFinalGradeAndSGPA();
