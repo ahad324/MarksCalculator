@@ -303,7 +303,7 @@
                   <span class="input">
                      <span id="semesters-input">
                         <label for="input-sem-sgpa-1">Enter semester 1's SGPA </label>
-                        <input type="number" id="input-sem-sgpa-1" required step="0.01" />
+                        <input type="number" id="input-sem-sgpa-1" required step="0.01" min="0" max="10" oninput="validateInput(event)"/>
                      </span>
                   </span>
                   <span class="Add-semester-btn-container">

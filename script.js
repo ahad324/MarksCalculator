@@ -61,12 +61,24 @@ function calculateCGPA() {
   }, 500);
 }
 
+// Making sure that user can't enter more than 10 or less than 0.
+function validateInput(event) {
+  const input = event.target;
+  const value = parseFloat(input.value);
+  if (value > 10) {
+    input.value = 10;
+  } else if (value < 0) {
+    input.value = 0;
+  }
+}
 // Listen for changes in the input fields
 document
   .getElementById("semesters-input")
   .addEventListener("input", calculateCGPA);
 
 document.getElementById("add-sem-btn").addEventListener("click", () => {
+  if (semesterscount + 1 > 10) { return alert("Cannot add more semesters!") }
+
   const semestersInput = document.getElementById("semesters-input");
   const label = document.createElement("label");
   label.setAttribute("for", `input-sem-sgpa-${semesterscount + 1}`);
@@ -77,6 +89,9 @@ document.getElementById("add-sem-btn").addEventListener("click", () => {
   input.setAttribute("id", `input-sem-sgpa-${semesterscount + 1}`);
   input.setAttribute("required", true);
   input.setAttribute("step", 0.01);
+  input.setAttribute("max", 10)
+  input.setAttribute("min", 0)
+  input.setAttribute("oninput", "validateInput(event)")
 
   semesterscount++;
   semestersInput.appendChild(label);
