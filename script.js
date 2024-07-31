@@ -391,13 +391,25 @@ submitSubjectBtn.addEventListener("click", function (event) {
 
     updateDataObj();
   }
+  ClearingInputs();
+  updateFinalGradeAndSGPA();
+});
+function ClearingInputs(name) {
+  let SubjectNameInInput = document
+    .getElementById("input-subject-name");
+  // Clearing Inputsif the user deletes the subject from table.(if the subject that user deleted and the name in input field are same then it will clear the inputs.)
+  if (name === SubjectNameInInput.value.trim()) {
+    SubjectNameInInput.value = "";
+    inputCreditHours.disabled = false;
+    marksbelowassesment.textContent = ""
+    totalmarksbelowassesment.textContent = "";
+    namebelowassesment.textContent = "";
+  }
 
   document.getElementById("InputObtMarks").value = "";
   document.getElementById("InputMaxMarks").value = "";
   document.getElementById("InputWeightage").value = "";
-  updateFinalGradeAndSGPA();
-});
-
+}
 // Function to calculate GPA based on percentage
 function calculateGPA(percentage) {
   if (percentage >= 85) return "4.00";
@@ -482,7 +494,8 @@ tableBody.addEventListener("click", function (event) {
   if (event.target.classList.contains("delete-btn")) {
     var row = event.target.closest("tr");
     var index = parseInt(row.getAttribute("subject-index"));
-
+    // console.log(DataObj[index - 1].name)
+    ClearingInputs(DataObj[index - 1].name);
     // Remove the subject from DataObj
     DataObj.splice(index - 1, 1);
 
